@@ -18,9 +18,9 @@ from a CDN.
 Import the component at the root of your application and register it.
 
 ```js
-import ShareButton from "@parsonic/share-button";
+import ShareButton from '@parsonic/share-button'
 
-ShareButton.register();
+ShareButton.register()
 
 // Use <share-button></share-button> in your page or components
 ```
@@ -31,9 +31,9 @@ Import the component from the CDN and register it before using.
 
 ```html
 <script type="module">
-  import ShareButton from "@parsonic/share-button";
+  import ShareButton from '@parsonic/share-button'
 
-  ShareButton.register();
+  ShareButton.register()
 </script>
 
 <share-button></share-button>
@@ -44,7 +44,7 @@ pass this to the register method.
 
 ```js
 // To use as <my-share-button></my-share-button>
-ShareButton.register("my-share-button");
+ShareButton.register('my-share-button')
 ```
 
 ## Providing the share data
@@ -58,11 +58,10 @@ attribute. Below is an example using Nunjucks template syntax.
 
 ```html
 <share-button
-  data-title="{{ post.title }}"
   data-url="{{ post.url }}"
+  data-title="{{ post.title }}"
   data-text="{{ post.description }}"
->
-</share-button>
+></share-button>
 ```
 
 If the data attributes aren't provided the component will attempt to find
@@ -70,9 +69,9 @@ the share data values from meta tags on the page using the
 [Open Graph][open-graph] protocol.
 
 ```html
-<meta property="og:url" content="{{ page.url }}" />
-<meta property="og:title" content="{{ title }}" />
-<meta property="og:description" content="{{ description }}" />
+<meta property="og:url" content="{{ post.url }}" />
+<meta property="og:title" content="{{ post.title }}" />
+<meta property="og:description" content="{{ post.description }}" />
 ```
 
 Failing to find either the data attributes or the Open Graph meta tags the
@@ -114,18 +113,18 @@ cancelable.
 
 ```js
 // Example metric capture
-document.addEventListener("share", (ev) => {
-  const { url, title } = ev.detail;
+document.addEventListener('share', (ev) => {
+  const { url, title } = ev.detail
 
-  metrics.track("share", { url, title });
-});
+  metrics.track('share', { url, title })
+})
 
 // Cancel the share action for some reason
-document.addEventListener("share", (ev) => {
+document.addEventListener('share', (ev) => {
   if (preventSharing(ev.detail.url)) {
-    ev.preventDefault();
+    ev.preventDefault()
   }
-});
+})
 ```
 
 [share]: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share

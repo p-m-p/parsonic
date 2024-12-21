@@ -1,25 +1,31 @@
-import ShareButton from "../packages/share-button";
+import { html } from 'lit'
+import ShareButton from '../packages/share-button'
 
-import "./share-button.css";
+import './share-button.css'
 
-ShareButton.register();
+ShareButton.register()
 
 export default {
-  title: "ShareButton",
-};
+  title: 'ShareButton',
+}
 
 export const Default = {
-  render: () => "<share-button></share-button>",
-};
+  render: () => html`<share-button></share-button>`,
+}
+
+export const Label = {
+  render: () =>
+    html`<share-button data-button-label="Share it!"></share-button>`,
+}
 
 export const Styled = {
-  render: () => '<share-button class="styled"></share-button>',
-};
+  render: () => html`<share-button class="styled"></share-button>`,
+}
 
 export const Custom = {
-  render: () => `
+  render: () => html`
     <share-button>
       <button slot="button" class="custom">Share this page</button>
     </share-button>
   `,
-};
+}
