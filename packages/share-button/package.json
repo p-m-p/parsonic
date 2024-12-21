@@ -1,0 +1,17 @@
+{
+  "name": "@parsonic/share-button",
+  "version": "0.0.0",
+  "description": "A share this page button component for any website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "share",
+    "button",
+    "web",
+    "component"
+  ],
+  "author": "Phil Parsons",
+  "license": "MIT"
+}
