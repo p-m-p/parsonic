@@ -62,7 +62,9 @@ export default class ShareButton extends BaseElement {
         );
 
         if (canShare) {
-          await navigator.share(data);
+          try {
+            await navigator.share(data);
+          } catch (err) { }
         }
       });
     }

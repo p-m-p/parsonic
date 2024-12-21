@@ -10,7 +10,8 @@ npm install --save @parsonic/share-button
 
 ## Usage
 
-The share button can be used with your favourite bundler or directly from a CDN.
+The share button can be used with your favourite bundler or directly
+from a CDN.
 
 ### Bundler
 
@@ -46,7 +47,7 @@ pass this to the register method.
 ShareButton.register("my-share-button");
 ```
 
-## Controlling the shared data
+## Providing the share data
 
 The share button uses the [`navigator.share`][share] feature if the browser
 supports it. If the share feature is not available the component will not be
@@ -103,6 +104,28 @@ Provide your own button in the `button` slot.
 <share-button>
   <button slot="button">My cool button<button>
 </share-button>
+```
+
+## Share event
+
+When the share button is clicked a custom event with the name `share` is
+dispatched. This event has the share data as the payload, bubbles and is
+cancelable.
+
+```js
+// Example metric capture
+document.addEventListener("share", (ev) => {
+  const { url, title } = ev.detail;
+
+  metrics.track("share", { url, title });
+});
+
+// Cancel the share action for some reason
+document.addEventListener("share", (ev) => {
+  if (preventSharing(ev.detail.url)) {
+    ev.preventDefault();
+  }
+});
 ```
 
 [share]: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share

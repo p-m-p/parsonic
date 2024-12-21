@@ -1,0 +1,25 @@
+.styled::part(button),
+.custom {
+  background: blue;
+  border: none;
+  border-radius: 999px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  min-width: 80px;
+  padding: 0.5rem 1rem;
+  transition: background 200ms;
+}
+
+.styled::part(button):hover {
+  background: darkblue;
+}
+
+.custom {
+  background: lightsalmon;
+  color: black;
+
+  &:hover {
+    background: salmon;
+  }
+}
