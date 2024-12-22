@@ -2,8 +2,9 @@
   "name": "parsonic",
   "private": true,
   "scripts": {
-    "build": "echo \"need to add build script\"",
+    "build": "pnpm run clean && pnpm run -r build",
     "build-storybook": "storybook build",
+    "clean": "pnpm run -r clean",
     "lint": "eslint .",
     "format": "prettier --write --ignore-unknown .",
     "prepare": "husky",
@@ -22,6 +23,7 @@
     "@storybook/test": "^8.4.7",
     "@storybook/web-components": "^8.4.7",
     "@storybook/web-components-vite": "^8.4.7",
+    "esbuild": "^0.24.2",
     "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.14.0",

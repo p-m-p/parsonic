@@ -3,29 +3,38 @@ import ShareButton from '../packages/share-button/ShareButton'
 
 import './share-button.css'
 
-ShareButton.register()
+ShareButton.register('test-button')
 
 export default {
   title: 'ShareButton',
 }
 
 export const Default = {
-  render: () => html`<share-button></share-button>`,
+  render: () => html`<test-button></test-button>`,
 }
 
 export const Label = {
-  render: () =>
-    html`<share-button data-button-label="Share it!"></share-button>`,
+  render: () => html`<test-button data-button-label="Share it!"></test-button>`,
 }
 
 export const Styled = {
-  render: () => html`<share-button class="styled"></share-button>`,
+  render: () => html`<test-button class="styled"></test-button>`,
 }
 
 export const Custom = {
   render: () => html`
-    <share-button>
+    <test-button>
       <button slot="button" class="custom">Share this page</button>
-    </share-button>
+    </test-button>
+  `,
+}
+
+export const CDN = {
+  render: () => `
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/+esm"
+    ></script>
+    <share-button data-button-label="Share this page"></share-button>
   `,
 }

@@ -1,7 +1,7 @@
 {
   "name": "@parsonic/share-button",
   "version": "0.1.1",
-  "description": "Native share button component",
+  "description": "Native share button web component",
   "main": "index.js",
   "type": "module",
   "repository": {
@@ -9,6 +9,8 @@
     "url": "https://github.com/p-m-p/parsonic/tree/main/packages/share-button"
   },
   "scripts": {
+    "build": "esbuild index.js ShareButton.js --bundle --minify --sourcemap --outdir=dist --format=esm",
+    "clean": "rm -rf dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
