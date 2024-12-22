@@ -1,6 +1,6 @@
 {
   "name": "@parsonic/share-button",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Native share button web component",
   "main": "index.js",
   "type": "module",
