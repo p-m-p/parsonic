@@ -11,7 +11,8 @@ npm install --save @parsonic/share-button
 ## Usage
 
 The share button can be used with your favourite bundler or directly
-from a CDN.
+from a CDN. Minified builds for the browser are supplied in the [`dist`
+directory](`https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/dist/index.js`)
 
 ### Quick start
 
