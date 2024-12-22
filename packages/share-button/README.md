@@ -11,8 +11,8 @@ npm install --save @parsonic/share-button
 ## Usage
 
 The share button can be used with your favourite bundler or directly
-from a CDN. Minified builds for the browser are supplied in the [`dist`
-directory](`https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/dist/index.js`)
+from a CDN. Minified builds for the browser are supplied in the
+[`dist` directory][dist]
 
 ### Quick start
 
@@ -20,8 +20,9 @@ Add the script tag and use the button in your page.
 
 ```html
 <script
+  defer
   type="module"
-  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/+esm"
+  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/dist/index.js"
 ></script>
 <share-button data-button-label="Share this page"></share-button>
 ```
@@ -31,7 +32,7 @@ Add the script tag and use the button in your page.
 Import the component at the root of your application and register it.
 
 ```js
-import ShareButton from '@parsonic/share-button'
+import ShareButton from '@parsonic/share-button/ShareButton.js'
 
 ShareButton.register()
 
@@ -140,5 +141,28 @@ document.addEventListener('share', (ev) => {
 })
 ```
 
+## Fallback content
+
+Fallback content can be provided if for some reason the native share
+function isn't available or the scripts aren't loaded. Please see this
+[blog post][blog-post] for thorough explanation of using fallback content.
+
+```html
+<share-button>
+  <button popovertarget="fallback">Share</button>
+
+  <div popover id="fallback">
+    <h2>Share this post</h2>
+
+    <div>
+      <label>Page URL</label>
+      <input value="{{ post.url }}" readonly />
+    </div>
+  </div>
+</share-button>
+```
+
 [share]: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
 [open-graph]: https://ogp.me/
+[dist]: https://cdn.jsdelivr.net/npm/@parsonic/share-button@0.2.0/dist/
+[blog-post]: https://philparsons.co.uk/blog/dont-fouc-up-your-web-components/

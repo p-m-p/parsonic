@@ -32,8 +32,9 @@ export const Custom = {
 export const CDN = {
   render: () => `
     <script
+      defer
       type="module"
-      src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/+esm"
+      src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/dist/index.js"
     ></script>
     <share-button data-button-label="Share this page"></share-button>
   `,
