@@ -13,6 +13,18 @@ npm install --save @parsonic/share-button
 The share button can be used with your favourite bundler or directly
 from a CDN.
 
+### Quick start
+
+Add the script tag and use the button in your page.
+
+```html
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/+esm"
+></script>
+<share-button data-button-label="Share this page"></share-button>
+```
+
 ### Bundler
 
 Import the component at the root of your application and register it.
@@ -31,7 +43,7 @@ Import the component from the CDN and register it before using.
 
 ```html
 <script type="module">
-  import ShareButton from '@parsonic/share-button'
+  import ShareButton from 'https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/ShareButton.js'
 
   ShareButton.register()
 </script>
