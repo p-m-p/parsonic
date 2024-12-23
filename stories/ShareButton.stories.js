@@ -6,6 +6,7 @@ import './share-button.css'
 ShareButton.register('test-button')
 
 export default {
+  tags: ['autodocs'],
   title: 'ShareButton',
 }
 
@@ -15,6 +16,15 @@ export const Default = {
 
 export const Label = {
   render: () => html`<test-button data-button-label="Share it!"></test-button>`,
+}
+
+export const Attributes = {
+  render: () =>
+    html`<test-button
+      data-url="https://example.com/"
+      data-title="Hello world!"
+      data-text="Test data attributes"
+    ></test-button>`,
 }
 
 export const Styled = {

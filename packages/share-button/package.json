@@ -6,13 +6,12 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/p-m-p/parsonic/tree/main/packages/share-button"
+    "url": "https://github.com/p-m-p/parsonic"
   },
   "scripts": {
-    "build": "esbuild index.js ShareButton.js --bundle --minify --sourcemap --outdir=dist --format=esm",
-    "clean": "rm -rf dist",
-    "prepare": "cp ../../LICENSE ./",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "esbuild index.js --bundle --minify --sourcemap --outfile=min.js --format=iife",
+    "clean": "rm -f min.*",
+    "prepare": "cp ../../LICENSE ./"
   },
   "keywords": [
     "button",

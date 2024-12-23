@@ -21,8 +21,7 @@ Add the script tag and use the button in your page.
 ```html
 <script
   defer
-  type="module"
-  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/dist/index.js"
+  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/min.js"
 ></script>
 <share-button data-button-label="Share this page"></share-button>
 ```
@@ -68,7 +67,7 @@ supports it. If the share feature is not available the component will not be
 defined and will either show the fallback content or no button at all.
 
 For control over the share data you can provide the share button with data
-attribute. Below is an example using Nunjucks template syntax.
+attributes. Below is an example using Nunjucks template syntax.
 
 ```html
 <share-button
@@ -103,7 +102,7 @@ Provide a label for the button with the `data-button-label` attribute.
 <share-button data-button-label="Share this page"></share-button>
 ```
 
-Style the button use the `button` part selector.
+Style the button using the `button` part selector.
 
 ```css
 share-button::part(button) {
@@ -121,9 +120,9 @@ Provide your own button in the `button` slot.
 
 ## Share event
 
-When the share button is clicked a custom event with the name `share` is
-dispatched. This event has the share data as the payload, bubbles and is
-cancelable.
+When the share button is clicked a [custom event][custom-event] with the
+name `share` is dispatched. This event has the share data as the payload,
+bubbles and is cancelable.
 
 ```js
 // Example metric capture
@@ -143,9 +142,10 @@ document.addEventListener('share', (ev) => {
 
 ## Fallback content
 
-Fallback content can be provided if for some reason the native share
-function isn't available or the scripts aren't loaded. Please see this
-[blog post][blog-post] for thorough explanation of using fallback content.
+Fallback content can be provided for situations where the native share
+function isn't available or the component script isn't loaded. Please see
+this [blog post][blog-post] for thorough explanation of using fallback
+content.
 
 ```html
 <share-button>
@@ -164,5 +164,6 @@ function isn't available or the scripts aren't loaded. Please see this
 
 [share]: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
 [open-graph]: https://ogp.me/
+[custom-event]: https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent
 [dist]: https://cdn.jsdelivr.net/npm/@parsonic/share-button@0.2.0/dist/
 [blog-post]: https://philparsons.co.uk/blog/dont-fouc-up-your-web-components/
