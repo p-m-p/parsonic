@@ -7,8 +7,7 @@ Add a share button to any web page.
 ```html
 <script
   defer
-  type="module"
-  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/dist/index.js"
+  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@1.0.0/min.js"
 ></script>
 <share-button></share-button>
 ```
