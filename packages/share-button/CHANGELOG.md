@@ -1,5 +1,11 @@
 # @parsonic/share-button
 
+## 1.0.0
+
+### Major Changes
+
+- 9233b7b: Tidy up and release as v1
+
 ## 0.2.1
 
 ### Patch Changes
