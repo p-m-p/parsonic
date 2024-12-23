@@ -1,5 +1,11 @@
 # @parsonic/share-button
 
+## 1.0.1
+
+### Patch Changes
+
+- a2016c8: Update docs for minified script usage
+
 ## 1.0.0
 
 ### Major Changes
