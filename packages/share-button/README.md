@@ -11,24 +11,24 @@ npm install --save @parsonic/share-button
 ## Usage
 
 The share button can be used with your favourite bundler or directly
-from a CDN. Minified builds for the browser are supplied in the
-[`dist` directory][dist]
+from a CDN. A minified build is provided as `min.js` with a source map.
 
 ### Quick start
 
-Add the script tag and use the button in your page.
+Add a script tag with the minified build and use the button in your page.
 
 ```html
 <script
   defer
-  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/min.js"
+  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@1.0.0/min.js"
 ></script>
 <share-button data-button-label="Share this page"></share-button>
 ```
 
 ### Bundler
 
-Import the component at the root of your application and register it.
+Import the `ShareButton` component at the root of your application
+and register it.
 
 ```js
 import ShareButton from '@parsonic/share-button/ShareButton.js'
@@ -40,11 +40,11 @@ ShareButton.register()
 
 ### CDN
 
-Import the component from the CDN and register it before using.
+Import the `ShareButton` component from the CDN and register it before using.
 
 ```html
 <script type="module">
-  import ShareButton from 'https://cdn.jsdelivr.net/npm/@parsonic/share-button@latest/ShareButton.js'
+  import ShareButton from 'https://cdn.jsdelivr.net/npm/@parsonic/share-button@1.0.0/ShareButton.js'
 
   ShareButton.register()
 </script>
