@@ -1,5 +1,5 @@
 import { html } from 'lit'
-import ShareButton from '../packages/share-button/ShareButton'
+import ShareButton from '../packages/share-button/ShareButton.js'
 
 import './share-button.css'
 

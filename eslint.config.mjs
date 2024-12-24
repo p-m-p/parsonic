@@ -24,6 +24,7 @@ export default [
           },
         },
       ],
+      'import/named': 'off',
     },
   },
   eslintConfigPrettier,
