@@ -1,10 +1,30 @@
 import eslintConfigPrettier from 'eslint-config-prettier'
+import importPlugin from 'eslint-plugin-import'
 import globals from 'globals'
 import pluginJs from '@eslint/js'
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
+  importPlugin.flatConfigs.recommended,
+  {
+    files: ['**/*.js'],
+    languageOptions: {
+      globals: globals.browser,
+      sourceType: 'module',
+      ecmaVersion: 'latest',
+    },
+    rules: {
+      'import/extensions': ['error', 'always'],
+      'import/order': [
+        'error',
+        {
+          alphabetize: {
+            order: 'asc',
+          },
+        },
+      ],
+    },
+  },
   eslintConfigPrettier,
 ]
