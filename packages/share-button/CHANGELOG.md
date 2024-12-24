@@ -1,5 +1,11 @@
 # @parsonic/share-button
 
+## 1.0.2
+
+### Patch Changes
+
+- 5af3f21: Add import extension to index file
+
 ## 1.0.1
 
 ### Patch Changes
