@@ -118,11 +118,12 @@ Provide your own button in the `button` slot.
 </share-button>
 ```
 
-## Share event
+## `share` event
 
 When the share button is clicked a [custom event][custom-event] with the
 name `share` is dispatched. This event has the share data as the payload,
-bubbles and is cancelable.
+bubbles and is cancelable. The event name can be customised by setting
+the `data-share-event-name` attribute.
 
 ```js
 // Example metric capture
@@ -136,6 +137,28 @@ document.addEventListener('share', (ev) => {
 document.addEventListener('share', (ev) => {
   if (preventSharing(ev.detail.url)) {
     ev.preventDefault()
+  }
+})
+```
+
+## `shareResult` event
+
+Once the share action completes a [custom event][custom-event] with the
+result is dispatched. If the share action was successful the `result`
+attribute will be set to `'success'` otherwise it will be `'error'`.
+When the result is an error the [error][share-exceptions] object will
+be in the event payload. The event bubbles but is not cancelable. The
+event name can be customised by setting the `data-result-event-name`
+attribute.
+
+```js
+document.addEventListener('shareResult', (ev) => {
+  const { result } = ev.detail
+
+  if (result === 'success') {
+    metrics.track('articleShare', ev.detail.data)
+  } else {
+    metrics.track('shareFailed', ev.detail.error.message)
   }
 })
 ```
@@ -167,3 +190,4 @@ content.
 [custom-event]: https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent
 [dist]: https://cdn.jsdelivr.net/npm/@parsonic/share-button@0.2.0/dist/
 [blog-post]: https://philparsons.co.uk/blog/dont-fouc-up-your-web-components/
+[share-exceptions]: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share#exceptions

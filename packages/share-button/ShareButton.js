@@ -1,11 +1,3 @@
-let BaseElement
-
-if (typeof HTMLElement !== 'undefined') {
-  BaseElement = HTMLElement
-} else {
-  BaseElement = class {}
-}
-
 function getGraphContent(property, defaultValue) {
   return (
     document
@@ -14,7 +6,7 @@ function getGraphContent(property, defaultValue) {
   )
 }
 
-export default class ShareButton extends BaseElement {
+export default class ShareButton extends HTMLElement {
   static register(tag = 'share-button') {
     if ('share' in navigator) {
       customElements.define(tag, ShareButton)
@@ -33,11 +25,13 @@ export default class ShareButton extends BaseElement {
     const shadowRoot = this.attachShadow({ mode: 'open' })
     shadowRoot.appendChild(slot)
 
-    slot.addEventListener('click', async () => {
+    slot.addEventListener('click', () => {
       let {
         url = getGraphContent('url', location.href),
         title = getGraphContent('title', document.title),
         text = getGraphContent('description'),
+        shareEventNzme = 'share',
+        resultEventName = 'shareResult',
       } = this.dataset
 
       const data = { url, text, title }
@@ -45,17 +39,34 @@ export default class ShareButton extends BaseElement {
       if (
         navigator.canShare(data) &&
         this.dispatchEvent(
-          new CustomEvent('share', {
+          new CustomEvent(shareEventNzme, {
             cancelable: true,
             bubbles: true,
             detail: data,
           })
         )
       ) {
-        try {
-          await navigator.share(data)
-          // eslint-disable-next-line no-empty, no-unused-vars
-        } catch (err) {}
+        navigator
+          .share(data)
+          .then(() => {
+            this.dispatchEvent(
+              new CustomEvent(resultEventName, {
+                bubbles: true,
+                detail: {
+                  result: 'success',
+                  data,
+                },
+              })
+            )
+          })
+          .catch((error) => {
+            this.dispatchEvent(
+              new CustomEvent(resultEventName, {
+                bubbles: true,
+                detail: { result: 'error', data, error },
+              })
+            )
+          })
       }
     })
   }
