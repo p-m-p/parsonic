@@ -1,5 +1,11 @@
 # @parsonic/share-button
 
+## 1.1.1
+
+### Patch Changes
+
+- 5660934: Fix typo in event attribute name and add custom element manifest
+
 ## 1.1.0
 
 ### Minor Changes
