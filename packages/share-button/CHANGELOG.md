@@ -1,5 +1,11 @@
 # @parsonic/share-button
 
+## 1.1.0
+
+### Minor Changes
+
+- 9da0b63: Add share result event with attributes for customising event names
+
 ## 1.0.2
 
 ### Patch Changes
