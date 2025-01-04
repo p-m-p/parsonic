@@ -30,7 +30,7 @@ export default class ShareButton extends HTMLElement {
         url = getGraphContent('url', location.href),
         title = getGraphContent('title', document.title),
         text = getGraphContent('description'),
-        shareEventNzme = 'share',
+        shareEventName = 'share',
         resultEventName = 'shareResult',
       } = this.dataset
 
@@ -39,7 +39,7 @@ export default class ShareButton extends HTMLElement {
       if (
         navigator.canShare(data) &&
         this.dispatchEvent(
-          new CustomEvent(shareEventNzme, {
+          new CustomEvent(shareEventName, {
             cancelable: true,
             bubbles: true,
             detail: data,
