@@ -1,0 +1,82 @@
+{
+  "$schema": "https://raw.githubusercontent.com/webcomponents/custom-elements-manifest/refs/heads/main/schema.json",
+  "schemaVersion": "2.1.0",
+  "readme": "README.md",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "ShareButton.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShareButton",
+          "members": [
+            {
+              "kind": "method",
+              "name": "register",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "tag",
+                  "default": "'share-button'"
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "share",
+              "summary": "Fired when the share button is clicked",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "shareResult",
+              "summary": "Fired after the share action is complete",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "slots": [
+            {
+              "name": "",
+              "summary": "Default slot for supplying a custom share button"
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "button",
+              "summary": "Part applied to the default share button for styling"
+            }
+          ],
+          "tagName": "share-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ShareButton",
+            "module": "ShareButton.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "share-button",
+          "declaration": {
+            "name": "ShareButton",
+            "module": "index.js"
+          }
+        }
+      ]
+    }
+  ]
+}

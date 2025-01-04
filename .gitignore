@@ -1,3 +1,4 @@
 node_modules
 dist
 packages/share-button/min.js
+packages/share-button/min.js.map

@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "esbuild index.js --bundle --minify --sourcemap --outfile=min.js --format=iife",
+    "generate-manifest": "cem analyze --globs 'ShareButton.js'",
     "clean": "rm -f min.*",
     "prepare": "cp ../../LICENSE ./"
   },
@@ -22,5 +23,6 @@
     "web"
   ],
   "author": "Phil Parsons",
-  "license": "MIT"
+  "license": "MIT",
+  "customElements": "custom-elements.json"
 }
