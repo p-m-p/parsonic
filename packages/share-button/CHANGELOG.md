@@ -1,5 +1,11 @@
 # @parsonic/share-button
 
+## 1.2.1
+
+### Patch Changes
+
+- 286e82a: Add missing default export for button class
+
 ## 1.2.0
 
 ### Minor Changes
