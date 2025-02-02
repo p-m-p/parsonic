@@ -3,15 +3,25 @@
   "version": "1.1.1",
   "description": "Native share button web component",
   "main": "index.js",
+  "types": "index.d.ts",
   "type": "module",
+  "files": [
+    "CHANGELOG.md",
+    "custom-elements.json",
+    "*.js",
+    "*.map",
+    "*.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/p-m-p/parsonic"
   },
   "scripts": {
-    "build": "esbuild index.js --bundle --minify --sourcemap --outfile=min.js --format=iife",
-    "generate-manifest": "cem analyze --globs 'ShareButton.js'",
-    "clean": "rm -f min.*",
+    "build": "pnpm run build:esm && pnpm run build:min",
+    "build:esm": "esbuild src/index.js src/ShareButton.js  --minify --sourcemap --outdir=. --format=esm",
+    "build:min": "esbuild index.js --bundle --minify --sourcemap --outfile=min.js --format=iife",
+    "generate-manifest": "cem analyze --globs 'src/ShareButton.js'",
+    "clean": "rm -f *.js",
     "prepare": "cp ../../LICENSE ./"
   },
   "keywords": [

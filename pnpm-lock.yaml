@@ -64,6 +64,9 @@ importers:
       storybook:
         specifier: ^8.4.7
         version: 8.4.7(prettier@3.4.2)
+      typescript:
+        specifier: ^5.7.3
+        version: 5.7.3
 
   packages/share-button: {}
 
@@ -3813,6 +3816,14 @@ packages:
     engines: { node: '>=14.17' }
     hasBin: true
 
+  typescript@5.7.3:
+    resolution:
+      {
+        integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==,
+      }
+    engines: { node: '>=14.17' }
+    hasBin: true
+
   typical@4.0.0:
     resolution:
       {
@@ -6326,6 +6337,8 @@ snapshots:
       reflect.getprototypeof: 1.0.9
 
   typescript@5.4.5: {}
+
+  typescript@5.7.3: {}
 
   typical@4.0.0: {}
 

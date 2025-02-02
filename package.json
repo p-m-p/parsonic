@@ -1,6 +1,7 @@
 {
   "name": "parsonic",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "pnpm run clean && pnpm run -r build",
     "build-storybook": "storybook build",
@@ -33,7 +34,8 @@
     "lint-staged": "^15.2.11",
     "lit": "^3.2.1",
     "prettier": "^3.4.2",
-    "storybook": "^8.4.7"
+    "storybook": "^8.4.7",
+    "typescript": "^5.7.3"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
@@ -43,5 +45,6 @@
     "tabWidth": 2,
     "semi": false,
     "singleQuote": true
-  }
+  },
+  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
 }

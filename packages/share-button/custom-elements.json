@@ -11,6 +11,18 @@
           "kind": "class",
           "description": "",
           "name": "ShareButton",
+          "cssParts": [
+            {
+              "description": "Style the default button element",
+              "name": "button"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Slot for a custom button element",
+              "name": "button"
+            }
+          ],
           "members": [
             {
               "kind": "method",
@@ -26,35 +38,60 @@
           ],
           "events": [
             {
-              "name": "share",
-              "summary": "Fired when the share button is clicked",
               "type": {
-                "text": "CustomEvent"
-              }
+                "text": "CustomEvent<ShareEventData>"
+              },
+              "description": "Event dispatched when the share button is pressed",
+              "name": "share"
             },
             {
-              "name": "shareResult",
-              "summary": "Fired after the share action is complete",
               "type": {
-                "text": "CustomEvent"
-              }
+                "text": "CustomEvent<SuccessResultDetail | ErrorResultDetail>"
+              },
+              "description": "Event dispatched when the share action is completed",
+              "name": "shareResult"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "The URL of the item to share",
+              "name": "data-url"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "The title of the item to share",
+              "name": "data-title"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "The text of the share message",
+              "name": "data-text"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Override for the name of the share event",
+              "name": "data-share-event-name"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Override for the name of the result event",
+              "name": "data-result-event-name"
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "slots": [
-            {
-              "name": "",
-              "summary": "Default slot for supplying a custom share button"
-            }
-          ],
-          "cssParts": [
-            {
-              "name": "button",
-              "summary": "Part applied to the default share button for styling"
-            }
-          ],
           "tagName": "share-button",
           "customElement": true
         }
