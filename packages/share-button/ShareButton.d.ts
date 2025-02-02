@@ -39,3 +39,11 @@ export interface ErrorResultDetail {
    */
   result: 'error'
 }
+
+/**
+ * Share button custom element for easily adding `navigator.share`
+ * functionality to a web page.
+ */
+export default class ShareButton
+  extends HTMLElement
+  implements ShareButtonElement {}
