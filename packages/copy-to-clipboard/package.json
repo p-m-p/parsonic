@@ -1,0 +1,38 @@
+{
+  "name": "@parsonic/copy-to-clipboard",
+  "version": "0.0.0",
+  "description": "Copy text to clipboard web component",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "type": "module",
+  "files": [
+    "CHANGELOG.md",
+    "custom-elements.json",
+    "*.js",
+    "*.map",
+    "*.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/p-m-p/parsonic"
+  },
+  "scripts": {
+    "build": "pnpm run build:esm && pnpm run build:min",
+    "build:esm": "esbuild src/index.js src/CopyToClipboard.js  --minify --sourcemap --outdir=. --format=esm",
+    "build:min": "esbuild index.js --bundle --minify --sourcemap --outfile=min.js --format=iife",
+    "generate-manifest": "cem analyze --globs 'src/CopyToClipboard.js'",
+    "clean": "rm -f *.js",
+    "prepare": "cp ../../LICENSE ./"
+  },
+  "keywords": [
+    "button",
+    "clipboard",
+    "component",
+    "copy",
+    "links",
+    "web"
+  ],
+  "author": "Phil Parsons",
+  "license": "MIT",
+  "customElements": "custom-elements.json"
+}
