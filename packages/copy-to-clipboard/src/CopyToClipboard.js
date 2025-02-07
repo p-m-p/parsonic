@@ -1,6 +1,7 @@
 /**
  * @tagName copy-to-clipboard
  *
+ * @attr {string} data-button-label - Aria label for the copy button
  * @attr {string} data-text - The text to copy to clipboard
  */
 export default class CopyToClipboard extends HTMLElement {
@@ -12,7 +13,7 @@ export default class CopyToClipboard extends HTMLElement {
     const { buttonLabel = 'Copy' } = this.dataset
 
     const template = document.createElement('template')
-    template.innerHTML = `<slot></slot>
+    template.innerHTML = `<slot id="content"></slot>
 <slot name="button">
   <button type="button" aria-label="${buttonLabel}">
     <slot name="icon">
@@ -28,26 +29,60 @@ export default class CopyToClipboard extends HTMLElement {
   display: inline;
   position: relative;
 }
+
+slot:has(button:focus-visible) {
+  opacity: 1;
+}
+
+#content:hover + slot {
+  opacity: 1;
+}
+
+slot[name='button'] {
+  display: block;
+  opacity: 0;
+  position: absolute;
+  left: 100%;
+  bottom: 0;
+
+  &:has(button:focus-visible) {
+    opacity: 1;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0.125rem;
+  }
+}
 `)
 
     const shadow = this.attachShadow({ mode: 'open' })
     shadow.appendChild(template.content.cloneNode(true))
     shadow.adoptedStyleSheets.push(stylesheet)
 
-    shadow
-      .querySelector('slot[name="button"]')
-      ?.addEventListener('click', () => {
-        let { text } = this.dataset
+    shadow.addEventListener('click', () => {
+      let { text } = this.dataset
 
-        if (!text) {
-          text = shadow
-            .querySelector('slot')
-            ?.assignedNodes()
-            .map((n) => n.textContent)
-            .join('\n')
-        }
+      if (!text) {
+        text = shadow
+          .querySelector('slot')
+          ?.assignedNodes()
+          .map((n) => n.textContent)
+          .join('')
+      }
 
-        console.log(text)
-      })
+      navigator.clipboard
+        .writeText(text)
+        .then((ev) => {
+          // Emit success result event
+          console.log(ev)
+        })
+        .catch((err) => {
+          // Emit error result event
+          console.error(err)
+        })
+    })
   }
 }
