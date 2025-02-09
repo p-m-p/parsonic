@@ -1,5 +1,5 @@
 import { html } from 'lit'
-import CopyToClipboard from '../../packages/copy-to-clipboard/src/CopyToClipboard.js'
+import CopyToClipboard from '../../packages/copy-to-clipboard/CopyToClipboard.js'
 
 CopyToClipboard.register('test-copy')
 

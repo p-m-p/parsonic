@@ -1,3 +1,5 @@
+import stylesheet from './style.css' with { type: 'css' }
+
 /**
  * @tagName copy-to-clipboard
  *
@@ -21,42 +23,6 @@ export default class CopyToClipboard extends HTMLElement {
     </slot>
   </button>
 </slot>`
-
-    const stylesheet = new CSSStyleSheet()
-    stylesheet.replaceSync(`
-:host {
-  cursor: pointer;
-  display: inline;
-  position: relative;
-}
-
-slot:has(button:focus-visible) {
-  opacity: 1;
-}
-
-#content:hover + slot {
-  opacity: 1;
-}
-
-slot[name='button'] {
-  display: block;
-  opacity: 0;
-  position: absolute;
-  left: 100%;
-  bottom: 0;
-
-  &:has(button:focus-visible) {
-    opacity: 1;
-  }
-
-  button {
-    background: transparent;
-    border: none;
-    margin: 0;
-    padding: 0.125rem;
-  }
-}
-`)
 
     const shadow = this.attachShadow({ mode: 'open' })
     shadow.appendChild(template.content.cloneNode(true))
