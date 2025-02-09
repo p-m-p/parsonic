@@ -17,11 +17,9 @@
     "url": "https://github.com/p-m-p/parsonic"
   },
   "scripts": {
-    "build": "pnpm run build:esm && pnpm run build:min",
-    "build:esm": "esbuild src/index.js src/CopyToClipboard.js  --minify --sourcemap --outdir=. --format=esm",
-    "build:min": "esbuild index.js --bundle --minify --sourcemap --outfile=min.js --format=iife",
+    "build": "node ./build.js",
     "generate-manifest": "cem analyze --globs 'src/CopyToClipboard.js'",
-    "clean": "rm -f *.js",
+    "clean": "rm -f index.js index.js.map CopyToClipboard.js CopyToClipboard.js.map",
     "prepare": "cp ../../LICENSE ./"
   },
   "keywords": [
