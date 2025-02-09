@@ -1,0 +1,14 @@
+{
+  "name": "esbuild-plugin-import",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": "true",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Phil Parsons",
+  "license": "MIT"
+}

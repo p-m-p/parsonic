@@ -32,5 +32,8 @@
   ],
   "author": "Phil Parsons",
   "license": "MIT",
-  "customElements": "custom-elements.json"
+  "customElements": "custom-elements.json",
+  "devDependencies": {
+    "esbuild-plugin-import": "workspace:*"
+  }
 }
