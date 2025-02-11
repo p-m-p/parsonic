@@ -34,6 +34,6 @@
   "license": "MIT",
   "customElements": "custom-elements.json",
   "devDependencies": {
-    "esbuild-plugin-import": "workspace:*"
+    "@parsonic/esbuild-plugin": "workspace:*"
   }
 }

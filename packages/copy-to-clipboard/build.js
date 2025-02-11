@@ -1,5 +1,5 @@
+import { cssImports } from '@parsonic/esbuild-plugin'
 import { build } from 'esbuild'
-import cssImports from 'esbuild-plugin-import'
 
 await build({
   bundle: true,

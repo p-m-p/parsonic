@@ -3,4 +3,4 @@ dist
 packages/*/*.js
 packages/*/*.js.map
 !packages/*/build.js
-!packages/esbuild-plugin-import/index.js
+!packages/esbuild-plugin/index.js
