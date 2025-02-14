@@ -3,18 +3,29 @@ import cssnano from 'cssnano'
 import postcss from 'postcss'
 
 /**
+ * @typedef {Object}CSSImportOptions
+ * @property {boolean} [minify]
+ */
+
+/**
+ * @param {CSSImportOptions} [options] - CSS Import plugin options
+ *
  * @returns {import('esbuild').Plugin}
  */
-export function cssImports() {
+export function cssImports(options) {
   return {
     name: 'css-imports',
     setup(build) {
       build.onLoad({ filter: /.*/ }, async (args) => {
         if (args.with.type === 'css') {
+          const plugins = []
+
+          if (options?.minify) {
+            plugins.push(cssnano({ preset: 'default' }))
+          }
+
           const styles = await readFile(args.path, 'utf8')
-          const { css } = await postcss([
-            cssnano({ preset: 'default' }),
-          ]).process(styles)
+          const { css } = await postcss(plugins).process(styles)
 
           return {
             contents: `const sheet = new CSSStyleSheet()
