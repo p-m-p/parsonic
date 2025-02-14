@@ -4,4 +4,5 @@ packages/*/LICENSE
 packages/*/*.js
 packages/*/*.js.map
 !packages/*/build.js
+!packages/*/watch.js
 !packages/esbuild-plugin/index.js

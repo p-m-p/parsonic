@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "node ./build.js",
+    "dev": "node ./watch.js",
     "generate-manifest": "cem analyze --globs 'src/CopyToClipboard.js'",
     "clean": "rm -f index.js CopyToClipboard.js min.js min.map.js",
     "prepare": "cp ../../LICENSE ./"

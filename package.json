@@ -6,6 +6,7 @@
     "build": "pnpm run clean && pnpm run -r build",
     "build-storybook": "storybook build",
     "clean": "pnpm run -r clean",
+    "dev": "pnpm run -r dev",
     "lint": "eslint .",
     "format": "prettier --write --ignore-unknown .",
     "prepare": "husky",
