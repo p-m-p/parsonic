@@ -23,8 +23,7 @@ export const Attributes = {
     html`<test-button
       data-url="https://example.com/"
       data-title="Hello world!"
-      data-text="Test data attributes"
-    ></test-button>`,
+      data-text="Test data attributes"></test-button>`,
 }
 
 export const Styled = {

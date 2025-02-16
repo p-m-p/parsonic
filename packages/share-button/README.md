@@ -20,8 +20,7 @@ Add a script tag with the minified build and use the button in your page.
 ```html
 <script
   defer
-  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@1.0.0/min.js"
-></script>
+  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@1.0.0/min.js"></script>
 <share-button data-button-label="Share this page"></share-button>
 ```
 
@@ -73,8 +72,7 @@ attributes. Below is an example using Nunjucks template syntax.
 <share-button
   data-url="{{ post.url }}"
   data-title="{{ post.title }}"
-  data-text="{{ post.description }}"
-></share-button>
+  data-text="{{ post.description }}"></share-button>
 ```
 
 If the data attributes aren't provided the component will attempt to find
