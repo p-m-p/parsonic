@@ -3,10 +3,11 @@ import stylesheet from './style.css' with { type: 'css' }
 /**
  * @tagName copy-to-clipboard
  *
- * @property {ClipboardItem | DateTransforItem} [item] - The item to copy to the clipboard
+ * @property {ClipboardItem} [item] - The item to copy to the clipboard
  *
  * @attr {string} [data-button-label] - ARIA label for the copy button
- * @attr {string} [data-item] - The text or data URI to copy to clipboard.
+ * @attr {string} [data-text] - Text to copy to clipboard.
+ * @attr {string} [data-url] - A URL to data to copy to the clipboard
  */
 export default class CopyToClipboard extends HTMLElement {
   /** @type {ClipboardItem} */
@@ -41,24 +42,36 @@ export default class CopyToClipboard extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true))
     shadow.adoptedStyleSheets.push(stylesheet)
     shadow.addEventListener('click', () => {
-      this.getClipboardItem()
-        .then(async (item) => {
+      this.getClipboardData()
+        .then(async (data) => {
+          const dataTransfer = new DataTransfer()
+
+          for (const type of data.types) {
+            const blob = await data.getType(type)
+
+            if (type === 'text/plain') {
+              dataTransfer.items.add(await blob.text(), type)
+            } else {
+              dataTransfer.items.add(URL.createObjectURL(blob), type)
+            }
+          }
+
           if (
             this.dispatchEvent(
-              new CustomEvent('copyToClipboard', {
+              new ClipboardEvent('copy', {
                 cancelable: true,
                 bubbles: true,
-                detail: item,
+                clipboardData: dataTransfer,
               })
             )
           ) {
-            await navigator.clipboard.write([item])
+            await navigator.clipboard.write([data])
             this.dispatchEvent(
-              new CustomEvent('copyToClipboardResult', {
+              new CustomEvent('copyResult', {
                 bubbles: true,
                 detail: {
                   result: 'success',
-                  data: item,
+                  data,
                 },
               })
             )
@@ -66,7 +79,7 @@ export default class CopyToClipboard extends HTMLElement {
         })
         .catch((err) => {
           this.dispatchEvent(
-            new CustomEvent('copyToClipboardResult', {
+            new CustomEvent('copyResult', {
               bubbles: true,
               detail: {
                 result: 'error',
@@ -78,12 +91,12 @@ export default class CopyToClipboard extends HTMLElement {
     })
   }
 
-  async getClipboardItem() {
+  async getClipboardData() {
     let item = this.#item
 
     if (!item) {
-      if (this.dataset?.item) {
-        const data = await fetch(this.dataset.item)
+      if (this.dataset?.url) {
+        const data = await fetch(this.dataset.url)
         const blob = await data.blob()
 
         item = new ClipboardItem({
@@ -91,11 +104,13 @@ export default class CopyToClipboard extends HTMLElement {
         })
       } else {
         item = new ClipboardItem({
-          'text/plain': this.shadowRoot
-            .querySelector('slot')
-            ?.assignedNodes()
-            .map((n) => n.textContent)
-            .join(''),
+          'text/plain':
+            this.dataset.text ??
+            this.shadowRoot
+              .querySelector('slot')
+              ?.assignedNodes()
+              .map((n) => n.textContent.trim())
+              .join(''),
         })
       }
     }
