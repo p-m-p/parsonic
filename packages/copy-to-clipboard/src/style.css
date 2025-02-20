@@ -10,23 +10,19 @@
   position: relative;
 }
 
-slot[name='button'] {
-  display: inline;
-  position: absolute;
+slot[name='button'] button,
+slot[name='button']::slotted(*) {
+  background: var(--button-bg);
+  border: none;
+  border-radius: var(--button-radius);
+  color: var(--button-color);
+  cursor: pointer;
   inset: var(--button-inset);
+  line-height: 1;
+  margin: 0;
+  padding: var(--button-padding);
+  position: absolute;
   transition: opacity var(--button-transition);
-
-  button {
-    background: var(--button-bg);
-    border: none;
-    border-radius: var(--button-radius);
-    color: var(--button-color);
-    cursor: pointer;
-    line-height: 1;
-    margin: 0;
-    padding: var(--button-padding);
-    position: relative;
-  }
 }
 
 slot[name='done-icon'] > svg,
@@ -37,16 +33,18 @@ slot[name='done-icon']::slotted(*) {
 }
 
 @media (hover: hover) {
-  slot[name='button'] {
+  slot[name='button'] button,
+  slot[name='button']::slotted(*) {
     opacity: 0;
 
-    &:has(button:focus-visible) {
+    &:focus-visible {
       opacity: 1;
     }
   }
 
   :host(:hover) {
-    slot[name='button'] {
+    slot[name='button'] button,
+    slot[name='button']::slotted(*) {
       opacity: 1;
     }
   }
