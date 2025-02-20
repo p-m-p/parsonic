@@ -12,6 +12,8 @@ import stylesheet from './style.css' with { type: 'css' }
 export default class CopyToClipboard extends HTMLElement {
   /** @type {ClipboardItem} */
   #item = undefined
+  #copyIcon = null
+  #doneIcon = null
 
   get item() {
     return this.#item
@@ -32,8 +34,21 @@ export default class CopyToClipboard extends HTMLElement {
     template.innerHTML = `<slot></slot>
 <slot name="button">
   <button type="button" aria-label="${buttonLabel}">
-    <slot name="icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-copy"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="M16 4h2a2 2 0 0 1 2 2v4"/><path d="M21 14H11"/><path d="m15 10-4 4 4 4"/></svg>
+    <slot name="copy-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
+        <path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+        <path d="M16 4h2a2 2 0 0 1 2 2v4"/>
+        <path d="M21 14H11"/>
+        <path d="m15 10-4 4 4 4"/>
+      </svg>
+    </slot>
+    <slot name="done-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6 9 17l-5-5"/>
+      </svg>
     </slot>
   </button>
 </slot>`
@@ -41,6 +56,23 @@ export default class CopyToClipboard extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' })
     shadow.appendChild(template.content.cloneNode(true))
     shadow.adoptedStyleSheets.push(stylesheet)
+
+    this.#copyIcon = shadow.querySelector('slot[name="copy-icon"] > svg')
+    this.#doneIcon = shadow.querySelector('slot[name="done-icon"] > svg')
+
+    shadow
+      .querySelector('slot[name="copy-icon"]')
+      ?.addEventListener('slotchange', (ev) => {
+        // @ts-ignore
+        this.#copyIcon = ev.target.assignedElements()[0]
+      })
+    shadow
+      .querySelector('slot[name="done-icon"]')
+      ?.addEventListener('slotchange', (ev) => {
+        // @ts-ignore
+        this.#doneIcon = ev.target.assignedElements()[0]
+      })
+
     shadow
       .querySelector('slot[name="button"]')
       ?.addEventListener('click', () => {
@@ -55,6 +87,23 @@ export default class CopyToClipboard extends HTMLElement {
                 dataTransfer.items.add(await blob.text(), type)
               }
             }
+
+            this.#copyIcon?.animate(
+              {
+                opacity: [1, 0, 1],
+                transform: ['scale(1)', 'scale(0)', 'scale(1)'],
+                easing: 'ease',
+              },
+              { duration: 1200 }
+            )
+            this.#doneIcon?.animate(
+              {
+                opacity: [0, 1, 0],
+                transform: ['scale(0)', 'scale(1)', 'scale(0)'],
+                easing: 'ease',
+              },
+              { duration: 1200 }
+            )
 
             if (
               this.dispatchEvent(

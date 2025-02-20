@@ -25,7 +25,15 @@ slot[name='button'] {
     line-height: 1;
     margin: 0;
     padding: var(--button-padding);
+    position: relative;
   }
+}
+
+slot[name='done-icon'] > svg,
+slot[name='done-icon']::slotted(*) {
+  transform: scale(0);
+  position: absolute;
+  inset: 0.5rem;
 }
 
 @media (hover: hover) {
