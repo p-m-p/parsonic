@@ -7,7 +7,7 @@ import stylesheet from './style.css' with { type: 'css' }
  *
  * @attr {string} [data-button-label] - ARIA label for the copy button
  * @attr {string} [data-text] - Text to copy to clipboard.
- * @attr {string} [data-url] - A URL to data to copy to the clipboard
+ * @attr {string} [data-url] - A URL pointing to or containing the data to copy to the clipboard
  */
 export default class CopyToClipboard extends HTMLElement {
   /** @type {ClipboardItem} */
@@ -29,7 +29,7 @@ export default class CopyToClipboard extends HTMLElement {
     const { buttonLabel = 'Copy' } = this.dataset
 
     const template = document.createElement('template')
-    template.innerHTML = `<slot id="content"></slot>
+    template.innerHTML = `<slot></slot>
 <slot name="button">
   <button type="button" aria-label="${buttonLabel}">
     <slot name="icon">
@@ -41,54 +41,56 @@ export default class CopyToClipboard extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' })
     shadow.appendChild(template.content.cloneNode(true))
     shadow.adoptedStyleSheets.push(stylesheet)
-    shadow.addEventListener('click', () => {
-      this.getClipboardData()
-        .then(async (data) => {
-          const dataTransfer = new DataTransfer()
+    shadow
+      .querySelector('slot[name="button"]')
+      ?.addEventListener('click', () => {
+        this.getClipboardData()
+          .then(async (data) => {
+            const dataTransfer = new DataTransfer()
 
-          for (const type of data.types) {
-            const blob = await data.getType(type)
+            for (const type of data.types) {
+              const blob = await data.getType(type)
 
-            if (type === 'text/plain') {
-              dataTransfer.items.add(await blob.text(), type)
-            } else {
-              dataTransfer.items.add(URL.createObjectURL(blob), type)
+              if (type === 'text/plain') {
+                dataTransfer.items.add(await blob.text(), type)
+              } else {
+                dataTransfer.items.add(URL.createObjectURL(blob), type)
+              }
             }
-          }
 
-          if (
-            this.dispatchEvent(
-              new ClipboardEvent('copy', {
-                cancelable: true,
-                bubbles: true,
-                clipboardData: dataTransfer,
-              })
-            )
-          ) {
-            await navigator.clipboard.write([data])
+            if (
+              this.dispatchEvent(
+                new ClipboardEvent('copy', {
+                  cancelable: true,
+                  bubbles: true,
+                  clipboardData: dataTransfer,
+                })
+              )
+            ) {
+              await navigator.clipboard.write([data])
+              this.dispatchEvent(
+                new CustomEvent('copyResult', {
+                  bubbles: true,
+                  detail: {
+                    result: 'success',
+                    data,
+                  },
+                })
+              )
+            }
+          })
+          .catch((err) => {
             this.dispatchEvent(
               new CustomEvent('copyResult', {
                 bubbles: true,
                 detail: {
-                  result: 'success',
-                  data,
+                  result: 'error',
+                  error: err,
                 },
               })
             )
-          }
-        })
-        .catch((err) => {
-          this.dispatchEvent(
-            new CustomEvent('copyResult', {
-              bubbles: true,
-              detail: {
-                result: 'error',
-                error: err,
-              },
-            })
-          )
-        })
-    })
+          })
+      })
   }
 
   async getClipboardData() {
@@ -109,8 +111,9 @@ export default class CopyToClipboard extends HTMLElement {
             this.shadowRoot
               .querySelector('slot')
               ?.assignedNodes()
-              .map((n) => n.textContent.trim())
-              .join(''),
+              .map((n) => n.textContent)
+              .join('')
+              .trim(),
         })
       }
     }

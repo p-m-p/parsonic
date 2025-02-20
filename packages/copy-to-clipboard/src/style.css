@@ -1,32 +1,45 @@
 :host {
-  cursor: pointer;
-  display: inline;
+  --button-bg: var(--ctc-button-bg, rgb(255 255 255 / 8%));
+  --button-color: var(--ctc-button-color, inherit);
+  --button-inset: var(--ctc-button-inset, 0.5rem 0.5rem auto auto);
+  --button-padding: var(--ctc-button-padding, 0.5rem);
+  --button-radius: var(--ctc-button-radius, 0.5rem);
+  --button-transition: var(--ctc-button-transition, 300ms);
+
+  display: block;
   position: relative;
 }
 
-slot:has(button:focus-visible) {
-  opacity: 1;
-}
-
-#content:hover + slot {
-  opacity: 1;
-}
-
 slot[name='button'] {
-  display: block;
-  opacity: 0;
+  display: inline;
   position: absolute;
-  left: 100%;
-  bottom: 0;
-
-  &:has(button:focus-visible) {
-    opacity: 1;
-  }
+  inset: var(--button-inset);
+  transition: opacity var(--button-transition);
 
   button {
-    background: transparent;
+    background: var(--button-bg);
     border: none;
+    border-radius: var(--button-radius);
+    color: var(--button-color);
+    cursor: pointer;
+    line-height: 1;
     margin: 0;
-    padding: 0.125rem;
+    padding: var(--button-padding);
+  }
+}
+
+@media (hover: hover) {
+  slot[name='button'] {
+    opacity: 0;
+
+    &:has(button:focus-visible) {
+      opacity: 1;
+    }
+  }
+
+  :host(:hover) {
+    slot[name='button'] {
+      opacity: 1;
+    }
   }
 }
