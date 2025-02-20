@@ -53,8 +53,6 @@ export default class CopyToClipboard extends HTMLElement {
 
               if (type === 'text/plain') {
                 dataTransfer.items.add(await blob.text(), type)
-              } else {
-                dataTransfer.items.add(URL.createObjectURL(blob), type)
               }
             }
 
