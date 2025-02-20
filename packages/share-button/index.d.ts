@@ -1,4 +1,4 @@
-import { ShareButtonElement } from './ShareButton'
+import { ShareButtonElement } from './ShareButton.js'
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -6,4 +6,4 @@ declare global {
   }
 }
 
-export * from './ShareButton'
+export * from './ShareButton.js'
