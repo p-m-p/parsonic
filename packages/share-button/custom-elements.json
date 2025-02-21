@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/webcomponents/custom-elements-manifest/refs/heads/main/schema.json",
   "schemaVersion": "2.1.0",
   "readme": "README.md",
   "modules": [
@@ -92,7 +91,6 @@
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "share-button",
           "customElement": true
         }
       ],
