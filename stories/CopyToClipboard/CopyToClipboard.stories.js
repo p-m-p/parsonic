@@ -11,7 +11,11 @@ export default {
 }
 
 export const Default = {
-  render: () => html`<test-copy>This text content will be copied</test-copy>`,
+  render: () =>
+    html`<test-copy>
+      <h2>This text will be copied to the clipboard</h2>
+      <p>This text will also be copied to the clipboard</p>
+    </test-copy>`,
 }
 
 export const HTMLNodes = {

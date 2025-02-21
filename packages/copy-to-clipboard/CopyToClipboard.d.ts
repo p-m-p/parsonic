@@ -51,5 +51,7 @@ export interface ErrorResultDetail {
  * Custom element for applying copy to clipboard functionality
  * to content on a web page.
  */
-declare const CopyToClipboard: CopyToClipboardElement
+declare const CopyToClipboard: CopyToClipboardElement & {
+  register(tagName: string): CopyToClipboardElement
+}
 export default CopyToClipboard
