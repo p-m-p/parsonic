@@ -1,35 +1,55 @@
 :host {
   --button-bg: var(--ctc-button-bg, rgb(255 255 255 / 8%));
+  --button-border: var(--ctc-button-border, none);
   --button-color: var(--ctc-button-color, inherit);
   --button-inset: var(--ctc-button-inset, 0.5rem 0.5rem auto auto);
   --button-padding: var(--ctc-button-padding, 0.5rem);
   --button-radius: var(--ctc-button-radius, 0.5rem);
+  --button-size: var(--ctc-button-size, 1rem);
   --button-transition: var(--ctc-button-transition, 300ms);
 
   display: block;
   position: relative;
 }
 
-slot[name='button'] button,
-slot[name='button']::slotted(*) {
+:host([data-layout='inline']) {
+  --button-padding: var(--ctc-button-padding, 0);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  slot[name='button'] button,
+  slot[name='button']::slotted(*) {
+    inset: unset;
+    position: relative;
+  }
+}
+
+slot[name='button'] button {
   background: var(--button-bg);
-  border: none;
+  border: var(--button-border);
   border-radius: var(--button-radius);
   color: var(--button-color);
   cursor: pointer;
-  inset: var(--button-inset);
+  font-size: var(--button-size);
   line-height: 1;
-  margin: 0;
   padding: var(--button-padding);
+  transition: opacity var(--button-transition);
+}
+
+slot[name='button'] button,
+slot[name='button']::slotted(*) {
+  inset: var(--button-inset);
   position: absolute;
   transition: opacity var(--button-transition);
 }
 
 slot[name='done-icon'] > svg,
 slot[name='done-icon']::slotted(*) {
-  transform: scale(0);
+  inset: var(--button-padding);
   position: absolute;
-  inset: 0.5rem;
+  transform: scale(0);
 }
 
 @media (hover: hover) {

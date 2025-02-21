@@ -18,6 +18,13 @@ export const Default = {
     </test-copy>`,
 }
 
+export const InlineLayout = {
+  render: () =>
+    html`<test-copy data-layout="inline"
+      >This text will be copied to the clipboard</test-copy
+    >`,
+}
+
 export const HTMLNodes = {
   render: () =>
     html`<test-copy id="code-sample">

@@ -65,10 +65,8 @@ CopyToClipboard.register('my-copy-to-clipboard')
 
 ## Providing the item to copy
 
-The text content of the DOM nodes within the default slot of the element will be
-copied to the clipboard when the copy button is pressed unless the item is
-explicitly set. In the example below the `textContent` of the `h2` and `p`
-elements is concatenated and copied to the clipboard.
+The text content of the element will be copied to the clipboard when the copy
+button is pressed unless the clipboard item is explicitly set.
 
 ```html
 <copy-to-clipboard>
@@ -77,8 +75,10 @@ elements is concatenated and copied to the clipboard.
 </copy-to-clipboard>
 ```
 
-The format of the text can be controlled by passing it in either the `data-text`
-attribute on the element.
+To better format the text either pass the text content to the `data-text`
+attribute on the element or set it using the `item` property on the underlying
+object. This property is useful when using the element with a JavaScript
+framework like React.
 
 ```html
 <copy-to-clipboard data-text="This is the text copied to the clipboard">
@@ -87,20 +87,18 @@ attribute on the element.
 </copy-to-clipboard>
 ```
 
-Or by setting it using the item property of the underlying object. This method
-is useful when using the element with a JavaScript framework like React.
-
 ```js
 const copyToClipboard = document.querySelector('copy-to-clipboard')
 copyToClipboard.item = new ClipboardItem({
-  'text/plain': 'This is the text to copy',
+  'text/plain': formattedText,
 })
 ```
 
 ### Copying other data types
 
-To use the copy to clipboard for other data types like images pass the URL for
-the data to be fetched in the `data-url` attribute.
+To copy other data types like an image to the clipboard pass the URL to the data
+in the `data-url` attribute. The URL may point to a separate file or contain the
+data directly.
 
 ```html
 <copy-to-clipboard data-url="./my-image-full.png">
@@ -115,7 +113,7 @@ the data to be fetched in the `data-url` attribute.
 </copy-to-clipboard>
 ```
 
-This data can also be set using the item property of the underlying object.
+Data like this can also be set using the item property of the underlying object.
 
 ```js
 // Copy blob to clipboard if type is supported
@@ -126,6 +124,11 @@ if (ClipboardItem.supports(blob.type)) {
   })
 }
 ```
+
+## Element layout
+
+The default layout of the element is block level with the copy button positioned
+in the top right corner over the content.
 
 ## Customising the copy button
 

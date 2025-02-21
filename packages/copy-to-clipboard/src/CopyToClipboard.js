@@ -57,7 +57,7 @@ export default class CopyToClipboard extends HTMLElement {
 <slot name="button">
   <button part="button" type="button" aria-label="${buttonLabel}">
     <slot name="copy-icon">
-      <svg part="copy-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+      <svg part="copy-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
         <path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
@@ -67,7 +67,7 @@ export default class CopyToClipboard extends HTMLElement {
       </svg>
     </slot>
     <slot name="done-icon">
-      <svg part="done-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+      <svg part="done-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M20 6 9 17l-5-5"/>
       </svg>
@@ -112,17 +112,17 @@ export default class CopyToClipboard extends HTMLElement {
 
             this.#copyIcon?.animate(
               {
-                opacity: [1, 0, 1],
-                transform: ['scale(1)', 'scale(0)', 'scale(1)'],
-                easing: 'ease',
+                opacity: [1, 0, 0, 1],
+                transform: ['scale(1)', 'scale(0)', 'scale(0)', 'scale(1)'],
+                offset: [0, 0.2, 0.8],
               },
               { duration: 1200 }
             )
             this.#doneIcon?.animate(
               {
-                opacity: [0, 1, 0],
-                transform: ['scale(0)', 'scale(1)', 'scale(0)'],
-                easing: 'ease',
+                opacity: [0, 1, 1, 0],
+                transform: ['scale(0)', 'scale(1)', 'scale(1)', 'scale(0)'],
+                offset: [0, 0.2, 0.8],
               },
               { duration: 1200 }
             )
@@ -177,14 +177,7 @@ export default class CopyToClipboard extends HTMLElement {
         })
       } else {
         item = new ClipboardItem({
-          'text/plain':
-            this.dataset.text ??
-            this.shadowRoot
-              .querySelector('slot')
-              ?.assignedNodes()
-              .map((n) => n.textContent)
-              .join('')
-              .trim(),
+          'text/plain': this.dataset.text ?? this.textContent,
         })
       }
     }
