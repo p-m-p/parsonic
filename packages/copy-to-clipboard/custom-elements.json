@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "2.1.0",
+  "readme": "README.md",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/CopyToClipboard.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CopyToClipboard",
+          "cssParts": [
+            {
+              "description": "Style the default button element",
+              "name": "button"
+            },
+            {
+              "description": "Style the default copy icon svg",
+              "name": "copy-icon"
+            },
+            {
+              "description": "Style the default done icon svg",
+              "name": "done-icon"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for the page content that can be copied.",
+              "name": ""
+            },
+            {
+              "description": "Slot for the copy button",
+              "name": "button"
+            },
+            {
+              "description": "Slot for a custom copy icon",
+              "name": "copy-icon"
+            },
+            {
+              "description": "Slot for a custom done icon",
+              "name": "done-icon"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "item",
+              "type": {
+                "text": "ClipboardItem"
+              },
+              "description": "The item to copy to the clipboard"
+            },
+            {
+              "kind": "method",
+              "name": "register",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "tagName",
+                  "default": "'copy-to-clipboard'"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getClipboardData"
+            }
+          ],
+          "events": [
+            {
+              "name": "copy",
+              "type": {
+                "text": "ClipboardEvent"
+              },
+              "description": "Event dispatched when the copy button is pressed"
+            },
+            {
+              "name": "copyResult",
+              "type": {
+                "text": "CustomEvent<SuccessResultDetail | ErrorResultDetail>"
+              },
+              "description": "Event dispatched when the copy action is completed"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "ARIA label for the copy button",
+              "name": "data-button-label"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Text to copy to clipboard.",
+              "name": "data-text"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "A URL pointing to or containing the data to copy to the clipboard",
+              "name": "data-url"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CopyToClipboard",
+            "module": "src/CopyToClipboard.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "copy-to-clipboard",
+          "declaration": {
+            "name": "CopyToClipboard",
+            "module": "src/CopyToClipboard.js"
+          }
+        }
+      ]
+    }
+  ]
+}

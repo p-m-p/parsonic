@@ -1,6 +1,13 @@
 import stylesheet from './style.css' with { type: 'css' }
 
 /**
+ * @import {
+ *   CopyToClipboardElement,
+ *   ErrorResultDetail,
+ *   SuccessResultDetail
+ * } from '../CopyToClipboard.js'
+ * @implements {CopyToClipboardElement}
+ *
  * @tagName copy-to-clipboard
  *
  * @property {ClipboardItem} [item] - The item to copy to the clipboard
@@ -8,10 +15,25 @@ import stylesheet from './style.css' with { type: 'css' }
  * @attr {string} [data-button-label] - ARIA label for the copy button
  * @attr {string} [data-text] - Text to copy to clipboard.
  * @attr {string} [data-url] - A URL pointing to or containing the data to copy to the clipboard
+ *
+ * @slot - Default slot for the page content that can be copied.
+ *
+ * @slot button - Slot for the copy button
+ * @csspart button - Style the default button element
+ *
+ * @slot copy-icon - Slot for a custom copy icon
+ * @csspart copy-icon - Style the default copy icon svg
+ *
+ * @slot done-icon - Slot for a custom done icon
+ * @csspart done-icon - Style the default done icon svg
+ *
+ * @fires {ClipboardEvent} copy - Event dispatched when the copy button is pressed
+ * @fires {CustomEvent<SuccessResultDetail | ErrorResultDetail>} copyResult - Event dispatched when the copy action is completed
  */
 export default class CopyToClipboard extends HTMLElement {
   /** @type {ClipboardItem} */
   #item = undefined
+
   #copyIcon = null
   #doneIcon = null
 
@@ -33,9 +55,9 @@ export default class CopyToClipboard extends HTMLElement {
     const template = document.createElement('template')
     template.innerHTML = `<slot></slot>
 <slot name="button">
-  <button type="button" aria-label="${buttonLabel}">
+  <button part="button" type="button" aria-label="${buttonLabel}">
     <slot name="copy-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+      <svg part="copy-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
         <path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
@@ -45,7 +67,7 @@ export default class CopyToClipboard extends HTMLElement {
       </svg>
     </slot>
     <slot name="done-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+      <svg part="done-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M20 6 9 17l-5-5"/>
       </svg>
@@ -118,6 +140,7 @@ export default class CopyToClipboard extends HTMLElement {
               this.dispatchEvent(
                 new CustomEvent('copyResult', {
                   bubbles: true,
+                  /** @type {SuccessResultDetail} */
                   detail: {
                     result: 'success',
                     data,
@@ -130,6 +153,7 @@ export default class CopyToClipboard extends HTMLElement {
             this.dispatchEvent(
               new CustomEvent('copyResult', {
                 bubbles: true,
+                /** @type {ErrorResultDetail} */
                 detail: {
                   result: 'error',
                   error: err,
