@@ -125,13 +125,82 @@ if (ClipboardItem.supports(blob.type)) {
 }
 ```
 
-## Element layout
-
-The default layout of the element is block level with the copy button positioned
-in the top right corner over the content.
-
 ## Customising the copy button
+
+The default button comprises of a button element with two SVG icons, the
+clipboard icon and the done icon. When the button is pressed an animation is
+applied to the icons to briefly show the done icon as a visual indicator that
+the copy was successful. A default ARIA label of `Copy` is applied to the button
+that can be set using the `data-button-label` attribute.
+
+```html
+<copy-to-clipboard
+  data-button-label="Copy image to clipboard"></copy-to-clipboard>
+```
+
+The default button can be replaced with a custom button using the slot named
+`button`.
+
+```html
+<copy-to-clipboard>
+  <pre><code>Text to copy...</code></pre>
+  <button slot="button">Copy</button>
+</copy-to-clipboard>
+```
+
+For devices that support hover the button is only visible when focused or when
+the element is hovered. To show the button all the time set the opacity value to
+`1` using the `button` css part.
+
+```css
+copy-to-clipboard::part(button) {
+  opacity: 1;
+}
+```
+
+To style the icons inside the button use the `copy-icon` and `done-icon` css
+parts to target the SVG elements.
+
+```css
+copy-to-clipboard::part(done-icon) {
+  stroke: lightgreen;
+}
+```
+
+The button may also be styled using the CSS custom properties listed below.
+
+```css
+:root {
+  --ctc-button-background: rgb(255 255 255 / 8%);
+  --ctc-button-border: none;
+  --ctc-button-color: inherit;
+  --ctc-button-inset: 0.5rem 0.5rem auto auto;
+  --ctc-button-padding: 0.5rem;
+  --ctc-button-radius: 0.5rem;
+  --ctc-button-size: 1rem;
+  --ctc-button-transition: 300ms;
+}
+```
 
 ## `copy` event
 
+When the copy button is pressed the element dispatches a `ClipboardEvent` of
+type `copy`. The event is set to bubble and is cancellable. If the item being
+copied is plain text the `clipboardData` attribute will be present and contain
+the text being copied. This is for convenience only and any changes to the text
+in the data transfer item will not be written to the clipboard.
+
+```js
+document.addEventListener('copy', (ev) => {
+  if (ev.clipboardData) {
+    console.log(ev.clipboardData.getData('text/plain'))
+  }
+})
+```
+
 ## `copyResult` event
+
+Once the item is written to the clipboard the element dispatches a `copyResult`
+custom event. If successful the event detail has a `result` of `'success'` and
+contains the `ClipboardItem` as `data`. If an error occurred the `result` will
+be `'error'` and the `error` is provided.

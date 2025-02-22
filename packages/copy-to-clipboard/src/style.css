@@ -1,5 +1,5 @@
 :host {
-  --button-bg: var(--ctc-button-bg, rgb(255 255 255 / 8%));
+  --button-background: var(--ctc-button-background, rgb(255 255 255 / 8%));
   --button-border: var(--ctc-button-border, none);
   --button-color: var(--ctc-button-color, inherit);
   --button-inset: var(--ctc-button-inset, 0.5rem 0.5rem auto auto);
@@ -12,22 +12,8 @@
   position: relative;
 }
 
-:host([data-layout='inline']) {
-  --button-padding: var(--ctc-button-padding, 0);
-
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-
-  slot[name='button'] button,
-  slot[name='button']::slotted(*) {
-    inset: unset;
-    position: relative;
-  }
-}
-
 slot[name='button'] button {
-  background: var(--button-bg);
+  background: var(--button-background);
   border: var(--button-border);
   border-radius: var(--button-radius);
   color: var(--button-color);

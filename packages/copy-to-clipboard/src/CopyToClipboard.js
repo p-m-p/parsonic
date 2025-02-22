@@ -56,6 +56,8 @@ export default class CopyToClipboard extends HTMLElement {
     template.innerHTML = `<slot></slot>
 <slot name="button">
   <button part="button" type="button" aria-label="${buttonLabel}">
+    <slot name="copy-label"></slot>
+    <slot name="done-label"></slot>
     <slot name="copy-icon">
       <svg part="copy-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -79,9 +81,14 @@ export default class CopyToClipboard extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true))
     shadow.adoptedStyleSheets.push(stylesheet)
 
+    const buttonSlot = shadow.querySelector('slot[name="button"]')
     this.#copyIcon = shadow.querySelector('slot[name="copy-icon"] > svg')
     this.#doneIcon = shadow.querySelector('slot[name="done-icon"] > svg')
 
+    buttonSlot.addEventListener('slotchange', () => {
+      this.#copyIcon = null
+      this.#doneIcon = null
+    })
     shadow
       .querySelector('slot[name="copy-icon"]')
       ?.addEventListener('slotchange', (ev) => {
@@ -95,21 +102,28 @@ export default class CopyToClipboard extends HTMLElement {
         this.#doneIcon = ev.target.assignedElements()[0]
       })
 
-    shadow
-      .querySelector('slot[name="button"]')
-      ?.addEventListener('click', () => {
-        this.getClipboardData()
-          .then(async (data) => {
-            const dataTransfer = new DataTransfer()
+    buttonSlot?.addEventListener('click', () => {
+      this.getClipboardData()
+        .then(async (data) => {
+          const dataTransfer = new DataTransfer()
 
-            for (const type of data.types) {
-              const blob = await data.getType(type)
+          for (const type of data.types) {
+            const blob = await data.getType(type)
 
-              if (type === 'text/plain') {
-                dataTransfer.items.add(await blob.text(), type)
-              }
+            if (type === 'text/plain') {
+              dataTransfer.items.add(await blob.text(), type)
             }
+          }
 
+          if (
+            this.dispatchEvent(
+              new ClipboardEvent('copy', {
+                cancelable: true,
+                bubbles: true,
+                clipboardData: dataTransfer,
+              })
+            )
+          ) {
             this.#copyIcon?.animate(
               {
                 opacity: [1, 0, 0, 1],
@@ -127,41 +141,32 @@ export default class CopyToClipboard extends HTMLElement {
               { duration: 1200 }
             )
 
-            if (
-              this.dispatchEvent(
-                new ClipboardEvent('copy', {
-                  cancelable: true,
-                  bubbles: true,
-                  clipboardData: dataTransfer,
-                })
-              )
-            ) {
-              await navigator.clipboard.write([data])
-              this.dispatchEvent(
-                new CustomEvent('copyResult', {
-                  bubbles: true,
-                  /** @type {SuccessResultDetail} */
-                  detail: {
-                    result: 'success',
-                    data,
-                  },
-                })
-              )
-            }
-          })
-          .catch((err) => {
+            await navigator.clipboard.write([data])
             this.dispatchEvent(
               new CustomEvent('copyResult', {
                 bubbles: true,
-                /** @type {ErrorResultDetail} */
+                /** @type {SuccessResultDetail} */
                 detail: {
-                  result: 'error',
-                  error: err,
+                  result: 'success',
+                  data,
                 },
               })
             )
-          })
-      })
+          }
+        })
+        .catch((err) => {
+          this.dispatchEvent(
+            new CustomEvent('copyResult', {
+              bubbles: true,
+              /** @type {ErrorResultDetail} */
+              detail: {
+                result: 'error',
+                error: err,
+              },
+            })
+          )
+        })
+    })
   }
 
   async getClipboardData() {
@@ -177,7 +182,14 @@ export default class CopyToClipboard extends HTMLElement {
         })
       } else {
         item = new ClipboardItem({
-          'text/plain': this.dataset.text ?? this.textContent,
+          'text/plain':
+            this.dataset.text ??
+            this.shadowRoot
+              .querySelector('slot')
+              ?.assignedNodes()
+              .map((n) => n.textContent)
+              .join('')
+              .trim(),
         })
       }
     }

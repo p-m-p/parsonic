@@ -13,19 +13,26 @@ export default {
 export const Default = {
   render: () =>
     html`<test-copy>
-      <h2>This text will be copied to the clipboard</h2>
-      <p>This text will also be copied to the clipboard</p>
+      <code>This text will be copied to the clipboard</code>
     </test-copy>`,
 }
 
-export const InlineLayout = {
+export const TextAttribute = {
   render: () =>
-    html`<test-copy data-layout="inline"
-      >This text will be copied to the clipboard</test-copy
+    html`<test-copy data-text="This text content will be copied"
+      >Copy to clipboard</test-copy
     >`,
 }
 
-export const HTMLNodes = {
+export const DataURL = {
+  render: () =>
+    html`<test-copy
+      data-url="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAZKADAAQAAAABAAAAZAAAAAAvu95BAAABPUlEQVR4Ae3SMREAIQADwee1YgmZeGBwwPWb+qqdjLn2Z28C/1umugKwwg9gwQoCIfUsWEEgpJ4FKwiE1LNgBYGQehasIBBSz4IVBELqWbCCQEg9C1YQCKlnwQoCIfUsWEEgpJ4FKwiE1LNgBYGQehasIBBSz4IVBELqWbCCQEg9C1YQCKlnwQoCIfUsWEEgpJ4FKwiE1LNgBYGQehasIBBSz4IVBELqWbCCQEg9C1YQCKlnwQoCIfUsWEEgpJ4FKwiE1LNgBYGQehasIBBSz4IVBELqWbCCQEg9C1YQCKlnwQoCIfUsWEEgpJ4FKwiE1LNgBYGQehasIBBSz4IVBELqWbCCQEg9C1YQCKlnwQoCIfUsWEEgpJ4FKwiE1LNgBYGQehasIBBSz4IVBELqWbCCQEg9C1YQCKlnBawDpcoCrl2JgUcAAAAASUVORK5CYII="
+      >Copy image</test-copy
+    >`,
+}
+
+export const CodeBlock = {
   render: () =>
     html`<test-copy id="code-sample">
       <pre
@@ -49,17 +56,17 @@ export const HTMLNodes = {
     </test-copy>`,
 }
 
-export const TextAttribute = {
+export const InlineLayout = {
   render: () =>
-    html`<test-copy data-text="This text content will be copied"
-      >Copy to clipboard</test-copy
+    html`<test-copy class="inline-copy"
+      >This text will be copied to the clipboard</test-copy
     >`,
 }
 
-export const DataURL = {
+export const ButtonSlot = {
   render: () =>
-    html`<test-copy
-      data-url="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAZKADAAQAAAABAAAAZAAAAAAvu95BAAABPUlEQVR4Ae3SMREAIQADwee1YgmZeGBwwPWb+qqdjLn2Z28C/1umugKwwg9gwQoCIfUsWEEgpJ4FKwiE1LNgBYGQehasIBBSz4IVBELqWbCCQEg9C1YQCKlnwQoCIfUsWEEgpJ4FKwiE1LNgBYGQehasIBBSz4IVBELqWbCCQEg9C1YQCKlnwQoCIfUsWEEgpJ4FKwiE1LNgBYGQehasIBBSz4IVBELqWbCCQEg9C1YQCKlnwQoCIfUsWEEgpJ4FKwiE1LNgBYGQehasIBBSz4IVBELqWbCCQEg9C1YQCKlnwQoCIfUsWEEgpJ4FKwiE1LNgBYGQehasIBBSz4IVBELqWbCCQEg9C1YQCKlnwQoCIfUsWEEgpJ4FKwiE1LNgBYGQehasIBBSz4IVBELqWbCCQEg9C1YQCKlnBawDpcoCrl2JgUcAAAAASUVORK5CYII="
-      >Copy image</test-copy
-    >`,
+    html`<test-copy>
+      <span>Copy this text</span>
+      <button slot="button">Copy</button>
+    </test-copy>`,
 }

@@ -4,8 +4,35 @@
  * @author ericwbailey
  */
 
-pre {
+test-copy {
+  background: light-dark(rgb(0 0 0 / 80%), rgb(0 0 0 / 20%));
+  color: #f8f8f2;
   padding: 1rem;
+}
+
+.inline-copy {
+  align-item: center;
+  display: inline-flex;
+  gap: 0.5rem;
+
+  &::part(button) {
+    /* Remove positioning */
+    inset: unset;
+    /* Always show the copy button */
+    opacity: 1;
+    /* No padding */
+    padding: 0;
+    /* Relative positioning for the default icon animation */
+    position: relative;
+  }
+
+  &::part(done-icon) {
+    stroke: lightgreen;
+    inset: 0;
+  }
+}
+
+code {
   font-size: 0.875rem;
 }
 
@@ -29,11 +56,6 @@ pre[class*='language-'] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-}
-
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
-  background: light-dark(rgb(0 0 0 / 80%), rgb(0 0 0 / 20%));
 }
 
 /* Inline code */
