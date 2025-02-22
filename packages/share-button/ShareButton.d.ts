@@ -44,5 +44,7 @@ export interface ErrorResultDetail {
  * Share button custom element for easily adding `navigator.share`
  * functionality to a web page.
  */
-declare const ShareButton: ShareButtonElement
+declare const ShareButton: ShareButtonElement & {
+  register(tagName: string): ShareButtonElement
+}
 export default ShareButton

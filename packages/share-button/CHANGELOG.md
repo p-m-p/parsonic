@@ -10,7 +10,8 @@
 
 ### Minor Changes
 
-- 40e0f35: Improve custom element manifest and add TypeScript types for share button element
+- 40e0f35: Improve custom element manifest and add TypeScript types for share
+  button element
 
 ## 1.1.1
 

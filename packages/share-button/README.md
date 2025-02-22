@@ -10,8 +10,8 @@ npm install --save @parsonic/share-button
 
 ## Usage
 
-The share button can be used with your favourite bundler or directly
-from a CDN. A minified build is provided as `min.js` with a source map.
+Use the share button with your favourite bundler or directly from a CDN. A
+minified build is provided as `min.js` with a source map.
 
 ### Quick start
 
@@ -20,14 +20,14 @@ Add a script tag with the minified build and use the button in your page.
 ```html
 <script
   defer
-  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button@1.0.0/min.js"></script>
+  src="https://cdn.jsdelivr.net/npm/@parsonic/share-button/min.js"></script>
 <share-button data-button-label="Share this page"></share-button>
 ```
 
 ### Bundler
 
-Import the `ShareButton` component at the root of your application
-and register it.
+Import the `ShareButton` component at the root of your application and register
+it.
 
 ```js
 import ShareButton from '@parsonic/share-button/ShareButton.js'
@@ -43,7 +43,7 @@ Import the `ShareButton` component from the CDN and register it before using.
 
 ```html
 <script type="module">
-  import ShareButton from 'https://cdn.jsdelivr.net/npm/@parsonic/share-button@1.0.0/ShareButton.js'
+  import ShareButton from 'https://cdn.jsdelivr.net/npm/@parsonic/share-button/ShareButton.js'
 
   ShareButton.register()
 </script>
@@ -51,8 +51,8 @@ Import the `ShareButton` component from the CDN and register it before using.
 <share-button></share-button>
 ```
 
-If you prefer to give the share button an alternative tag name you can
-pass this to the register method.
+If you prefer to give the share button an alternative tag name you can pass this
+to the register method.
 
 ```js
 // To use as <my-share-button></my-share-button>
@@ -75,9 +75,9 @@ attributes. Below is an example using Nunjucks template syntax.
   data-text="{{ post.description }}"></share-button>
 ```
 
-If the data attributes aren't provided the component will attempt to find
-the share data values from meta tags on the page using the
-[Open Graph][open-graph] protocol.
+If the data attributes aren't provided the component will attempt to find the
+share data values from meta tags on the page using the [Open Graph][open-graph]
+protocol.
 
 ```html
 <meta property="og:url" content="{{ post.url }}" />
@@ -86,8 +86,8 @@ the share data values from meta tags on the page using the
 ```
 
 Failing to find either the data attributes or the Open Graph meta tags the
-button will default to using the page URL (`window.location.href`), the
-document title (`document.title`) and no text content.
+button will default to using the page URL (`window.location.href`), the document
+title (`document.title`) and no text content.
 
 ## Customising the button
 
@@ -118,10 +118,10 @@ Provide your own button in the `button` slot.
 
 ## `share` event
 
-When the share button is clicked a [custom event][custom-event] with the
-name `share` is dispatched. This event has the share data as the payload,
-bubbles and is cancelable. The event name can be customised by setting
-the `data-share-event-name` attribute.
+When the share button is clicked a [custom event][custom-event] with the name
+`share` is dispatched. This event has the share data as the payload, bubbles and
+is cancelable. The event name can be customised by setting the
+`data-share-event-name` attribute.
 
 ```js
 // Example metric capture
@@ -141,13 +141,12 @@ document.addEventListener('share', (ev) => {
 
 ## `shareResult` event
 
-Once the share action completes a [custom event][custom-event] with the
-result is dispatched. If the share action was successful the `result`
-attribute will be set to `'success'` otherwise it will be `'error'`.
-When the result is an error the [error][share-exceptions] object will
-be in the event payload. The event bubbles but is not cancelable. The
-event name can be customised by setting the `data-result-event-name`
-attribute.
+Once the share action completes a [custom event][custom-event] with the result
+is dispatched. If the share action was successful the `result` attribute will be
+set to `'success'` otherwise it will be `'error'`. When the result is an error
+the [error][share-exceptions] object will be in the event payload. The event
+bubbles but is not cancelable. The event name can be customised by setting the
+`data-result-event-name` attribute.
 
 ```js
 document.addEventListener('shareResult', (ev) => {
@@ -163,10 +162,9 @@ document.addEventListener('shareResult', (ev) => {
 
 ## Fallback content
 
-Fallback content can be provided for situations where the native share
-function isn't available or the component script isn't loaded. Please see
-this [blog post][blog-post] for thorough explanation of using fallback
-content.
+Fallback content can be provided for situations where the native share function
+isn't available or the component script isn't loaded. Please see this [blog
+post][blog-post] for thorough explanation of using fallback content.
 
 ```html
 <share-button>
@@ -188,4 +186,5 @@ content.
 [custom-event]: https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent
 [dist]: https://cdn.jsdelivr.net/npm/@parsonic/share-button@0.2.0/dist/
 [blog-post]: https://philparsons.co.uk/blog/dont-fouc-up-your-web-components/
-[share-exceptions]: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share#exceptions
+[share-exceptions]:
+  https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share#exceptions
