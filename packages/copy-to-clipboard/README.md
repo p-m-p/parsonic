@@ -204,3 +204,13 @@ Once the item is written to the clipboard the element dispatches a `copyResult`
 custom event. If successful the event detail has a `result` of `'success'` and
 contains the `ClipboardItem` as `data`. If an error occurred the `result` will
 be `'error'` and the `error` is provided.
+
+```js
+document.querySelector('copyResult', (ev) => {
+  if (ev.detail.result === 'success') {
+    console.log('Item copied to ciipbard', ev.detail.data)
+  } else {
+    console.error('Failed to copy', ev.detail.error)
+  }
+})
+```
