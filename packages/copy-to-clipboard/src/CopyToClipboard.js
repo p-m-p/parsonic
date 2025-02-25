@@ -56,10 +56,8 @@ export default class CopyToClipboard extends HTMLElement {
     template.innerHTML = `<slot></slot>
 <slot name="button">
   <button part="button" type="button" aria-label="${buttonLabel}">
-    <slot name="copy-label"></slot>
-    <slot name="done-label"></slot>
     <slot name="copy-icon">
-      <svg part="copy-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+      <svg part="copy-icon" xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
         <path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
@@ -69,7 +67,7 @@ export default class CopyToClipboard extends HTMLElement {
       </svg>
     </slot>
     <slot name="done-icon">
-      <svg part="done-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+      <svg part="done-icon" xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M20 6 9 17l-5-5"/>
       </svg>
@@ -94,12 +92,14 @@ export default class CopyToClipboard extends HTMLElement {
       ?.addEventListener('slotchange', (ev) => {
         // @ts-ignore
         this.#copyIcon = ev.target.assignedElements()[0]
+        ev.stopPropagation()
       })
     shadow
       .querySelector('slot[name="done-icon"]')
       ?.addEventListener('slotchange', (ev) => {
         // @ts-ignore
         this.#doneIcon = ev.target.assignedElements()[0]
+        ev.stopPropagation()
       })
 
     buttonSlot?.addEventListener('click', () => {
@@ -124,21 +124,24 @@ export default class CopyToClipboard extends HTMLElement {
               })
             )
           ) {
+            const duration = 2400
+            const offset = [0, 0.1, 0.9]
+
             this.#copyIcon?.animate(
               {
                 opacity: [1, 0, 0, 1],
                 transform: ['scale(1)', 'scale(0)', 'scale(0)', 'scale(1)'],
-                offset: [0, 0.2, 0.8],
+                offset,
               },
-              { duration: 1200 }
+              { duration }
             )
             this.#doneIcon?.animate(
               {
                 opacity: [0, 1, 1, 0],
                 transform: ['scale(0)', 'scale(1)', 'scale(1)', 'scale(0)'],
-                offset: [0, 0.2, 0.8],
+                offset,
               },
-              { duration: 1200 }
+              { duration }
             )
 
             await navigator.clipboard.write([data])

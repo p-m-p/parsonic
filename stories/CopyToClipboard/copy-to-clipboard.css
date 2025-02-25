@@ -18,8 +18,6 @@ test-copy {
   &::part(button) {
     /* Remove positioning */
     inset: unset;
-    /* Always show the copy button */
-    opacity: 1;
     /* No padding */
     padding: 0;
     /* Relative positioning for the default icon animation */
@@ -29,6 +27,24 @@ test-copy {
   &::part(done-icon) {
     stroke: lightgreen;
     inset: 0;
+  }
+}
+
+.styled-button {
+  --ctc-button-background: white;
+  --ctc-button-border: red;
+  --ctc-button-color: red;
+  --ctc-button-inset: 0.125rem 0.125rem auto auto;
+  --ctc-button-padding: 0.125rem;
+  --ctc-button-radius: 0;
+
+  &::part(button) {
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+
+  &:hover::part(button) {
+    opacity: 1;
   }
 }
 

@@ -70,8 +70,7 @@ button is pressed unless the clipboard item is explicitly set.
 
 ```html
 <copy-to-clipboard>
-  <h2>This text will be copied to the clipboard</h2>
-  <p>This text will also be copied to the clipboard</p>
+  <p>This text will be copied to the clipboard</p>
 </copy-to-clipboard>
 ```
 
@@ -82,8 +81,7 @@ framework like React.
 
 ```html
 <copy-to-clipboard data-text="This is the text copied to the clipboard">
-  <h2>This text will not be copied to the clipboard</h2>
-  <p>This text will also not be copied to the clipboard</p>
+  <!-- Page content -->
 </copy-to-clipboard>
 ```
 
@@ -98,22 +96,20 @@ copyToClipboard.item = new ClipboardItem({
 
 To copy other data types like an image to the clipboard pass the URL to the data
 in the `data-url` attribute. The URL may point to a separate file or contain the
-data directly.
+data directly as a data URL.
 
 ```html
 <copy-to-clipboard data-url="./my-image-full.png">
-  <img
-    src="./my-image.png"
-    alt="An image that can be copied to the clipboard" />
+  <img src="./my-image.png" />
 </copy-to-clipboard>
+
 <copy-to-clipboard data-url="data:image/png;...">
-  <img
-    src="./my-image.png"
-    alt="An image that can be copied to the clipboard" />
+  <img src="./my-image.png" />
 </copy-to-clipboard>
 ```
 
-Data like this can also be set using the item property of the underlying object.
+As with text the item property of the underlying object can be used for other
+data types.
 
 ```js
 // Copy blob to clipboard if type is supported
@@ -138,24 +134,14 @@ that can be set using the `data-button-label` attribute.
   data-button-label="Copy image to clipboard"></copy-to-clipboard>
 ```
 
-The default button can be replaced with a custom button using the slot named
-`button`.
+The button can be replaced entirely using the slot named `button` or styled. via
+the `button` css part.
 
 ```html
 <copy-to-clipboard>
-  <pre><code>Text to copy...</code></pre>
+  <pre>Text to copy...</pre>
   <button slot="button">Copy</button>
 </copy-to-clipboard>
-```
-
-For devices that support hover the button is only visible when focused or when
-the element is hovered. To show the button all the time set the opacity value to
-`1` using the `button` css part.
-
-```css
-copy-to-clipboard::part(button) {
-  opacity: 1;
-}
 ```
 
 To style the icons inside the button use the `copy-icon` and `done-icon` css
@@ -165,6 +151,28 @@ parts to target the SVG elements.
 copy-to-clipboard::part(done-icon) {
   stroke: lightgreen;
 }
+```
+
+To replace the icons use the `copy-icon` and `done-icon` slots.
+
+```html
+<copy-to-clipboard>
+  <pre>...</pre>
+  <svg
+    slot="copy-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+    <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+  </svg>
+</copy-to-clipboard>
 ```
 
 The button may also be styled using the CSS custom properties listed below.
@@ -177,8 +185,6 @@ The button may also be styled using the CSS custom properties listed below.
   --ctc-button-inset: 0.5rem 0.5rem auto auto;
   --ctc-button-padding: 0.5rem;
   --ctc-button-radius: 0.5rem;
-  --ctc-button-size: 1rem;
-  --ctc-button-transition: 300ms;
 }
 ```
 
