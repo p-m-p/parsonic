@@ -35,8 +35,5 @@
   "customElements": "custom-elements.json",
   "devDependencies": {
     "@parsonic/esbuild-plugin": "workspace:*"
-  },
-  "dependencies": {
-    "cssnano": "^7.0.6"
   }
 }

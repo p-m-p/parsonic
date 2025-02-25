@@ -72,10 +72,6 @@ importers:
         version: 5.7.3
 
   packages/copy-to-clipboard:
-    dependencies:
-      cssnano:
-        specifier: ^7.0.6
-        version: 7.0.6(postcss@8.5.3)
     devDependencies:
       '@parsonic/esbuild-plugin':
         specifier: workspace:*
