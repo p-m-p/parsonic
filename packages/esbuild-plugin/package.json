@@ -6,7 +6,6 @@
   "private": "true",
   "type": "module",
   "scripts": {
-    "build": "tsc --allowJs --declaration --emitDeclarationOnly index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

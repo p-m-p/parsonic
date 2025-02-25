@@ -2,16 +2,7 @@ import { readFile } from 'node:fs/promises'
 import cssnano from 'cssnano'
 import postcss from 'postcss'
 
-/**
- * @typedef {Object}CSSImportOptions
- * @property {boolean} [minify]
- */
-
-/**
- * @param {CSSImportOptions} [options] - CSS Import plugin options
- *
- * @returns {import('esbuild').Plugin}
- */
+/** @type {import('./index.js').cssImports} */
 export function cssImports(options) {
   return {
     name: 'css-imports',
