@@ -1,6 +1,6 @@
 {
   "name": "@parsonic/copy-to-clipboard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Copy text to clipboard web component",
   "main": "index.js",
   "types": "index.d.ts",
