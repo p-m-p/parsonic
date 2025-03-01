@@ -1,5 +1,11 @@
 # @parsonic/copy-to-clipboard
 
+## 0.2.0
+
+### Minor Changes
+
+- c9a722c: Change data transfer behaviour
+
 ## 0.1.1
 
 ### Patch Changes
