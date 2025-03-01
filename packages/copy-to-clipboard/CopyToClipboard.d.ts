@@ -12,7 +12,12 @@ export interface CopyToClipboardElement extends HTMLElement {
    * url data attribute, text data attribute or from the text
    * content of the nodes assigned to the components default slot
    */
-  getClipboardData(): Promise<ClipboardItem>
+  getClipboardData(
+    /**
+     * Optional data transfer object from the copy event
+     */
+    dataTransfer?: DataTransfer
+  ): Promise<ClipboardItem>
 }
 
 /**

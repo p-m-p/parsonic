@@ -103,27 +103,19 @@ export default class CopyToClipboard extends HTMLElement {
       })
 
     buttonSlot?.addEventListener('click', () => {
-      this.getClipboardData()
-        .then(async (data) => {
-          const dataTransfer = new DataTransfer()
+      const dataTransfer = new DataTransfer()
 
-          for (const type of data.types) {
-            const blob = await data.getType(type)
-
-            if (type === 'text/plain') {
-              dataTransfer.items.add(await blob.text(), type)
-            }
-          }
-
-          if (
-            this.dispatchEvent(
-              new ClipboardEvent('copy', {
-                cancelable: true,
-                bubbles: true,
-                clipboardData: dataTransfer,
-              })
-            )
-          ) {
+      if (
+        this.dispatchEvent(
+          new ClipboardEvent('copy', {
+            cancelable: true,
+            bubbles: true,
+            clipboardData: dataTransfer,
+          })
+        )
+      ) {
+        this.getClipboardData(dataTransfer)
+          .then(async (data) => {
             const duration = 2400
             const offset = [0, 0.1, 0.9]
 
@@ -155,25 +147,34 @@ export default class CopyToClipboard extends HTMLElement {
                 },
               })
             )
-          }
-        })
-        .catch((err) => {
-          this.dispatchEvent(
-            new CustomEvent('copyResult', {
-              bubbles: true,
-              /** @type {ErrorResultDetail} */
-              detail: {
-                result: 'error',
-                error: err,
-              },
-            })
-          )
-        })
+          })
+          .catch((err) => {
+            this.dispatchEvent(
+              new CustomEvent('copyResult', {
+                bubbles: true,
+                /** @type {ErrorResultDetail} */
+                detail: {
+                  result: 'error',
+                  error: err,
+                },
+              })
+            )
+          })
+      }
     })
   }
 
-  async getClipboardData() {
+  /**
+   * @param {DataTransfer} [dataTransfer]
+   */
+  async getClipboardData(dataTransfer) {
     let item = this.#item
+
+    if (dataTransfer?.getData('text/plain')) {
+      item = new ClipboardItem({
+        'text/plain': dataTransfer.getData('text/plain'),
+      })
+    }
 
     if (!item) {
       if (this.dataset?.url) {

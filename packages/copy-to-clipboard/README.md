@@ -191,16 +191,16 @@ The button may also be styled using the CSS custom properties listed below.
 ## `copy` event
 
 When the copy button is pressed the element dispatches a `ClipboardEvent` of
-type `copy`. The event is set to bubble and is cancellable. If the item being
-copied is plain text the `clipboardData` attribute will be present and contain
-the text being copied. This is for convenience only and any changes to the text
-in the data transfer item will not be written to the clipboard.
+type `copy`. The event is set to bubble and is cancellable and contains the
+`clipboardData` data transfer object. An event handler may set plain text data
+to be copied on the data transfer.
 
 ```js
 document.addEventListener('copy', (ev) => {
-  if (ev.clipboardData) {
-    console.log(ev.clipboardData.getData('text/plain'))
-  }
+  ev.clipboardData.setData(
+    'text/plain',
+    'This text will be copied to the clipboard'
+  )
 })
 ```
 
