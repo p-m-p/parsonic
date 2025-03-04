@@ -34,10 +34,10 @@ importers:
         version: 8.6.3(lit@3.2.1)(storybook@8.6.3(prettier@3.5.2))
       '@storybook/web-components-vite':
         specifier: ^8.4.7
-        version: 8.6.3(lit@3.2.1)(storybook@8.6.3(prettier@3.5.2))(vite@6.2.0(@types/node@22.13.8)(yaml@2.7.0))
+        version: 8.6.3(lit@3.2.1)(storybook@8.6.3(prettier@3.5.2))(vite@6.2.0(@types/node@22.13.9)(yaml@2.7.0))
       '@types/node':
         specifier: '22'
-        version: 22.13.8
+        version: 22.13.9
       esbuild:
         specifier: ^0.25.0
         version: 0.25.0
@@ -689,8 +689,8 @@ packages:
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
-  '@types/node@22.13.8':
-    resolution: {integrity: sha512-G3EfaZS+iOGYWLLRCEAXdWK9my08oHNZ+FHluRiggIYJPOXzhOiDgpVCUHaUvyIC5/fj7C/p637jdzC666AOKQ==}
+  '@types/node@22.13.9':
+    resolution: {integrity: sha512-acBjXdRJ3A6Pb3tqnw9HZmyR3Fiol3aGxRCK1x3d+6CDAMjl7I649wpSd+yNURCjbOUGu9tqtLKnTGxmK6CyGw==}
 
   '@types/react@19.0.10':
     resolution: {integrity: sha512-JuRQ9KXLEjaUNjTWpzuR231Z2WpIwczOkBEIvbHNCzQefFIT0L8IqE6NV6ULLyC1SI/i234JnDoMkfg+RjQj2g==}
@@ -3095,13 +3095,13 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  '@storybook/builder-vite@8.6.3(storybook@8.6.3(prettier@3.5.2))(vite@6.2.0(@types/node@22.13.8)(yaml@2.7.0))':
+  '@storybook/builder-vite@8.6.3(storybook@8.6.3(prettier@3.5.2))(vite@6.2.0(@types/node@22.13.9)(yaml@2.7.0))':
     dependencies:
       '@storybook/csf-plugin': 8.6.3(storybook@8.6.3(prettier@3.5.2))
       browser-assert: 1.2.1
       storybook: 8.6.3(prettier@3.5.2)
       ts-dedent: 2.2.0
-      vite: 6.2.0(@types/node@22.13.8)(yaml@2.7.0)
+      vite: 6.2.0(@types/node@22.13.9)(yaml@2.7.0)
 
   '@storybook/components@8.6.3(storybook@8.6.3(prettier@3.5.2))':
     dependencies:
@@ -3175,9 +3175,9 @@ snapshots:
     dependencies:
       storybook: 8.6.3(prettier@3.5.2)
 
-  '@storybook/web-components-vite@8.6.3(lit@3.2.1)(storybook@8.6.3(prettier@3.5.2))(vite@6.2.0(@types/node@22.13.8)(yaml@2.7.0))':
+  '@storybook/web-components-vite@8.6.3(lit@3.2.1)(storybook@8.6.3(prettier@3.5.2))(vite@6.2.0(@types/node@22.13.9)(yaml@2.7.0))':
     dependencies:
-      '@storybook/builder-vite': 8.6.3(storybook@8.6.3(prettier@3.5.2))(vite@6.2.0(@types/node@22.13.8)(yaml@2.7.0))
+      '@storybook/builder-vite': 8.6.3(storybook@8.6.3(prettier@3.5.2))(vite@6.2.0(@types/node@22.13.9)(yaml@2.7.0))
       '@storybook/web-components': 8.6.3(lit@3.2.1)(storybook@8.6.3(prettier@3.5.2))
       magic-string: 0.30.17
       storybook: 8.6.3(prettier@3.5.2)
@@ -3236,7 +3236,7 @@ snapshots:
 
   '@types/node@12.20.55': {}
 
-  '@types/node@22.13.8':
+  '@types/node@22.13.9':
     dependencies:
       undici-types: 6.20.0
 
@@ -5204,13 +5204,13 @@ snapshots:
 
   uuid@9.0.1: {}
 
-  vite@6.2.0(@types/node@22.13.8)(yaml@2.7.0):
+  vite@6.2.0(@types/node@22.13.9)(yaml@2.7.0):
     dependencies:
       esbuild: 0.25.0
       postcss: 8.5.3
       rollup: 4.34.9
     optionalDependencies:
-      '@types/node': 22.13.8
+      '@types/node': 22.13.9
       fsevents: 2.3.3
       yaml: 2.7.0
 
