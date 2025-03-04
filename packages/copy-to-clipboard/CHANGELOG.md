@@ -1,5 +1,11 @@
 # @parsonic/copy-to-clipboard
 
+## 1.0.0
+
+### Major Changes
+
+- 2fc1dfc: Release v1
+
 ## 0.2.0
 
 ### Minor Changes
