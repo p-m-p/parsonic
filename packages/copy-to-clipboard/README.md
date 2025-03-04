@@ -195,13 +195,18 @@ type `copy`. The event is set to bubble and is cancellable and contains the
 `clipboardData` data transfer object. An event handler may set plain text data
 to be copied on the data transfer.
 
-```js
-document.addEventListener('copy', (ev) => {
-  ev.clipboardData.setData(
-    'text/plain',
-    'This text will be copied to the clipboard'
-  )
-})
+```html
+<copy-to-clipboard>
+  <label for="field">A form field</label>
+  <textarea id="field">Some text to copy</textarea>
+</copy-to-clipboard>
+
+<script>
+  document.addEventListener('copy', (ev) => {
+    const fieldValue = ev.target.querySelector('textarea').value
+    ev.clipboardData.setData('text/plain', fieldValue)
+  })
+</script>
 ```
 
 ## `copyResult` event

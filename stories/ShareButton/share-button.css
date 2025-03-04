@@ -1,5 +1,5 @@
-.styled::part(button),
-.custom {
+test-button.styled::part(button),
+test-button.custom {
   background: blue;
   border: none;
   border-radius: 999px;
@@ -11,11 +11,11 @@
   transition: background 200ms;
 }
 
-.styled::part(button):hover {
+test-button.styled::part(button):hover {
   background: darkblue;
 }
 
-.custom {
+test-button.custom {
   background: lightsalmon;
   color: black;
 

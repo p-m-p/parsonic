@@ -1,3 +1,5 @@
+import './preview.css'
+
 /** @type {import('@storybook/web-components').Preview} */
 const preview = {
   parameters: {

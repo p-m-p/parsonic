@@ -31,11 +31,15 @@ import stylesheet from './style.css' with { type: 'css' }
  * @fires {CustomEvent<SuccessResultDetail | ErrorResultDetail>} copyResult - Event dispatched when the copy action is completed
  */
 export default class CopyToClipboard extends HTMLElement {
+  static register(tagName = 'copy-to-clipboard') {
+    customElements.define(tagName, this)
+  }
+
   /** @type {ClipboardItem} */
   #item = undefined
 
-  #copyIcon = null
-  #doneIcon = null
+  /** @type Record<string, SVGElement> */
+  #icons = {}
 
   get item() {
     return this.#item
@@ -43,10 +47,6 @@ export default class CopyToClipboard extends HTMLElement {
 
   set item(item) {
     this.#item = item
-  }
-
-  static register(tagName = 'copy-to-clipboard') {
-    customElements.define(tagName, this)
   }
 
   connectedCallback() {
@@ -79,28 +79,13 @@ export default class CopyToClipboard extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true))
     shadow.adoptedStyleSheets.push(stylesheet)
 
-    const buttonSlot = shadow.querySelector('slot[name="button"]')
-    this.#copyIcon = shadow.querySelector('slot[name="copy-icon"] > svg')
-    this.#doneIcon = shadow.querySelector('slot[name="done-icon"] > svg')
+    this.#configureIcon('copy')
+    this.#configureIcon('done')
 
+    const buttonSlot = shadow.querySelector('slot[name="button"]')
     buttonSlot.addEventListener('slotchange', () => {
-      this.#copyIcon = null
-      this.#doneIcon = null
+      this.#icons = null
     })
-    shadow
-      .querySelector('slot[name="copy-icon"]')
-      ?.addEventListener('slotchange', (ev) => {
-        // @ts-ignore
-        this.#copyIcon = ev.target.assignedElements()[0]
-        ev.stopPropagation()
-      })
-    shadow
-      .querySelector('slot[name="done-icon"]')
-      ?.addEventListener('slotchange', (ev) => {
-        // @ts-ignore
-        this.#doneIcon = ev.target.assignedElements()[0]
-        ev.stopPropagation()
-      })
 
     buttonSlot?.addEventListener('click', () => {
       const dataTransfer = new DataTransfer()
@@ -116,25 +101,7 @@ export default class CopyToClipboard extends HTMLElement {
       ) {
         this.getClipboardData(dataTransfer)
           .then(async (data) => {
-            const duration = 2400
-            const offset = [0, 0.1, 0.9]
-
-            this.#copyIcon?.animate(
-              {
-                opacity: [1, 0, 0, 1],
-                transform: ['scale(1)', 'scale(0)', 'scale(0)', 'scale(1)'],
-                offset,
-              },
-              { duration }
-            )
-            this.#doneIcon?.animate(
-              {
-                opacity: [0, 1, 1, 0],
-                transform: ['scale(0)', 'scale(1)', 'scale(1)', 'scale(0)'],
-                offset,
-              },
-              { duration }
-            )
+            this.#buttonAnimation()
 
             await navigator.clipboard.write([data])
             this.dispatchEvent(
@@ -199,5 +166,46 @@ export default class CopyToClipboard extends HTMLElement {
     }
 
     return item
+  }
+
+  /**
+   * @param {string} name
+   */
+  #configureIcon(name) {
+    this.#icons[name] = this.shadowRoot.querySelector(
+      `slot[name="${name}-icon"] > svg`
+    )
+    this.shadowRoot
+      .querySelector(`slot[name="${name}-icon"]`)
+      ?.addEventListener(
+        'slotchange',
+        /** @param {any} ev */
+        (ev) => {
+          this.#icons[name] = ev.target.assignedElements()[0]
+          ev.stopPropagation()
+        }
+      )
+  }
+
+  #buttonAnimation() {
+    const options = { duration: 2400 }
+    const offset = [0, 0.1, 0.9]
+
+    this.#icons?.copy?.animate(
+      {
+        opacity: [1, 0, 0, 1],
+        transform: ['scale(1)', 'scale(0)', 'scale(0)', 'scale(1)'],
+        offset,
+      },
+      options
+    )
+    this.#icons?.done?.animate(
+      {
+        opacity: [0, 1, 1, 0],
+        transform: ['scale(0)', 'scale(1)', 'scale(1)', 'scale(0)'],
+        offset,
+      },
+      options
+    )
   }
 }
