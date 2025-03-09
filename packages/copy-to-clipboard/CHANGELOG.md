@@ -1,5 +1,11 @@
 # @parsonic/copy-to-clipboard
 
+## 1.0.1
+
+### Patch Changes
+
+- 2628009: Fix minor typos in docs, types and package.json
+
 ## 1.0.0
 
 ### Major Changes
