@@ -1,5 +1,5 @@
 /**
- * Element interface for the ShareButton.
+ * Element interface for the copy to clipboard button.
  */
 export interface CopyToClipboardElement extends HTMLElement {
   /**

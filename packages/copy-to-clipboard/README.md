@@ -28,26 +28,27 @@ Add a script tag with the minified build and use the element in your page.
 
 ### Bundler
 
-Import the `CopyToClipbard` component at the root of your application and
+Import the `CopyToClipboard` component at the root of your application and
 register it.
 
 ```js
-import ShareButton from '@parsonic/copy-to-clipboard/CopyToClipbard.js'
+import ShareButton from '@parsonic/copy-to-clipboard/CopyToClipboard.js'
 
-CopyToClipbard.register()
+CopyToClipboard.register()
 
 // Use <copy-to-clipboard></copy-to-clipboard> in your page or components
 ```
 
 ### CDN
 
-Import the `CopyToClipbard` component from the CDN and register it before using.
+Import the `CopyToClipboard` component from the CDN and register it before
+using.
 
 ```html
 <script type="module">
-  import CopyToClipboard from 'https://cdn.jsdelivr.net/npm/@parsonic/copy-to-clipboard/CopyToClipbard.js'
+  import CopyToClipboard from 'https://cdn.jsdelivr.net/npm/@parsonic/copy-to-clipboard/CopyToClipboard.js'
 
-  CopyToClipbard.register()
+  CopyToClipboard.register()
 </script>
 
 <copy-to-clipboard>
