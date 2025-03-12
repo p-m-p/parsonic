@@ -32,7 +32,7 @@ Import the `CopyToClipboard` component at the root of your application and
 register it.
 
 ```js
-import ShareButton from '@parsonic/copy-to-clipboard/CopyToClipboard.js'
+import CopyToClipboard from '@parsonic/copy-to-clipboard/CopyToClipboard.js'
 
 CopyToClipboard.register()
 
