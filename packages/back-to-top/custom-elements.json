@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/BackToTop.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "CopyToClipboard",
+          "members": [
+            {
+              "kind": "field",
+              "name": "#controller",
+              "privacy": "private",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "register",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "tagName",
+                  "default": "'back-to-top'"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "CopyToClipboard",
+            "module": "src/BackToTop.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tagName",
+          "declaration": {
+            "name": "anonymous_0",
+            "module": "src/BackToTop.js"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@parsonic/back-to-top",
+  "version": "0.0.0",
+  "description": "Scroll back to top of page web component",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "type": "module",
+  "files": [
+    "CHANGELOG.md",
+    "custom-elements.json",
+    "*.js",
+    "*.map",
+    "*.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/p-m-p/parsonic"
+  },
+  "scripts": {
+    "build": "node ./build.js",
+    "generate-manifest": "cem analyze --globs 'src/BackToTop.js'",
+    "clean": "rm -f index.js BackToTop.js min.js min.map.js",
+    "prepare": "cp ../../LICENSE ./"
+  },
+  "keywords": [
+    "back",
+    "component",
+    "page",
+    "scroll",
+    "top",
+    "web"
+  ],
+  "author": "Phil Parsons",
+  "license": "MIT",
+  "customElements": "custom-elements.json",
+  "devDependencies": {
+    "@parsonic/esbuild-plugin": "workspace:*"
+  }
+}
