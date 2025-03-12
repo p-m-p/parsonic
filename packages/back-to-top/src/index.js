@@ -1,3 +1,3 @@
-import CopyToClipboard from './CopyToClipboard.js'
+import BackToTop from './BackToTop.js'
 
-CopyToClipboard.register()
+BackToTop.register()
