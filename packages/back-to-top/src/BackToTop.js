@@ -30,10 +30,17 @@ export default class CopyToClipboard extends HTMLElement {
     shadow.adoptedStyleSheets.push(stylesheet)
 
     this.#controller = new AbortController()
+    this.#setState()
 
-    window.addEventListener('scroll', (ev) => console.log('scroll', ev), {
-      signal: this.#controller.signal,
-    })
+    window.addEventListener(
+      'scroll',
+      () => {
+        this.#setState()
+      },
+      {
+        signal: this.#controller.signal,
+      }
+    )
 
     shadow.querySelector('slot').addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'auto' })
@@ -42,5 +49,13 @@ export default class CopyToClipboard extends HTMLElement {
 
   disconnectedCallback() {
     this.#controller?.abort()
+  }
+
+  #setState() {
+    if (window.scrollY > 500) {
+      this.dataset.state = 'active'
+    } else {
+      this.dataset.state = 'inactive'
+    }
   }
 }

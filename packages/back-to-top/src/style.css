@@ -1,13 +1,22 @@
 :host {
   --button-background: var(--btt-button-background, rgb(0 0 0 / 60%));
+  --button-background-hover: var(
+    --btt-button-background-hover,
+    rgb(0 0 0 / 80%)
+  );
   --button-border: var(--btt-button-border, none);
   --button-color: var(--btt-button-color, white);
-  --button-inset: var(--btt-button-inset, 0.5rem 0.5rem auto auto);
+  --button-inset: var(--btt-button-inset, auto 0.5rem 0.5rem auto);
   --button-padding: var(--btt-button-padding, 0.5rem);
   --button-radius: var(--btt-button-radius, 999px);
 
-  inset: var(--btt-button-inset);
+  inset: var(--button-inset);
   position: fixed;
+  display: none;
+}
+
+:host([data-state='active']) {
+  display: block;
 }
 
 button {
@@ -19,4 +28,9 @@ button {
   cursor: pointer;
   line-height: 1;
   padding: var(--button-padding);
+  transition: background 200ms;
+
+  &:hover {
+    background: var(--button-background-hover);
+  }
 }
