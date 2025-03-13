@@ -1,7 +1,26 @@
-html {
+html,
+body,
+#storybook-root,
+#root-inner {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 .page {
   height: 2000px;
+}
+
+.container {
+  height: 100%;
+  overflow: auto;
+}
+
+.container-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.contained-btt {
+  --btt-button-inset: auto 2rem 2rem auto;
+  position: absolute;
 }
