@@ -1,5 +1,11 @@
 # @parsonic/copy-to-clipboard
 
+## 1.0.2
+
+### Patch Changes
+
+- 7cfbde8: Fix path for custom element definition in schema file
+
 ## 1.0.1
 
 ### Patch Changes
