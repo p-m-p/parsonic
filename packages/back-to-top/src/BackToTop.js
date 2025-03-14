@@ -1,14 +1,23 @@
 import stylesheet from './style.css' with { type: 'css' }
 
 /**
- * @import {
- *   BackToTopElement
- * } from '../BackToTop.js'
+ * @import {BackToTopElement} from '../BackToTop.js'
  * @implements {BackToTopElement}
  *
  * @tagName back-to-top
+ *
+ * @attr {string} [data-button-label] - ARIA label for the button
+ * @attr {number} [data-threshold] - Only show the button after scrolling beyond the threshold
+ * @attr {scrollBehavior} [data-scroll-behavior] - The scroll behavior to use when scrolling to top
+ * @attr {string} [data-scroll-container] - An id of the container element being scrolled if not the main window
+ *
+ * @slot - Default slot for the back to to button
+ * @csspart button - Style the default button element
+ *
+ * @slot icon - Slot for a custom button icon
+ * @csspart icon - Style the default icon svg
  */
-export default class CopyToClipboard extends HTMLElement {
+export default class BackToTop extends HTMLElement {
   #controller = null
   #scrollPosition = 0
   #activationPoint = 500
@@ -54,30 +63,33 @@ export default class CopyToClipboard extends HTMLElement {
       this.#activationPoint = activationPoint
     }
 
-    let parent
+    let container
 
     if (scrollContainer && document.getElementById(scrollContainer)) {
-      parent = document.getElementById(scrollContainer)
+      container = document.getElementById(scrollContainer)
     }
 
-    this.#setState(parent ? parent.scrollTop : window.scrollY)
+    this.#setState(container?.scrollTop ?? window.scrollY)
     this.#controller = new AbortController()
-    ;(parent ?? window).addEventListener(
+
+    const target = container ?? window
+    target.addEventListener(
       'scroll',
       () => {
-        this.#setState(parent ? parent.scrollTop : window.scrollY)
+        this.#setState(container?.scrollTop ?? window.scrollY)
       },
       {
         signal: this.#controller.signal,
       }
     )
 
-    shadow.querySelector('slot').addEventListener('click', () => {
-      ;(parent ?? window).scrollTo({
+    shadow.querySelector('slot').addEventListener('click', () =>
+      target.scrollTo({
         top: 0,
+        // @ts-ignore
         behavior: scrollBehavior,
       })
-    })
+    )
   }
 
   disconnectedCallback() {

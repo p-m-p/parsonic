@@ -21,9 +21,7 @@ Add a script tag with the minified build and use the element in your page.
 <script
   defer
   src="https://cdn.jsdelivr.net/npm/@parsonic/back-to-top/min.js"></script>
-<back-to-top>
-  <pre><code>npm install --save @parsonic/back-to-top</code></pre>
-</back-to-top>
+<back-to-top data-scroll-behavior="smooth"></back-to-top>
 ```
 
 ### Bundler
@@ -61,4 +59,22 @@ the register method.
 ```js
 // To use as <my-back-to-top></my-back-to-top>
 BackToTop.register('my-back-to-top')
+```
+
+## Scroll behavior
+
+The [scroll behavior]() when the button is clicked can be set by specifying the
+`data-scroll-behavior` attribute.
+
+```html
+<back-to-top data-scroll-behavior="smooth"></back-to-top>
+```
+
+Alternatively, the setting for `scroll-behavior` can be set via CSS for the
+document or container being scrolled.
+
+```css
+html {
+  scroll-behavior: smooth;
+}
 ```

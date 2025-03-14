@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "1.0.0",
-  "readme": "",
+  "schemaVersion": "2.1.0",
+  "readme": "README.md",
   "modules": [
     {
       "kind": "javascript-module",
@@ -9,17 +9,28 @@
         {
           "kind": "class",
           "description": "",
-          "name": "CopyToClipboard",
-          "members": [
+          "name": "BackToTop",
+          "cssParts": [
             {
-              "kind": "field",
-              "name": "#controller",
-              "privacy": "private",
-              "type": {
-                "text": "null"
-              },
-              "default": "null"
+              "description": "Style the default button element",
+              "name": "button"
             },
+            {
+              "description": "Style the default icon svg",
+              "name": "icon"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for the back to to button",
+              "name": ""
+            },
+            {
+              "description": "Slot for a custom button icon",
+              "name": "icon"
+            }
+          ],
+          "members": [
             {
               "kind": "method",
               "name": "register",
@@ -30,6 +41,49 @@
                   "default": "'back-to-top'"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "#setState",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "scrollPosition",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "ARIA label for the button",
+              "name": "data-button-label"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Only show the button after scrolling beyond the threshold",
+              "name": "data-threshold"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "The scroll behavior to use when scrolling to top",
+              "name": "data-scroll-behavior"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "An id of the container element being scrolled if not the main window",
+              "name": "data-scroll-container"
             }
           ],
           "superclass": {
@@ -43,16 +97,16 @@
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "CopyToClipboard",
+            "name": "BackToTop",
             "module": "src/BackToTop.js"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "tagName",
+          "name": "back-to-top",
           "declaration": {
             "name": "anonymous_0",
-            "module": "src/BackToTop.js"
+            "module": "src/index.js"
           }
         }
       ]
