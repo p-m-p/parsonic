@@ -126,7 +126,7 @@
           "name": "copy-to-clipboard",
           "declaration": {
             "name": "CopyToClipboard",
-            "module": "src/CopyToClipboard.js"
+            "module": "src/index.js"
           }
         }
       ]
