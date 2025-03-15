@@ -32,15 +32,22 @@ button {
   background: var(--button-background);
   border: var(--button-border);
   border-radius: var(--button-radius);
-  box-sizing: border-box;
+  box-sizing: content-box;
   color: var(--button-color);
   cursor: pointer;
   font-size: var(--button-size);
+  height: var(--button-size);
   line-height: 1;
   padding: var(--button-padding);
   transition: background 200ms;
+  width: var(--button-size);
 
   &:hover {
     background: var(--button-background-hover);
+  }
+
+  svg {
+    position: relative;
+    top: -1px;
   }
 }
