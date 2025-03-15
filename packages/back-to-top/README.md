@@ -78,3 +78,103 @@ html {
   scroll-behavior: smooth;
 }
 ```
+
+## Appearance
+
+The button will appear once the container has scrolled past a threshold and the
+user starts to scroll back up the page or container. The default threshold is
+`500px` and this can be overridden using the `data-threshold` attribute.
+
+```html
+<back-to-top data-threshold="0"></back-to-top>
+```
+
+## Scrolling inside a container element
+
+The back to top button may also be used when scrolling within an element by
+providing the element id in the `data-scroll-container` attribute. If the button
+needs to be aligned to the element then update the default positioning with CSS.
+
+```html
+<style>
+  .page {
+    height: 800px;
+    position: relative;
+  }
+
+  #container {
+    height: 100%;
+    overflow: auto;
+  }
+
+  back-to-top {
+    position: absolute;
+  }
+</style>
+
+<div class="page">
+  <div id="container">
+    <!--- long form content --->
+  </div>
+  <back-to-top scroll-container="container"></back-to-top>
+</div>
+```
+
+## Customising the button
+
+The default button comprises of a button element with an SVG icon. A default
+ARIA label of `Back to top` is applied to the button and can be overridden using
+the `data-button-label` attribute.
+
+```html
+<back-to-top data-button-label="Back to top"></back-to-top>
+```
+
+The button can be replaced entirely using the default slot or styled via the
+`button` css part.
+
+```html
+<style>
+  back-to-top::part(button) {
+    background-color: rgb(0 0 0 / 40%);
+  }
+</style>
+
+<back-to-top>
+  <button>Back 👆</button>
+</back-to-top>
+```
+
+To style the icon inside the button use the `icon` css part to target the SVG
+elements.
+
+```css
+back-to-top::part(icon) {
+  stroke: black;
+}
+```
+
+To replace the icon use the `icon` slot.
+
+```html
+<back-to-top>
+  <span slot="icon">👆</span>
+</back-to-top>
+```
+
+The button may also be styled using the CSS custom properties listed below and
+via. the `data-state` attribute which will have one of two states, `active` or
+`inactive` depending on whether the button should be visible or not.
+
+```css
+:root {
+  --btt-button-background: rgb(0 0 0 / 60%);
+  --btt-button-background-hover: rgb(0 0 0 / 80%);
+  --btt-button-border: none;
+  --btt-button-color: white;
+  --btt-button-inset: auto 2rem 2rem auto;
+  --btt-button-padding: 0.5rem;
+  --btt-button-radius: 999px;
+  --btt-button-size: 1.5rem;
+}
+```
