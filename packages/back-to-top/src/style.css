@@ -6,13 +6,22 @@
   );
   --button-border: var(--btt-button-border, none);
   --button-color: var(--btt-button-color, white);
-  --button-inset: var(--btt-button-inset, auto 0.5rem 0.5rem auto);
+  --button-inset: var(--btt-button-inset, auto 2rem 2rem auto);
   --button-padding: var(--btt-button-padding, 0.5rem);
   --button-radius: var(--btt-button-radius, 999px);
+  --button-size: var(--btt-button-size, 1.5rem);
 
-  inset: var(--button-inset);
-  position: fixed;
   display: none;
+  inset: var(--button-inset);
+  opacity: 1;
+  position: fixed;
+  transform: scale(1);
+  transition: transform 200ms;
+
+  @starting-style {
+    opacity: 0;
+    transform: scale(0);
+  }
 }
 
 :host([data-state='active']) {
@@ -26,6 +35,7 @@ button {
   box-sizing: border-box;
   color: var(--button-color);
   cursor: pointer;
+  font-size: var(--button-size);
   line-height: 1;
   padding: var(--button-padding);
   transition: background 200ms;
