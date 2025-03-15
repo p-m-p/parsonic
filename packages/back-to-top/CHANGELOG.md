@@ -1,5 +1,11 @@
 # @parsonic/back-to-top
 
+## 0.2.1
+
+### Patch Changes
+
+- b872e15: Fix button styles
+
 ## 0.2.0
 
 ### Minor Changes
