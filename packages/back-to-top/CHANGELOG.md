@@ -1,5 +1,11 @@
 # @parsonic/back-to-top
 
+## 1.0.0
+
+### Major Changes
+
+- 57665db: Release v1
+
 ## 0.2.1
 
 ### Patch Changes
