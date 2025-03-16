@@ -1,5 +1,19 @@
 A collection of handy little web components.
 
+## Back to top
+
+Add a back to top button to any web page or scrollable container.
+
+```html
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/@parsonic/back-to-top/min.js"></script>
+
+<back-to-top></back-to-top>
+```
+
+[View the package](./packages/back-to-top) details for full usage instructions.
+
 ## Copy to clipboard
 
 Easily add copy to clipboard functionality for text, images and other data
