@@ -42,12 +42,14 @@ button {
   transition: background 200ms;
   width: var(--button-size);
 
-  &:hover {
-    background: var(--button-background-hover);
-  }
-
   svg {
     position: relative;
     top: -1px;
+  }
+}
+
+@media (hover: hover) {
+  button:hover {
+    background: var(--button-background-hover);
   }
 }
