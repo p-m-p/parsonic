@@ -1,6 +1,6 @@
 {
   "name": "@parsonic/back-to-top",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Scroll back to top of page web component",
   "main": "index.js",
   "types": "index.d.ts",
