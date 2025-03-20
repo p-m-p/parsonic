@@ -1,5 +1,11 @@
 # @parsonic/back-to-top
 
+## 1.1.0
+
+### Minor Changes
+
+- 2c2af12: Add focus target option for focusing an element on scroll
+
 ## 1.0.0
 
 ### Major Changes
