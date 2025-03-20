@@ -24,3 +24,7 @@ body,
   --btt-button-inset: auto 2rem 2rem auto;
   position: absolute;
 }
+
+#section-title:focus {
+  color: red;
+}

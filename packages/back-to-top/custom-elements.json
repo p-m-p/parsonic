@@ -41,19 +41,6 @@
                   "default": "'back-to-top'"
                 }
               ]
-            },
-            {
-              "kind": "method",
-              "name": "#setState",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "scrollPosition",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
             }
           ],
           "attributes": [
@@ -68,8 +55,8 @@
               "type": {
                 "text": "string"
               },
-              "description": "Only show the button after scrolling beyond the threshold",
-              "name": "data-threshold"
+              "description": "The id of an element to focus when the button is clicked",
+              "name": "data-focus-target"
             },
             {
               "type": {
@@ -82,8 +69,15 @@
               "type": {
                 "text": "string"
               },
-              "description": "An id of the container element being scrolled if not the main window",
+              "description": "The id of the container element being scrolled if not the main window",
               "name": "data-scroll-container"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Only show the button after scrolling beyond the threshold",
+              "name": "data-threshold"
             }
           ],
           "superclass": {

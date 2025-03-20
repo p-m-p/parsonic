@@ -7,9 +7,10 @@ import stylesheet from './style.css' with { type: 'css' }
  * @tagName back-to-top
  *
  * @attr {string} [data-button-label] - ARIA label for the button
- * @attr {number} [data-threshold] - Only show the button after scrolling beyond the threshold
+ * @attr {string} [data-focus-target] - The id of an element to focus when the button is clicked
  * @attr {scrollBehavior} [data-scroll-behavior] - The scroll behavior to use when scrolling to top
- * @attr {string} [data-scroll-container] - An id of the container element being scrolled if not the main window
+ * @attr {string} [data-scroll-container] - The id of the container element being scrolled if not the main window
+ * @attr {number} [data-threshold] - Only show the button after scrolling beyond the threshold
  *
  * @slot - Default slot for the back to to button
  * @csspart button - Style the default button element
@@ -83,13 +84,21 @@ export default class BackToTop extends HTMLElement {
       }
     )
 
-    shadow.querySelector('slot').addEventListener('click', () =>
+    shadow.querySelector('slot').addEventListener('click', () => {
+      const { focusTarget } = this.dataset
+
+      if (focusTarget) {
+        document.getElementById(focusTarget)?.focus({
+          preventScroll: true,
+        })
+      }
+
       target.scrollTo({
         top: 0,
         // @ts-ignore
         behavior: scrollBehavior,
       })
-    )
+    })
   }
 
   disconnectedCallback() {

@@ -116,9 +116,30 @@ needs to be aligned to the element then update the default positioning with CSS.
   <div id="container">
     <!--- long form content --->
   </div>
-  <back-to-top scroll-container="container"></back-to-top>
+  <back-to-top data-scroll-container="container"></back-to-top>
 </div>
 ```
+
+## Focusing an element
+
+To apply focus to a focusable element when the scroll button is clicked, add an
+id to the element and pass this id as the `data-focus-target` attribute.
+
+```html
+<div class="page">
+  <div id="container">
+    <h2><a id="section-title" href="#section-title">Section name</a></h2>
+    <!--- long form content --->
+  </div>
+  <back-to-top
+    data-scroll-container="container"
+    data-focus-target="section-title"></back-to-top>
+</div>
+```
+
+> [!NOTE] focus-visible styles will not be applied to the target when focused
+> and applying this via the `focus` method is not currently supported. See
+> [options.focusVisible](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#focusvisible)
 
 ## Customising the button
 
