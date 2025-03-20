@@ -137,7 +137,9 @@ id to the element and pass this id as the `data-focus-target` attribute.
 </div>
 ```
 
-> [!NOTE] focus-visible styles will not be applied to the target when focused
+<!-- prettier-ignore -->
+> [!NOTE]
+> `focus-visible` styles will not be applied to the target when focused
 > and applying this via the `focus` method is not currently supported. See
 > [options.focusVisible](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#focusvisible)
 
