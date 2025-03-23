@@ -10,7 +10,10 @@ export default [
   {
     files: ['**/*.js'],
     languageOptions: {
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
       sourceType: 'module',
       ecmaVersion: 'latest',
     },

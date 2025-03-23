@@ -1,10 +1,14 @@
+import { resolve } from 'node:path'
 import { cssImports } from '@parsonic/esbuild-plugin'
 import { build } from 'esbuild'
+import { globSync } from 'glob'
+
+const indexPath = resolve('./src/index.js')
 
 await Promise.all([
   build({
     bundle: true,
-    entryPoints: ['src/index.js', 'src/CopyToClipboard.js'],
+    entryPoints: [indexPath, ...globSync('src/**/*.js')],
     format: 'esm',
     outdir: '.',
     plugins: [cssImports()],
@@ -12,7 +16,7 @@ await Promise.all([
 
   build({
     bundle: true,
-    entryPoints: ['src/index.js'],
+    entryPoints: [indexPath],
     format: 'iife',
     minify: true,
     outfile: './min.js',

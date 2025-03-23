@@ -17,9 +17,9 @@
     "url": "https://github.com/p-m-p/parsonic"
   },
   "scripts": {
-    "build": "node ./build.js",
+    "build": "node ../../scripts/build.js",
     "generate-manifest": "cem analyze --globs 'src/BackToTop.js'",
-    "clean": "rm -f index.js BackToTop.js min.js min.map.js",
+    "clean": "rm -f *.js",
     "prepare": "cp ../../LICENSE ./"
   },
   "keywords": [

@@ -17,9 +17,7 @@
     "url": "https://github.com/p-m-p/parsonic"
   },
   "scripts": {
-    "build": "pnpm run build:esm && pnpm run build:min",
-    "build:esm": "esbuild src/index.js src/ShareButton.js  --minify --sourcemap --outdir=. --format=esm",
-    "build:min": "esbuild index.js --bundle --minify --sourcemap --outfile=min.js --format=iife",
+    "build": "node ../../scripts/build.js",
     "generate-manifest": "cem analyze --globs 'src/ShareButton.js'",
     "clean": "rm -f *.js",
     "prepare": "cp ../../LICENSE ./"
