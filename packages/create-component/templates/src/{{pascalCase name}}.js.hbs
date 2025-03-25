@@ -1,0 +1,22 @@
+import stylesheet from './style.css' with { type: 'css' }
+
+/**
+ * @import { {{pascalCase name}}Element } from '../{{pascalCase name}}.js'
+ * @implements { {{pascalCase name}}Element }
+ *
+ * @tagName {{name}}
+ */
+export default class {{pascalCase name}} extends HTMLElement {
+  static register(tagName = '{{name}}') {
+    customElements.define(tagName, this)
+  }
+
+  connectedCallback() {
+    const template = document.createElement('template')
+    template.innerHTML = `<slot></slot>`
+
+    const shadow = this.attachShadow({ mode: 'open' })
+    shadow.appendChild(template.content.cloneNode(true))
+    shadow.adoptedStyleSheets.push(stylesheet)
+  }
+}

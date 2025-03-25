@@ -1,0 +1,11 @@
+/**
+ * Element interface for <{{name}}>.
+ */
+export interface {{pascalCase name}}Element extends HTMLElement {}
+
+/**
+ */
+declare const {{pascalCase name}}: {{pascalCase name}}Element & {
+  register(tagName: string): {{pascalCase name}}Element
+}
+export default {{pascalCase name}}

@@ -48,9 +48,7 @@ Import the `BackToTop` component from the CDN and register it before using.
   BackToTop.register()
 </script>
 
-<back-to-top>
-  <!-- Content to copy -->
-</back-to-top>
+<back-to-top></back-to-top>
 ```
 
 If you prefer to give the element an alternative tag name you can pass this to

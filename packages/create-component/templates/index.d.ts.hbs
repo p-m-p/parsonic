@@ -1,0 +1,9 @@
+import { {{pascalCase name}} } from './{{pascalCase name}}.js'
+
+declare global {
+  interface HTMLElementTagNameMap {
+    '{{name}}': {{pascalCase name}}Element
+  }
+}
+
+export * from './{{pascalCase name}}.js'

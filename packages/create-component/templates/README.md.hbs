@@ -1,0 +1,60 @@
+# {{titleCase name}}
+
+A web component for ...
+
+## Install
+
+```shell
+npm install --save @parsonic/back-to-top
+```
+
+## Usage
+
+Use {{lowerCase name}} with your favourite bundler or directly from a CDN. A
+minified build is provided as `min.js` with a source map.
+
+### Quick start
+
+Add a script tag with the minified build and use the element in your page.
+
+```html
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/@parsonic/{{name}}/min.js"></script>
+<{{name}}></{{name}}>
+```
+
+### Bundler
+
+Import the `{{pascalCase name}}` component at the root of your application and register
+it.
+
+```js
+import {{pascalCase name}} from '@parsonic/{{name}}/{{pascalCase name}}.js'
+
+{{pascalCase name}}.register()
+
+// Use <{{name}}></{{name}}> in your page or components
+```
+
+### CDN
+
+Import the `{{pascalCase name}}` component from the CDN and register it before using.
+
+```html
+<script type="module">
+  import {{pascalCase name}} from 'https://cdn.jsdelivr.net/npm/@parsonic/{{name}}/{{pascalCase name}}.js'
+
+  {{pascalCase name}}.register()
+</script>
+
+<{{name}}></{{name}}>
+```
+
+If you prefer to give the element an alternative tag name you can pass this to
+the register method.
+
+```js
+// To use as <my-{{name}}></my-{{name}}>
+{{pascalCase name}}.register('my-{{name}}')
+```

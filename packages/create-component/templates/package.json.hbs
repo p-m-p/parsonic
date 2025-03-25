@@ -1,0 +1,35 @@
+{
+  "name": "@parsonic/{{name}}",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "type": "module",
+  "files": [
+    "CHANGELOG.md",
+    "custom-elements.json",
+    "*.js",
+    "*.map",
+    "*.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/p-m-p/parsonic"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build.js",
+    "generate-manifest": "cem analyze --globs 'src/{{pascalCase name}}.js'",
+    "clean": "rm -f *.js",
+    "prepare": "cp ../../LICENSE ./"
+  },
+  "keywords": [
+    "component",
+    "web"
+  ],
+  "author": "Phil Parsons",
+  "license": "MIT",
+  "customElements": "custom-elements.json",
+  "devDependencies": {
+    "@parsonic/esbuild-plugin": "workspace:*"
+  }
+}
