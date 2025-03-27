@@ -3,8 +3,10 @@
   "extends": ["config:recommended"],
   "packageRules": [
     {
-      "matchDepTypes": ["devDependencies"],
-      "automerge": true
+      "matchDepTypes": ["minor", "patch"],
+      "automerge": true,
+      "autoMergeStrategy": "squash",
+      "autoMergeType": "branch"
     }
   ]
 }
