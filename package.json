@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "pnpm run clean && pnpm run -r build",
+    "build": "wireit",
     "build-storybook": "storybook build",
     "clean": "pnpm run -r clean",
     "dev": "pnpm run -r dev",
@@ -11,7 +11,7 @@
     "format": "prettier --write --ignore-unknown .",
     "prepare": "husky",
     "release": "changeset publish",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "wireit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Phil Parsons",
@@ -40,7 +40,8 @@
     "lit": "^3.2.1",
     "prettier": "^3.4.2",
     "storybook": "^8.6.8",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "wireit": "^0.14.11"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
@@ -54,5 +55,28 @@
     "trailingComma": "es5",
     "proseWrap": "always"
   },
-  "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6"
+  "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6",
+  "wireit": {
+    "build": {
+      "command": "pnpm run -r build",
+      "files": [
+        "packages/*/*.{json,ts}",
+        "packages/**/*.{js,css}",
+        "!packages/create-component",
+        "!packages/esbuild-plugin"
+      ],
+      "output": [
+        "packages/*/*.js",
+        "packages/*/*.map",
+        "!packages/create-component",
+        "!packages/esbuild-plugin"
+      ]
+    },
+    "storybook": {
+      "command": "storybook dev -p 6006",
+      "dependencies": [
+        "build"
+      ]
+    }
+  }
 }

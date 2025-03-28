@@ -1,7 +1,7 @@
 {
-  "name": "@parsonic/share-button",
-  "version": "1.2.1",
-  "description": "Native share button web component",
+  "name": "@parsonic/theme-switch",
+  "version": "0.0.0",
+  "description": "",
   "main": "index.js",
   "types": "index.d.ts",
   "type": "module",
@@ -18,15 +18,11 @@
   },
   "scripts": {
     "build": "node ../../scripts/build.js",
-    "generate-manifest": "cem analyze --globs 'src/ShareButton.js'",
+    "generate-manifest": "cem analyze --globs 'src/ThemeSwitch.js'",
     "prepare": "cp ../../LICENSE ./"
   },
   "keywords": [
-    "button",
     "component",
-    "links",
-    "share",
-    "social",
     "web"
   ],
   "author": "Phil Parsons",

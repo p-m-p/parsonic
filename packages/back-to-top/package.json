@@ -19,7 +19,6 @@
   "scripts": {
     "build": "node ../../scripts/build.js",
     "generate-manifest": "cem analyze --globs 'src/BackToTop.js'",
-    "clean": "rm -f *.js",
     "prepare": "cp ../../LICENSE ./"
   },
   "keywords": [
@@ -32,8 +31,5 @@
   ],
   "author": "Phil Parsons",
   "license": "MIT",
-  "customElements": "custom-elements.json",
-  "devDependencies": {
-    "@parsonic/esbuild-plugin": "workspace:*"
-  }
+  "customElements": "custom-elements.json"
 }

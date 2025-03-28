@@ -18,7 +18,6 @@
   },
   "scripts": {
     "build": "node ../../scripts/build.js",
-    "clean": "rm -f *.js",
     "generate-manifest": "cem analyze --globs 'src/CopyToClipboard.js'",
     "prepare": "cp ../../LICENSE ./"
   },
@@ -30,8 +29,5 @@
   ],
   "author": "Phil Parsons",
   "license": "MIT",
-  "customElements": "custom-elements.json",
-  "devDependencies": {
-    "@parsonic/esbuild-plugin": "workspace:*"
-  }
+  "customElements": "custom-elements.json"
 }
