@@ -57,19 +57,56 @@
   },
   "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6",
   "wireit": {
-    "build": {
-      "command": "pnpm run -r build",
+    "build:back-to-top": {
+      "command": "pnpm run --filter=@parsonic/back-to-top build",
       "files": [
-        "packages/*/*.{json,ts}",
-        "packages/**/*.{js,css}",
-        "!packages/create-component",
-        "!packages/esbuild-plugin"
+        "packages/back-to-top/src/*.{json,ts}",
+        "packages/back-to-top/src/*.{js,css}"
       ],
       "output": [
-        "packages/*/*.js",
-        "packages/*/*.map",
-        "!packages/create-component",
-        "!packages/esbuild-plugin"
+        "packages/back-to-top/*.js",
+        "packages/back-to-top/*.map"
+      ]
+    },
+    "build:copy-to-clipboard": {
+      "command": "pnpm run --filter=@parsonic/copy-to-clipboard build",
+      "files": [
+        "packages/copy-to-clipboard/src/*.{json,ts}",
+        "packages/copy-to-clipboard/src/*.{js,css}"
+      ],
+      "output": [
+        "packages/copy-to-clipboard/*.js",
+        "packages/copy-to-clipboard/*.map"
+      ]
+    },
+    "build:share-button": {
+      "command": "pnpm run --filter=@parsonic/share-button build",
+      "files": [
+        "packages/share-button/src/*.{json,ts}",
+        "packages/share-button/src/*.{js,css}"
+      ],
+      "output": [
+        "packages/share-button/*.js",
+        "packages/share-button/*.map"
+      ]
+    },
+    "build:theme-switch": {
+      "command": "pnpm run --filter=@parsonic/theme-switch build",
+      "files": [
+        "packages/theme-switch/src/*.{json,ts}",
+        "packages/theme-switch/src/*.{js,css}"
+      ],
+      "output": [
+        "packages/theme-switch/*.js",
+        "packages/theme-switch/*.map"
+      ]
+    },
+    "build": {
+      "dependencies": [
+        "build:back-to-top",
+        "build:copy-to-clipboard",
+        "build:share-button",
+        "build:theme-switch"
       ]
     },
     "storybook": {

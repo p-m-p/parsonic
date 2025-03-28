@@ -5,6 +5,13 @@ import pluginJs from '@eslint/js'
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
+  {
+    ignores: [
+      'packages/*/*.js',
+      '!packages/create-component',
+      '!packages/esbuild-plugin',
+    ],
+  },
   pluginJs.configs.recommended,
   importPlugin.flatConfigs.recommended,
   {
