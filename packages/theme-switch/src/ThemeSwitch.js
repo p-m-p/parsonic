@@ -12,27 +12,55 @@ export default class ThemeSwitch extends HTMLElement {
   }
 
   connectedCallback() {
-    let { mode } = this.dataset
+    let { theme } = this.dataset
 
-    if (!mode) {
-      mode = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light'
-      this.dataset.mode = mode
+    if (!theme) {
+      theme = this.#getPresetTheme()
+      this.dataset.theme = theme
     }
 
     const template = document.createElement('template')
     template.innerHTML = `<fieldset>
   <label id="light">
-    <input name="theme" type="radio" value="light" ${mode === 'light' ? 'checked ' : ''}/>
+    <input name="theme" type="radio" value="light" ${theme === 'light' ? 'checked ' : ''}/>
     <slot name="light-label">
-      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2"/>
+        <path d="M12 20v2"/>
+        <path d="m4.93 4.93 1.41 1.41"/>
+        <path d="m17.66 17.66 1.41 1.41"/>
+        <path d="M2 12h2"/>
+        <path d="M20 12h2"/>
+        <path d="m6.34 17.66-1.41 1.41"/>
+        <path d="m19.07 4.93-1.41 1.41"/>
+      </svg>
     </slot>
   </label>
   <label id="dark">
-    <input name="theme" type="radio" value="dark" ${mode === 'dark' ? 'checked ' : ''}/>
+    <input name="theme" type="radio" value="dark" ${theme === 'dark' ? 'checked ' : ''}/>
     <slot name="dark-label">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+      </svg>
     </slot>
   </label>
 </fieldset>
@@ -45,16 +73,45 @@ export default class ThemeSwitch extends HTMLElement {
     shadow.addEventListener('change', (ev) => {
       const { strategy = 'class' } = this.dataset
       // @ts-ignore
-      const isDark = ev.target.value === 'dark'
-      const mode = isDark ? 'dark' : 'light'
+      const theme = ev.target.value
 
-      if (strategy === 'class') {
-        document.documentElement.classList.toggle('dark', isDark)
+      if (
+        this.dispatchEvent(
+          new CustomEvent('themeSwitch', {
+            bubbles: true,
+            cancelable: true,
+            detail: { theme },
+          })
+        )
+      ) {
+        if (strategy === 'class') {
+          document.documentElement.classList.toggle('dark', theme === 'dark')
+        } else if (strategy === 'attribute') {
+          document.documentElement.dataset.theme = theme
+        }
+
+        this.dataset.theme = theme
       } else {
-        document.documentElement.dataset.theme = mode
+        ev.preventDefault()
       }
-
-      this.dataset.mode = mode
     })
+  }
+
+  #getPresetTheme() {
+    let { strategy, theme } = this.dataset
+
+    if (strategy === 'class') {
+      theme = document.documentElement.classList.contains('dark')
+        ? 'dark'
+        : 'light'
+    } else if (strategy === 'attribute') {
+      theme = document.documentElement.dataset.theme ?? 'light'
+    } else {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light'
+    }
+
+    return theme
   }
 }

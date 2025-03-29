@@ -2,7 +2,7 @@
   display: flex;
 }
 
-:host([data-mode='dark']) {
+:host([data-theme='dark']) {
   fieldset::before {
     translate: 1.5em;
   }
@@ -19,18 +19,18 @@
 fieldset {
   align-items: center;
   display: flex;
-  background: black;
+  background: rgb(0 0 0 / 80%);
   border: none;
   border-radius: 999px;
   color: white;
-  font-size: 20px;
+  font-size: 1.25rem;
   gap: 0.5em;
   margin: 0;
   padding: 0.5em;
   position: relative;
 
   &::before {
-    background: rgb(255 255 255 / 30%);
+    background: rgb(255 255 255 / 20%);
     border-radius: 999px;
     content: ' ';
     display: block;
