@@ -1,2 +1,70 @@
 :host {
+  display: flex;
+}
+
+:host([data-mode='dark']) {
+  fieldset::before {
+    translate: 1.5em;
+  }
+
+  #dark {
+    opacity: 1;
+  }
+
+  #light {
+    opacity: 0.6;
+  }
+}
+
+fieldset {
+  align-items: center;
+  display: flex;
+  background: black;
+  border: none;
+  border-radius: 999px;
+  color: white;
+  font-size: 20px;
+  gap: 0.5em;
+  margin: 0;
+  padding: 0.5em;
+  position: relative;
+
+  &::before {
+    background: rgb(255 255 255 / 30%);
+    border-radius: 999px;
+    content: ' ';
+    display: block;
+    height: 1.5em;
+    top: 0.25em;
+    left: 0.25em;
+    position: absolute;
+    transition: translate 300ms;
+    width: 1.5em;
+  }
+}
+
+label {
+  align-items: center;
+  display: flex;
+  position: relative;
+  vertical-align: middle;
+  transition:
+    opacity 300ms,
+    color 300ms;
+}
+
+input[type='radio'] {
+  appearance: none;
+  height: 0;
+  overflow: clip;
+  position: absolute;
+  width: 0;
+}
+
+#dark {
+  opacity: 0.6;
+}
+
+#light {
+  opacity: 1;
 }
