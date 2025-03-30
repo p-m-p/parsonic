@@ -40,6 +40,7 @@ export default class BackToTop extends HTMLElement {
   <button part="button" type="button" aria-label="${buttonLabel}">
     <slot name="icon">
       <svg part="icon" xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
         width="1em"
         height="1em"
         viewBox="0 0 24 24"
