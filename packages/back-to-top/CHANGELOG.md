@@ -1,5 +1,11 @@
 # @parsonic/back-to-top
 
+## 1.1.1
+
+### Patch Changes
+
+- a3214a8: Hide button icon from screen readers
+
 ## 1.1.0
 
 ### Minor Changes
