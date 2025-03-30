@@ -1,5 +1,11 @@
 # @parsonic/copy-to-clipboard
 
+## 1.1.0
+
+### Minor Changes
+
+- 1a63eeb: Add announcement when copy is successful
+
 ## 1.0.2
 
 ### Patch Changes
