@@ -114,3 +114,10 @@ export const Styled = {
       <code>This text will be copied to the clipboard</code>
     </test-copy>`,
 }
+
+export const VisibleAnnouncement = {
+  render: () =>
+    html`<test-copy class="visible-announcement">
+      <code>This text will be copied to the clipboard</code>
+    </test-copy>`,
+}

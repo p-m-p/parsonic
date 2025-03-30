@@ -22,6 +22,14 @@
             {
               "description": "Style the default done icon svg",
               "name": "done-icon"
+            },
+            {
+              "description": "Style the button wrapper element",
+              "name": "button-wrapper"
+            },
+            {
+              "description": "Style the announcement text",
+              "name": "announcement"
             }
           ],
           "slots": [
@@ -86,10 +94,19 @@
           "attributes": [
             {
               "type": {
-                "text": "string"
+                "text": "string",
+                "default": "Copy"
               },
               "description": "ARIA label for the copy button",
               "name": "data-button-label"
+            },
+            {
+              "type": {
+                "text": "string",
+                "default": "Copied!"
+              },
+              "description": "Text to announce during a successful copy",
+              "name": "data-announcement"
             },
             {
               "type": {

@@ -189,6 +189,37 @@ The button may also be styled using the CSS custom properties listed below.
 }
 ```
 
+## Announcement text
+
+A successful copy will be announced to screen readers by updating a live region
+in the copy button with a message. To override the default announcement of
+'Copied!', supply a message in the `data-announcement` attribute.
+
+```html
+<copy-to-clipboard
+  data-announcement="Text copied to clipboard!"></copy-to-clipboard>
+```
+
+The announcement text is visually hidden by default, to style the text use the
+`announcement` and `button-wrapper` css parts.
+
+```css
+copy-to-clipboard {
+  &::part(button-wrapper) {
+    align-items: center;
+    display: flex;
+    flex-flow: row-reverse;
+    gap: 0.25rem;
+  }
+
+  &::part(announcement) {
+    height: unset;
+    position: unset;
+    width: unset;
+  }
+}
+```
+
 ## `copy` event
 
 When the copy button is pressed the element dispatches a `ClipboardEvent` of

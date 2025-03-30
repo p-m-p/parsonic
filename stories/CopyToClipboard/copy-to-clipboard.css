@@ -45,3 +45,19 @@ test-copy.styled-button {
 #code-sample {
   --ctc-button-color: white;
 }
+
+.visible-announcement {
+  &::part(button-wrapper) {
+    align-items: center;
+    display: flex;
+    flex-flow: row-reverse;
+    gap: 0.25rem;
+  }
+
+  &::part(announcement) {
+    font-size: 0.875rem;
+    width: unset;
+    height: unset;
+    position: unset;
+  }
+}

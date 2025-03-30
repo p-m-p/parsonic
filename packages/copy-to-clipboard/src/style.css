@@ -19,10 +19,10 @@ slot[name='button'] button {
   cursor: pointer;
   line-height: 1;
   padding: var(--button-padding);
+  position: relative;
 }
 
-slot[name='button'] button,
-slot[name='button']::slotted(*) {
+#button-wrapper {
   inset: var(--button-inset);
   position: absolute;
 }
@@ -32,4 +32,11 @@ slot[name='done-icon']::slotted(*) {
   inset: var(--button-padding);
   position: absolute;
   transform: scale(0);
+}
+
+#announcement {
+  height: 0;
+  overflow: clip;
+  position: absolute;
+  width: 0;
 }
