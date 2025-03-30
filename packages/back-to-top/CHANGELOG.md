@@ -1,5 +1,11 @@
 # @parsonic/back-to-top
 
+## 1.1.2
+
+### Patch Changes
+
+- fa23625: Use visibility instead of display to show button
+
 ## 1.1.1
 
 ### Patch Changes
