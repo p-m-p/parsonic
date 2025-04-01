@@ -19,10 +19,13 @@ export const AttributeStrategy = {
 
 export const CustomSelection = {
   render: () =>
-    html`<test-theme-switch data-strategy="attribute">
+    html`<test-theme-switch
+      data-strategy="class"
+      data-theme="green"
+      data-themes="red,green,blue">
       <select name="theme">
         <option value="red">Red</option>
-        <option value="green">Green</option>
+        <option value="green" selected>Green</option>
         <option value="blue">Blue</option>
       </select>
     </test-theme-switch>`,
