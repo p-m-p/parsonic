@@ -12,12 +12,11 @@
   }
 
   #light {
-    opacity: 0.6;
+    opacity: 0.5;
   }
 }
 
 fieldset {
-  align-items: center;
   display: flex;
   background: rgb(0 0 0 / 80%);
   border: none;
@@ -45,9 +44,9 @@ fieldset {
 
 label {
   align-items: center;
+  cursor: pointer;
   display: flex;
   position: relative;
-  vertical-align: middle;
   transition:
     opacity 300ms,
     color 300ms;
@@ -62,7 +61,7 @@ input[type='radio'] {
 }
 
 #dark {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 #light {

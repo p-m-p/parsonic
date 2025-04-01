@@ -16,3 +16,14 @@ export const AttributeStrategy = {
   render: () =>
     html`<test-theme-switch data-strategy="attribute"></test-theme-switch>`,
 }
+
+export const CustomSelection = {
+  render: () =>
+    html`<test-theme-switch data-strategy="attribute">
+      <select name="theme">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+      </select>
+    </test-theme-switch>`,
+}
