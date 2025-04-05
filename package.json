@@ -5,14 +5,11 @@
   "scripts": {
     "build": "wireit",
     "build-storybook": "storybook build",
-    "clean": "pnpm run -r clean",
-    "dev": "pnpm run -r dev",
     "lint": "eslint .",
     "format": "prettier --write --ignore-unknown .",
     "prepare": "husky",
     "release": "changeset publish",
-    "storybook": "wireit",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "storybook": "wireit"
   },
   "author": "Phil Parsons",
   "license": "MIT",
