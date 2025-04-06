@@ -1,5 +1,11 @@
 # @parsonic/share-button
 
+## 1.3.0
+
+### Minor Changes
+
+- d6e0df6: Generate element types with Typescript compiler and add global events
+
 ## 1.2.1
 
 ### Patch Changes
