@@ -38,14 +38,14 @@ import stylesheet from './style.css' with { type: 'css' }
  * @fires {CustomEvent<SuccessResultDetail | ErrorResultDetail>} copyResult - Event dispatched when the copy action is completed
  */
 export default class CopyToClipboard extends HTMLElement {
+  /**
+   * Defines the custom element with provided tag name
+   */
   static register(tagName = 'copy-to-clipboard') {
     customElements.define(tagName, this)
   }
 
-  /** @type {ClipboardItem} */
   #item = undefined
-
-  /** @type Record<string, SVGElement> */
   #icons = {}
 
   get item() {
@@ -121,7 +121,6 @@ export default class CopyToClipboard extends HTMLElement {
             this.dispatchEvent(
               new CustomEvent('copyResult', {
                 bubbles: true,
-                /** @type {SuccessResultDetail} */
                 detail: {
                   result: 'success',
                   data,
@@ -133,7 +132,6 @@ export default class CopyToClipboard extends HTMLElement {
             this.dispatchEvent(
               new CustomEvent('copyResult', {
                 bubbles: true,
-                /** @type {ErrorResultDetail} */
                 detail: {
                   result: 'error',
                   error: err,
@@ -145,9 +143,6 @@ export default class CopyToClipboard extends HTMLElement {
     })
   }
 
-  /**
-   * @param {DataTransfer} [dataTransfer]
-   */
   async getClipboardData(dataTransfer) {
     let item = this.#item
 
@@ -182,23 +177,16 @@ export default class CopyToClipboard extends HTMLElement {
     return item
   }
 
-  /**
-   * @param {string} name
-   */
   #configureIcon(name) {
     this.#icons[name] = this.shadowRoot.querySelector(
       `slot[name="${name}-icon"] > svg`
     )
     this.shadowRoot
       .querySelector(`slot[name="${name}-icon"]`)
-      ?.addEventListener(
-        'slotchange',
-        /** @param {any} ev */
-        (ev) => {
-          this.#icons[name] = ev.target.assignedElements()[0]
-          ev.stopPropagation()
-        }
-      )
+      ?.addEventListener('slotchange', (ev) => {
+        this.#icons[name] = ev.target.assignedElements()[0]
+        ev.stopPropagation()
+      })
   }
 
   async #buttonAnimation() {

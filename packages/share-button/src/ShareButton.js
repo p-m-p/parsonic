@@ -37,9 +37,7 @@ function getGraphContent(property, defaultValue) {
  */
 export default class ShareButton extends HTMLElement {
   /**
-   * Defines the custom element with provided tag name
-   *
-   * @param {string} [tag='share-button'] - Tag name to use for the element
+   * Defines the custom element with provided tag name if `navigator.share` is supported
    */
   static register(tag = 'share-button') {
     if ('share' in navigator) {

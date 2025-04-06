@@ -16,13 +16,16 @@ import stylesheet from './style.css' with { type: 'css' }
  * @csspart icon - Style the default icon svg
  */
 export default class BackToTop extends HTMLElement {
-  #controller = null
-  #scrollPosition = 0
-  #activationPoint = 500
-
+  /**
+   * Defines the custom element with provided tag name
+   */
   static register(tagName = 'back-to-top') {
     customElements.define(tagName, this)
   }
+
+  #controller = null
+  #scrollPosition = 0
+  #activationPoint = 500
 
   connectedCallback() {
     const {
