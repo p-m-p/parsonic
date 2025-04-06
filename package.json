@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "format": "prettier --write --ignore-unknown .",
     "prepare": "husky",
-    "release": "changeset publish",
+    "release": "wireit",
     "storybook": "wireit",
     "types": "wireit"
   },
@@ -97,6 +97,13 @@
         "build:copy-to-clipboard",
         "build:share-button",
         "build:theme-switch"
+      ]
+    },
+    "release": {
+      "command": "changeset publish",
+      "dependencies": [
+        "build",
+        "types"
       ]
     },
     "storybook": {
