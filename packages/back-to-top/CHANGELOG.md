@@ -1,5 +1,11 @@
 # @parsonic/back-to-top
 
+## 1.2.1
+
+### Patch Changes
+
+- 890899e: Add missing element types
+
 ## 1.2.0
 
 ### Minor Changes
