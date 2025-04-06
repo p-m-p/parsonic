@@ -1,5 +1,11 @@
 # @parsonic/copy-to-clipboard
 
+## 1.2.0
+
+### Minor Changes
+
+- d6e0df6: Generate element types with Typescript compiler and add global events
+
 ## 1.1.0
 
 ### Minor Changes
