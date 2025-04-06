@@ -115,6 +115,8 @@
     "types:back-to-top": {
       "command": "pnpm run --filter=@parsonic/back-to-top types",
       "files": [
+        "tsconfig.json",
+        "packages/back-to-top/tsconfig.json",
         "packages/back-to-top/src/BackToTop.js"
       ],
       "output": [
@@ -125,6 +127,8 @@
     "types:copy-to-clipboard": {
       "command": "pnpm run --filter=@parsonic/copy-to-clipboard types",
       "files": [
+        "tsconfig.json",
+        "packages/copy-to-clipboard/tsconfig.json",
         "packages/copy-to-clipboard/src/CopyToClipboard.js"
       ],
       "output": [
@@ -135,6 +139,8 @@
     "types:share-button": {
       "command": "pnpm run --filter=@parsonic/share-button types",
       "files": [
+        "tsconfig.json",
+        "packages/share-button/tsconfig.json",
         "packages/share-button/src/ShareButton.js"
       ],
       "output": [
@@ -145,6 +151,8 @@
     "types:theme-switch": {
       "command": "pnpm run --filter=@parsonic/theme-switch types",
       "files": [
+        "tsconfig.json",
+        "packages/theme-switch/tsconfig.json",
         "packages/theme-switch/src/ThemeSwitch.js"
       ],
       "output": [
