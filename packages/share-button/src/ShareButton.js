@@ -1,8 +1,16 @@
 /**
- * @param {string} property
- * @param {string} [defaultValue]
+ * @typedef {object} SuccessResultDetail
+ * @property {'success'} result - The result of the share action
+ * @property {ShareData} data - The data being shared
  *
- * @returns {string}
+ * @typedef {object} ErrorResultDetail
+ * @property {'error'} result - The result of the share action
+ * @property {ShareData} data - The data being shared
+ * @property {DOMException} error - The error that occurred
+ */
+
+/**
+ * Returns the value of the meta tag with the specified open graph property
  */
 function getGraphContent(property, defaultValue) {
   return (
@@ -13,13 +21,6 @@ function getGraphContent(property, defaultValue) {
 }
 
 /**
- * @import {
- *   ShareButtonElement,
- *   SuccessResultDetail,
- *   ErrorResultDetail
- * } from '../ShareButton.js'
- * @implements {ShareButtonElement}
- *
  * @tagname share-button
  *
  * @attr {string} data-url - The URL of the item to share
@@ -36,9 +37,7 @@ function getGraphContent(property, defaultValue) {
  */
 export default class ShareButton extends HTMLElement {
   /**
-   * Defines the custom element with provided tag name. If
-   * tag is omtted the default `share-button` tag name will
-   * be used.
+   * Defines the custom element with provided tag name
    *
    * @param {string} [tag='share-button'] - Tag name to use for the element
    */
@@ -87,7 +86,6 @@ export default class ShareButton extends HTMLElement {
             this.dispatchEvent(
               new CustomEvent(resultEventName, {
                 bubbles: true,
-                /** @type {SuccessResultDetail} */
                 detail: {
                   result: 'success',
                   data,
@@ -99,7 +97,6 @@ export default class ShareButton extends HTMLElement {
             this.dispatchEvent(
               new CustomEvent(resultEventName, {
                 bubbles: true,
-                /** @type {ErrorResultDetail} */
                 detail: { result: 'error', data, error },
               })
             )

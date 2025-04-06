@@ -1,9 +1,7 @@
-import { ThemeSwitch } from './ThemeSwitch.js'
+import type ThemeSwitch from './ThemeSwitch.js'
 
 declare global {
   interface HTMLElementTagNameMap {
-    'theme-switch': ThemeSwitchElement
+    'theme-switch': ThemeSwitch
   }
 }
-
-export * from './ThemeSwitch.js'

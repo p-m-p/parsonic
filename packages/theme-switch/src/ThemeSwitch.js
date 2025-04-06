@@ -1,9 +1,6 @@
 import stylesheet from './style.css' with { type: 'css' }
 
 /**
- * @import { ThemeSwitchElement } from '../ThemeSwitch.js'
- * @implements { ThemeSwitchElement }
- *
  * @tagName theme-switch
  */
 export default class ThemeSwitch extends HTMLElement {
@@ -78,33 +75,34 @@ export default class ThemeSwitch extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true))
     shadow.adoptedStyleSheets.push(stylesheet)
 
-    shadow.querySelector('slot').addEventListener('change', (ev) => {
-      const { strategy } = this.dataset
-      // @ts-ignore
-      const theme = ev.target.value
+    shadow
+      .querySelector('slot')
+      .addEventListener('change', (/** @type {any} */ ev) => {
+        const { strategy } = this.dataset
+        const theme = ev.target.value
 
-      if (
-        this.dispatchEvent(
-          new CustomEvent('themeSwitch', {
-            bubbles: true,
-            cancelable: true,
-            detail: { theme },
-          })
-        )
-      ) {
-        if (strategy === 'class') {
-          this.themes.forEach((t) =>
-            document.documentElement.classList.toggle(t, theme === t)
+        if (
+          this.dispatchEvent(
+            new CustomEvent('themeSwitch', {
+              bubbles: true,
+              cancelable: true,
+              detail: { theme },
+            })
           )
-        } else if (strategy === 'attribute') {
-          document.documentElement.dataset.theme = theme
-        }
+        ) {
+          if (strategy === 'class') {
+            this.themes.forEach((t) =>
+              document.documentElement.classList.toggle(t, theme === t)
+            )
+          } else if (strategy === 'attribute') {
+            document.documentElement.dataset.theme = theme
+          }
 
-        this.dataset.theme = theme
-      } else {
-        ev.preventDefault()
-      }
-    })
+          this.dataset.theme = theme
+        } else {
+          ev.preventDefault()
+        }
+      })
   }
 
   #getPresetTheme() {

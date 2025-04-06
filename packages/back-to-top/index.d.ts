@@ -1,9 +1,7 @@
-import { BackToTopElement } from './BackToTop.js'
+import type BackToTop from './BackToTop.js'
 
 declare global {
   interface HTMLElementTagNameMap {
-    'back-to-top': BackToTopElement
+    'back-to-top': BackToTop
   }
 }
-
-export * from './BackToTop.js'

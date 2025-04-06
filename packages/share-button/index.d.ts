@@ -1,9 +1,13 @@
-import { ShareButtonElement } from './ShareButton.js'
+import type ShareButton from './ShareButton.js'
+import type { ErrorResultDetail, SuccessResultDetail } from './ShareButton.js'
 
 declare global {
   interface HTMLElementTagNameMap {
-    'share-button': ShareButtonElement
+    'share-button': ShareButton
+  }
+
+  interface GlobalEventHandlersEventMap {
+    share: CustomEvent<ShareData>
+    shareResult: CustomEvent<SuccessResultDetail | ErrorResultDetail>
   }
 }
-
-export * from './ShareButton.js'

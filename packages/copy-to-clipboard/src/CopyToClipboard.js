@@ -1,13 +1,16 @@
 import stylesheet from './style.css' with { type: 'css' }
 
 /**
- * @import {
- *   CopyToClipboardElement,
- *   ErrorResultDetail,
- *   SuccessResultDetail
- * } from '../CopyToClipboard.js'
- * @implements {CopyToClipboardElement}
+ * @typedef {object} SuccessResultDetail
+ * @property {'success'} result - The result of the copy action
+ * @property {ClipboardItem} data - The data being copied
  *
+ * @typedef {object} ErrorResultDetail
+ * @property {'error'} result - The result of the copy action
+ * @property {DOMException} error - The error that occurred
+ */
+
+/**
  * @tagName copy-to-clipboard
  *
  * @property {ClipboardItem} [item] - The item to copy to the clipboard

@@ -1,9 +1,6 @@
 import stylesheet from './style.css' with { type: 'css' }
 
 /**
- * @import {BackToTopElement} from '../BackToTop.js'
- * @implements {BackToTopElement}
- *
  * @tagName back-to-top
  *
  * @attr {string} [data-button-label] - ARIA label for the button
@@ -96,7 +93,6 @@ export default class BackToTop extends HTMLElement {
 
       target.scrollTo({
         top: 0,
-        // @ts-ignore
         behavior: scrollBehavior,
       })
     })
@@ -106,9 +102,6 @@ export default class BackToTop extends HTMLElement {
     this.#controller?.abort()
   }
 
-  /**
-   * @param {number} scrollPosition
-   */
   #setState(scrollPosition) {
     if (
       scrollPosition > this.#activationPoint &&

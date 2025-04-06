@@ -9,7 +9,8 @@
     "format": "prettier --write --ignore-unknown .",
     "prepare": "husky",
     "release": "changeset publish",
-    "storybook": "wireit"
+    "storybook": "wireit",
+    "types": "wireit"
   },
   "author": "Phil Parsons",
   "license": "MIT",
@@ -52,50 +53,42 @@
     "trailingComma": "es5",
     "proseWrap": "always"
   },
-  "packageManager": "pnpm@10.7.1+sha512.2d92c86b7928dc8284f53494fb4201f983da65f0fb4f0d40baafa5cf628fa31dae3e5968f12466f17df7e97310e30f343a648baea1b9b350685dafafffdf5808",
+  "packageManager": "pnpm@10.7.1",
   "wireit": {
     "build:back-to-top": {
       "command": "pnpm run --filter=@parsonic/back-to-top build",
       "files": [
-        "packages/back-to-top/src/*.{json,ts}",
-        "packages/back-to-top/src/*.{js,css}"
+        "packages/back-to-top/src/*"
       ],
       "output": [
-        "packages/back-to-top/*.js",
-        "packages/back-to-top/*.map"
+        "packages/back-to-top/*.{js,map}"
       ]
     },
     "build:copy-to-clipboard": {
       "command": "pnpm run --filter=@parsonic/copy-to-clipboard build",
       "files": [
-        "packages/copy-to-clipboard/src/*.{json,ts}",
-        "packages/copy-to-clipboard/src/*.{js,css}"
+        "packages/copy-to-clipboard/src/*"
       ],
       "output": [
-        "packages/copy-to-clipboard/*.js",
-        "packages/copy-to-clipboard/*.map"
+        "packages/copy-to-clipboard/*.{js,map}"
       ]
     },
     "build:share-button": {
       "command": "pnpm run --filter=@parsonic/share-button build",
       "files": [
-        "packages/share-button/src/*.{json,ts}",
-        "packages/share-button/src/*.{js,css}"
+        "packages/share-button/src/*"
       ],
       "output": [
-        "packages/share-button/*.js",
-        "packages/share-button/*.map"
+        "packages/share-button/*.{js,map}"
       ]
     },
     "build:theme-switch": {
       "command": "pnpm run --filter=@parsonic/theme-switch build",
       "files": [
-        "packages/theme-switch/src/*.{json,ts}",
-        "packages/theme-switch/src/*.{js,css}"
+        "packages/theme-switch/src/*"
       ],
       "output": [
-        "packages/theme-switch/*.js",
-        "packages/theme-switch/*.map"
+        "packages/theme-switch/*.{js,map}"
       ]
     },
     "build": {
@@ -110,6 +103,54 @@
       "command": "storybook dev -p 6006",
       "dependencies": [
         "build"
+      ]
+    },
+    "types:back-to-top": {
+      "command": "pnpm run --filter=@parsonic/back-to-top types",
+      "files": [
+        "packages/back-to-top/src/BackToTop.js"
+      ],
+      "output": [
+        "packages/back-to-top/BackToTop.d.ts",
+        "packages/back-to-top/BackToTop.d.ts.map"
+      ]
+    },
+    "types:copy-to-clipboard": {
+      "command": "pnpm run --filter=@parsonic/copy-to-clipboard types",
+      "files": [
+        "packages/copy-to-clipboard/src/CopyToClipboard.js"
+      ],
+      "output": [
+        "packages/copy-to-clipboard/CopyToClipboard.d.ts",
+        "packages/copy-to-clipboard/CopyToClipboard.d.ts.map"
+      ]
+    },
+    "types:share-button": {
+      "command": "pnpm run --filter=@parsonic/share-button types",
+      "files": [
+        "packages/share-button/src/ShareButton.js"
+      ],
+      "output": [
+        "packages/share-button/ShareButton.d.ts",
+        "packages/share-button/ShareButtoh.d.ts.map"
+      ]
+    },
+    "types:theme-switch": {
+      "command": "pnpm run --filter=@parsonic/theme-switch types",
+      "files": [
+        "packages/theme-switch/src/ThemeSwitch.js"
+      ],
+      "output": [
+        "packages/theme-switch/ThemeSwitch.d.ts",
+        "packages/theme-switch/ThemeSwitch.d.ts.map"
+      ]
+    },
+    "types": {
+      "dependencies": [
+        "types:back-to-top",
+        "types:copy-to-clipboard",
+        "types:share-button",
+        "types:theme-switch"
       ]
     }
   }

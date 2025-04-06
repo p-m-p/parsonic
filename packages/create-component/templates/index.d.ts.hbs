@@ -1,9 +1,9 @@
-import { {{pascalCase name}} } from './{{pascalCase name}}.js'
+import type {{pascalCase name}} from './{{pascalCase name}}.js'
 
 declare global {
   interface HTMLElementTagNameMap {
-    '{{name}}': {{pascalCase name}}Element
+    '{{name}}': {{pascalCase name}}
   }
-}
 
-export * from './{{pascalCase name}}.js'
+  interface GlobalEventHandlersEventMap {}
+}

@@ -5,6 +5,9 @@ dist
 packages/*/LICENSE
 packages/*/*.js
 packages/*/*.js.map
+packages/*/*.d.ts
+packages/*/*.d.ts.map
 
+!packages/*/index.d.ts
 !packages/esbuild-plugin/*.js
 !packages/create-component/*.js

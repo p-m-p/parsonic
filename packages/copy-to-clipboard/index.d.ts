@@ -1,9 +1,15 @@
-import { CopyToClipboardElement } from './CopyToClipboard.js'
+import type CopyToClipboard from './CopyToClipboard.js'
+import type {
+  SuccessResultDetail,
+  ErrorResultDetail,
+} from './CopyToClipboard.js'
 
 declare global {
   interface HTMLElementTagNameMap {
-    'copy-to-clipboard': CopyToClipboardElement
+    'copy-to-clipboard': CopyToClipboard
+  }
+
+  interface GlobalEventHandlersEventMap {
+    copyResult: CustomEvent<SuccessResultDetail | ErrorResultDetail>
   }
 }
-
-export * from './CopyToClipboard.js'

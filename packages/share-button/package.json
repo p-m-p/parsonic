@@ -19,7 +19,8 @@
   "scripts": {
     "build": "node ../../scripts/build.js",
     "generate-manifest": "cem analyze --globs 'src/ShareButton.js'",
-    "prepare": "cp ../../LICENSE ./"
+    "prepare": "cp ../../LICENSE ./",
+    "types": "tsc"
   },
   "keywords": [
     "button",
