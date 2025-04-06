@@ -10,6 +10,7 @@ export default [
       'packages/*/*.js',
       '!packages/create-component',
       '!packages/esbuild-plugin',
+      '.wireit',
     ],
   },
   pluginJs.configs.recommended,
