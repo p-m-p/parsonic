@@ -15,6 +15,13 @@ export const Default = {
     html`<div class="page"><test-back-to-top></test-back-to-top></div>`,
 }
 
+export const CustomIcon = {
+  render: () =>
+    html`<div class="page"
+      ><test-back-to-top><span slot="icon">☝️</span></test-back-to-top></div
+    >`,
+}
+
 export const Container = {
   render: () => html`
     <div class="container-wrapper">

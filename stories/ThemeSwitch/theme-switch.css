@@ -1,0 +1,6 @@
+.custom-selection {
+  button[aria-pressed='true'] {
+    background: red;
+    color: white;
+  }
+}
