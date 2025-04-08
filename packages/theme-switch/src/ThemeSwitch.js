@@ -26,6 +26,8 @@ export default class ThemeSwitch extends HTMLElement {
     customElements.define(tagName, this)
   }
 
+  #buttons = []
+
   connectedCallback() {
     const {
       darkLabel = 'Dark',
@@ -45,8 +47,8 @@ export default class ThemeSwitch extends HTMLElement {
       type="button"
       aria-label="${lightLabel}"
       aria-pressed="${theme === 'light' ? 'true' : 'false'}"
-      data-theme="light">
-      <slot name="light-icon">
+      value="light">
+      <slot name="light-icon" class="icon-slot">
         <svg
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
@@ -76,8 +78,8 @@ export default class ThemeSwitch extends HTMLElement {
       type="button"
       aria-label="${darkLabel}"
       aria-pressed="${theme === 'dark' ? 'true' : 'false'}"
-      data-theme="dark">
-      <slot name="dark-icon">
+      value="dark">
+      <slot name="dark-icon" class="icon-slot">
         <svg
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
@@ -101,17 +103,20 @@ export default class ThemeSwitch extends HTMLElement {
     shadow.appendChild(template.content.cloneNode(true))
     shadow.adoptedStyleSheets.push(stylesheet)
 
-    this.#init(this.shadowRoot.querySelectorAll('button[data-theme]'))
+    const defaultSlot = this.shadowRoot.querySelector('slot')
+    this.#buttons = Array.from(defaultSlot.querySelectorAll('button[value]'))
 
-    shadow
-      .querySelector('slot')
-      .addEventListener('slotchange', (ev) =>
-        this.#init(
-          ev.target
-            .assignedElements({ flatten: true })
-            .filter((el) => el.dataset.theme !== undefined)
-        )
-      )
+    defaultSlot.addEventListener(
+      'slotchange',
+      (ev) =>
+        (this.#buttons = ev.target
+          .assignedElements({ flatten: true })
+          .filter(
+            (el) => el instanceof HTMLButtonElement && el.value !== undefined
+          ))
+    )
+    defaultSlot.addEventListener('click', (ev) => this.#handleThemeSwitch(ev))
+    defaultSlot.addEventListener('change', (ev) => this.#handleThemeSwitch(ev))
   }
 
   #activeTheme() {
@@ -128,38 +133,38 @@ export default class ThemeSwitch extends HTMLElement {
     return ''
   }
 
-  #init(buttons) {
-    const themes = Array.from(buttons).map((button) => button.dataset.theme)
+  #handleThemeSwitch(ev) {
+    const { strategy } = this.dataset
+    const button =
+      ev.target instanceof HTMLButtonElement
+        ? ev.target
+        : ev.target.closest('button')
+    const theme = ev.target.value ?? button?.value
 
-    buttons.forEach((button) => {
-      button.addEventListener('click', (ev) => {
-        const { strategy } = this.dataset
-        const { theme } = button.dataset
+    if (
+      theme &&
+      theme !== this.dataset.theme &&
+      this.dispatchEvent(
+        new CustomEvent('themeSwitch', {
+          bubbles: true,
+          cancelable: true,
+          detail: { theme },
+        })
+      )
+    ) {
+      if (strategy === 'class') {
+        document.documentElement.classList.remove(this.dataset.theme)
+        document.documentElement.classList.add(theme)
+      } else if (strategy === 'attribute') {
+        document.documentElement.dataset.theme = theme
+      }
 
-        if (
-          this.dispatchEvent(
-            new CustomEvent('themeSwitch', {
-              bubbles: true,
-              cancelable: true,
-              detail: { theme },
-            })
-          )
-        ) {
-          if (strategy === 'class') {
-            themes.forEach((t) =>
-              document.documentElement.classList.toggle(t, theme === t)
-            )
-          } else if (strategy === 'attribute') {
-            document.documentElement.dataset.theme = theme
-          }
+      this.dataset.theme = theme
 
-          this.dataset.theme = theme
-          buttons.forEach((b) => b.setAttribute('aria-pressed', 'false'))
-          button.setAttribute('aria-pressed', 'true')
-        } else {
-          ev.preventDefault()
-        }
-      })
-    })
+      if (this.#buttons.length > 1) {
+        this.#buttons.forEach((b) => b.setAttribute('aria-pressed', 'false'))
+        button?.setAttribute('aria-pressed', 'true')
+      }
+    }
   }
 }

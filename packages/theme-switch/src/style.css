@@ -64,3 +64,9 @@ button {
 #light {
   opacity: 1;
 }
+
+.icon-slot::slotted(*) {
+  width: 1.25rem;
+  height: 1.25rem;
+  pointer-events: none;
+}

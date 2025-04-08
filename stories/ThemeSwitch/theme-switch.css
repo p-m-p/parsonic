@@ -4,3 +4,8 @@
     color: white;
   }
 }
+
+.dark,
+[data-theme='dark'] {
+  color-scheme: dark;
+}

@@ -6,6 +6,7 @@ import './theme-switch.css'
 ThemeSwitch.register('test-theme-switch')
 
 export default {
+  decorators: [(story) => html`<div class="theme-page">${story()}</div>`],
   tags: ['autodocs'],
   title: 'ThemeSwitch',
 }
@@ -16,7 +17,9 @@ export const Default = {
 
 export const AttributeStrategy = {
   render: () =>
-    html`<test-theme-switch data-strategy="attribute"></test-theme-switch>`,
+    html`<test-theme-switch
+      data-strategy="attribute"
+      data-theme="light"></test-theme-switch>`,
 }
 
 export const IconSlots = {
@@ -27,15 +30,25 @@ export const IconSlots = {
     >`,
 }
 
-export const CustomSelection = {
+export const CustomButtons = {
   render: () =>
     html`<test-theme-switch
       class="custom-selection"
-      data-strategy="class"
-      data-theme="green"
-      data-themes="red,green,blue">
-      <button type="button" data-theme="red">Red</button>
-      <button type="button" data-theme="green">Green</button>
-      <button type="button" data-theme="blue">Blue</button>
+      data-theme="system"
+      data-strategy="class">
+      <button value="light">Light</button>
+      <button value="system" aria-pressed="true">System</button>
+      <button value="dark">Dark</button>
+    </test-theme-switch>`,
+}
+
+export const CustomControl = {
+  render: () =>
+    html`<test-theme-switch class="" data-theme="system">
+      <select name="theme">
+        <option value="light">Light</option>
+        <option value="system" selected>System</option>
+        <option value="dark">Dark</option>
+      </select>
     </test-theme-switch>`,
 }
