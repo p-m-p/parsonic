@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 22
           cache: 'pnpm'
-      - uses: google/wireit@setup-github-actions-caching/v2
+      #      - uses: google/wireit@setup-github-actions-caching/v2
       - run: pnpm install
       - run: pnpm run build
       - run: pnpm run lint
