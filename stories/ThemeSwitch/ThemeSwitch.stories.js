@@ -24,7 +24,7 @@ export const AttributeStrategy = {
 
 export const IconSlots = {
   render: () =>
-    html`<test-theme-switch
+    html`<test-theme-switch data-strategy="attribute" data-theme="light"
       ><span slot="light-icon">L</span
       ><span slot="dark-icon">D</span></test-theme-switch
     >`,

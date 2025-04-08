@@ -3,20 +3,25 @@ import stylesheet from './style.css' with { type: 'css' }
 /**
  * @tagName theme-switch
  *
- * @attr {string} [data-label] - ARIA label for the theme switch
- * @attr {string} [data-dark-label] - ARIA label for the dark theme
- * @attr {string} [data-light-label] - ARIA label for the light theme
+ * @attr {string} [data-label] - ARIA label for the theme switcher
+ * @attr {string} [data-dark-label] - ARIA label for the dark theme button
+ * @attr {string} [data-light-label] - ARIA label for the light theme button
  * @attr {string} [data-theme] - The currently active theme
  *
- * @slot - Default slot for the theme switch buttons
- * @csspart group - Style the default button group
-
+ * @slot - Default slot for the theme switch control
+ * @csspart button-bar - Style the button bar
+ *
  * @csspart button - Style the button group buttons
  * @csspart light - Style the light theme button
  * @csspart dark - Style the dark theme button
  *
+ * @csspart icon - Style the default icons
+ *
  * @slot light-icon - Slot for a custom light theme icon
+ * @csspart light-icon- Style the light theme icon
+ *
  * @slot dark-icon - Slot for a custom dark theme icon
+ * @csspart dark-icon - Style the dark theme icon
  */
 export default class ThemeSwitch extends HTMLElement {
   /**
@@ -40,7 +45,7 @@ export default class ThemeSwitch extends HTMLElement {
 
     const template = document.createElement('template')
     template.innerHTML = `<slot>
-  <div id="switch" part="group" role="group" aria-label="${label}">
+  <div id="switch" part="button-bar" role="group" aria-label="${label}">
     <button
       id="light"
       part="button light"
@@ -51,6 +56,7 @@ export default class ThemeSwitch extends HTMLElement {
       <slot name="light-icon" class="icon-slot">
         <svg
           aria-hidden="true"
+          part="icon light-icon"
           xmlns="http://www.w3.org/2000/svg"
           width="1em"
           height="1em"
@@ -82,6 +88,7 @@ export default class ThemeSwitch extends HTMLElement {
       <slot name="dark-icon" class="icon-slot">
         <svg
           aria-hidden="true"
+          part="icon dark-icon"
           xmlns="http://www.w3.org/2000/svg"
           width="1em"
           height="1em"
@@ -117,6 +124,10 @@ export default class ThemeSwitch extends HTMLElement {
     )
     defaultSlot.addEventListener('click', (ev) => this.#handleThemeSwitch(ev))
     defaultSlot.addEventListener('change', (ev) => this.#handleThemeSwitch(ev))
+  }
+
+  disconnectedCallback() {
+    this.#buttons.length = 0
   }
 
   #activeTheme() {
