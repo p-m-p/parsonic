@@ -3,10 +3,12 @@
     --ts-button-bar-background,
     light-dark(rgb(0 0 0 / 80%), rgb(255 255 255 / 20%))
   );
-  --bar-border-radius: var(--ts-button-bar-border-radius, 999px);
-  --bar-lozenge: var(--ts-button-bar-lozenge, rgb(255 255 255 / 20%));
-  --bar-lozenge-radius: var(--ts-button-bar-lozenge-radius, 999px);
-  --bar-lozenge-duration: var(--ts-button-bar-lozenge-duration, 300ms);
+  --bar-radius: var(--ts-button-bar-border-radius, 999px);
+
+  --lozenge-background: var(--ts-lozenge-background, rgb(255 255 255 / 20%));
+  --lozenge-radius: var(--ts-lozenge-border-radius, 999px);
+  --lozenge-duration: var(--ts-lozenge-duration, 300ms);
+
   --button-background: var(--ts-button-background, none);
   --button-border: var(--ts-button-border, none);
   --button-color: var(--ts-button-color, white);
@@ -19,24 +21,22 @@
   display: flex;
   background: var(--bar-background);
   border: none;
-  border-radius: var(--bar-border-radius);
+  border-radius: var(--bar-radius);
   font-size: var(--button-size);
   line-height: 1;
-  gap: 0.5em;
   margin: 0;
-  padding: 0.5em;
   position: relative;
 
   &::before {
-    background: var(--bar-lozenge);
-    border-radius: var(--bar-lozenge-radius);
+    background: var(--lozenge-background);
+    border-radius: var(--lozenge-radius);
     content: ' ';
     display: block;
     height: 1.5em;
     top: 0.25em;
     left: 0.25em;
     position: absolute;
-    transition: translate var(--bar-lozenge-duration);
+    transition: translate var(--lozenge-duration);
     width: 1.5em;
   }
 }
@@ -50,9 +50,9 @@ button {
   display: inline-flex;
   font-size: inherit;
   margin: 0;
-  padding: 0;
+  padding: 0.5em;
   position: relative;
-  transition-duration: var(--bar-lozenge-duration);
+  transition-duration: var(--lozenge-duration);
   transition-property: opacity, color;
 }
 
@@ -72,7 +72,7 @@ button {
 
 :host([data-theme='dark']) {
   #switch::before {
-    translate: 1.5em;
+    translate: 2em;
   }
 
   #dark {

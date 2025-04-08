@@ -9,3 +9,29 @@
 [data-theme='dark'] {
   color-scheme: dark;
 }
+
+.single-button {
+  --ts-lozenge-background: transparent;
+
+  &::part(button) {
+    opacity: 1;
+  }
+
+  &::part(button dark) {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &[data-theme='dark'] {
+    &::part(button dark) {
+      visibility: hidden;
+    }
+  }
+
+  &[data-theme='light'] {
+    &::part(button light) {
+      visibility: hidden;
+    }
+  }
+}

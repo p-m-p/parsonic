@@ -52,3 +52,11 @@ export const CustomControl = {
       </select>
     </test-theme-switch>`,
 }
+
+export const SingleButton = {
+  render: () =>
+    html`<test-theme-switch
+      data-strategy="class"
+      class="single-button"
+      data-theme="light"></test-theme-switch>`,
+}
