@@ -12,7 +12,8 @@ export default {
 }
 
 export const Default = {
-  render: () => html`<test-theme-switch></test-theme-switch>`,
+  render: () =>
+    html`<test-theme-switch data-strategy="class"></test-theme-switch>`,
 }
 
 export const AttributeStrategy = {
