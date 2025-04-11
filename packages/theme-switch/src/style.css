@@ -6,13 +6,19 @@
   --bar-radius: var(--ts-button-bar-border-radius, 999px);
 
   --lozenge-background: var(--ts-lozenge-background, rgb(255 255 255 / 20%));
+  --lozenge-duration: var(--ts-lozenge-transition-duration, 300ms);
+  --lozenge-inset: var(--ts-lozenge-inset, 0 auto 0 0);
   --lozenge-radius: var(--ts-lozenge-border-radius, 999px);
-  --lozenge-duration: var(--ts-lozenge-duration, 300ms);
+  --lozenge-size: var(
+    --ts-lozenge-size,
+    calc(var(--button-icon-size) + calc(var(--button-padding) * 2))
+  );
 
   --button-background: var(--ts-button-background, none);
   --button-border: var(--ts-button-border, none);
   --button-color: var(--ts-button-color, white);
-  --button-size: var(--ts-button-size, 1.25rem);
+  --button-icon-size: var(--ts-button-icon-size, 1.25rem);
+  --button-padding: var(--ts-button-padding, 0.5em);
 
   display: flex;
 }
@@ -20,11 +26,8 @@
 #switch {
   display: flex;
   background: var(--bar-background);
-  border: none;
   border-radius: var(--bar-radius);
-  font-size: var(--button-size);
-  line-height: 1;
-  margin: 0;
+  font-size: var(--button-icon-size);
   position: relative;
 
   &::before {
@@ -32,12 +35,11 @@
     border-radius: var(--lozenge-radius);
     content: ' ';
     display: block;
-    height: 1.5em;
-    top: 0.25em;
-    left: 0.25em;
+    height: var(--lozenge-size);
+    inset: var(--lozenge-inset);
     position: absolute;
     transition: translate var(--lozenge-duration);
-    width: 1.5em;
+    width: var(--lozenge-size);
   }
 }
 
@@ -49,8 +51,7 @@ button {
   cursor: pointer;
   display: inline-flex;
   font-size: inherit;
-  margin: 0;
-  padding: 0.5em;
+  padding: var(--button-padding);
   position: relative;
   transition-duration: var(--lozenge-duration);
   transition-property: opacity, color;
@@ -72,7 +73,7 @@ button {
 
 :host([data-theme='dark']) {
   #switch::before {
-    translate: 2em;
+    translate: 100%;
   }
 
   #dark {
