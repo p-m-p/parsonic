@@ -173,8 +173,9 @@ export default class ThemeSwitch extends HTMLElement {
       this.dataset.theme = theme
 
       if (this.#buttons.length > 1) {
-        this.#buttons.forEach((b) => b.setAttribute('aria-pressed', 'false'))
-        button?.setAttribute('aria-pressed', 'true')
+        this.#buttons.forEach((b) =>
+          b.setAttribute('aria-pressed', b.value === theme)
+        )
       }
     }
   }
