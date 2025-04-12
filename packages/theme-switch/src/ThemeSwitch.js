@@ -12,8 +12,8 @@ import stylesheet from './style.css' with { type: 'css' }
  * @csspart button-bar - Style the button bar
  *
  * @csspart button - Style the button group buttons
- * @csspart light - Style the light theme button
- * @csspart dark - Style the dark theme button
+ * @csspart light-button - Style the light theme button
+ * @csspart dark-button - Style the dark theme button
  *
  * @csspart icon - Style the default icons
  *
@@ -36,7 +36,7 @@ export default class ThemeSwitch extends HTMLElement {
   connectedCallback() {
     const {
       darkLabel = 'Dark',
-      label = 'Color mode',
+      label = 'Theme mode',
       lightLabel = 'Light',
     } = this.dataset
     const theme = this.#activeTheme()
@@ -48,7 +48,7 @@ export default class ThemeSwitch extends HTMLElement {
   <div id="switch" part="button-bar" role="group" aria-label="${label}">
     <button
       id="light"
-      part="button light"
+      part="button light-button"
       type="button"
       aria-label="${lightLabel}"
       aria-pressed="${theme === 'light' ? 'true' : 'false'}"
@@ -80,7 +80,7 @@ export default class ThemeSwitch extends HTMLElement {
     </button>
     <button
       id="dark"
-      part="button dark"
+      part="button dark-button"
       type="button"
       aria-label="${darkLabel}"
       aria-pressed="${theme === 'dark' ? 'true' : 'false'}"

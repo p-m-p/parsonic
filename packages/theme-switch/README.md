@@ -154,6 +154,106 @@ To set the selected theme when the element is first rendered, set the
 `data-theme` attribute. Depending on the application this might be set from a
 server side template, local storage or a cookie.
 
-```html
-<theme-switch data-theme="dark" data-strategy="class"></theme-switch>
+The example below is a React Component that sets the theme using a custom hook.
+
+```jsx
+function ThemeSwitch() {
+  const [theme, setTheme] = useTheme()
+
+  return (
+    <theme-switch
+      data-theme={theme}
+      onthemeSwitch={(ev) => setTheme(ev.detail.theme)}></theme-switch>
+  )
+}
 ```
+
+## Customising the switch
+
+The default switch is composed of a button group with a sun icon for light mode
+and a moon icon for dark mode. The button bar/group has a default label of
+`Theme mode` and can be overridden using the `data-label` attribute. The dark
+and light mode buttons have the labels `Dark` and `Light` respectively that can
+be overridden using the `data-dark-label` and `data-light-label` attributes.
+
+```html
+<theme-switch
+  data-label="Theme mode"
+  data-dark-label="Dark mode"
+  data-light-label="Light mode"></theme-switch>
+```
+
+The button bar can be styled using the `button-bar` css part and the buttons
+with the `button`, `light-button` and `dark-button` css parts.
+
+```css
+theme-switch::part(button-bar) {
+  background-color: var(--bg-primary);
+}
+
+theme-switch::part(button) {
+  color: var(--text-secondary);
+}
+
+theme-switch[data-theme='dark']::part(dark-button) {
+  color: var(--text-selected);
+}
+```
+
+The default icons can be replaced using the `light-icon` and `dark-icon` slots
+and styled via the `icon`, `light-icon` and `dark-icon` css parts.
+
+```html
+<theme-switch
+  ><img slot="light-icon" src="/img/light.svg" /><img
+    slot="dark-icon"
+    src="/img/dark.svg"
+/></theme-switch>
+```
+
+<!-- prettier-ignore -->
+> [!NOTE]
+> When using slots for the icons it's important to avoid any additional
+> whitespace after the opening theme-switch tag as this will be rendered
+> into the default slot and the element will not be displayed correctly.
+
+The switch may also be styled using the CSS custom properties listed below.
+
+```css
+:root {
+  --ts-button-bar-background: light-dark(
+    rgb(0 0 0 / 80%),
+    rgb(255 255 255 / 20%)
+  );
+  --ts-button-bar-border-radius: 999px;
+
+  --ts-lozenge-background: rgb(255 255 255 / 20%);
+  --ts-lozenge-transition-duration: 300ms;
+  --ts-lozenge-inset: 0 auto 0 0;
+  --ts-lozenge-border-radius: 999px;
+  --ts-lozenge-size: calc(
+    var(--ts-button-icon-size) + calc(var(--ts-button-padding) * 2)
+  );
+
+  --ts-button-background: none;
+  --ts-button-border: none;
+  --ts-button-color: white;
+  --ts-button-icon-size: 1.25rem;
+  --ts-button-padding: 0.5em;
+}
+```
+
+## `themeSwitch` event
+
+When the theme is switched a [custom event][custom-event] is dispatched. This
+event bubbles and can be cancelled to prevent switching if needed.
+
+```js
+document.addEventListener('themeSwitch', (ev) => {
+  const { theme } = ev.detail
+
+  metrics.track('themeSwitch', { theme })
+})
+```
+
+[custom-event]: https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent
