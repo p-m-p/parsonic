@@ -1,5 +1,11 @@
 # @parsonic/theme-switch
 
+## 0.3.0
+
+### Minor Changes
+
+- 8d9df3c: Allow setting custom theme switch event name
+
 ## 0.2.0
 
 ### Minor Changes
