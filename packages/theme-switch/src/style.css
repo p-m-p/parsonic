@@ -3,7 +3,7 @@
     --ts-button-bar-background,
     light-dark(rgb(0 0 0 / 80%), rgb(255 255 255 / 20%))
   );
-  --bar-radius: var(--ts-button-bar-border-radius, 999px);
+  --bar-radius: var(--ts-button-bar-border-radius, var(--lozenge-radius));
 
   --lozenge-background: var(--ts-lozenge-background, rgb(255 255 255 / 20%));
   --lozenge-duration: var(--ts-lozenge-transition-duration, 300ms);

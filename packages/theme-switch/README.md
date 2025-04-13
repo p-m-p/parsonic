@@ -228,12 +228,12 @@ The switch may also be styled using the CSS custom properties listed below.
   --ts-button-bar-border-radius: 999px;
 
   --ts-lozenge-background: rgb(255 255 255 / 20%);
-  --ts-lozenge-transition-duration: 300ms;
-  --ts-lozenge-inset: 0 auto 0 0;
   --ts-lozenge-border-radius: 999px;
+  --ts-lozenge-inset: 0 auto 0 0;
   --ts-lozenge-size: calc(
     var(--ts-button-icon-size) + calc(var(--ts-button-padding) * 2)
   );
+  --ts-lozenge-transition-duration: 300ms;
 
   --ts-button-background: none;
   --ts-button-border: none;

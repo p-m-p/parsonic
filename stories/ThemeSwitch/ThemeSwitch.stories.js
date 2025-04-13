@@ -18,17 +18,22 @@ export const Default = {
 
 export const AttributeStrategy = {
   render: () =>
-    html`<test-theme-switch
-      data-strategy="attribute"
-      data-theme="light"></test-theme-switch>`,
+    html`<test-theme-switch data-strategy="attribute"></test-theme-switch>`,
 }
 
 export const IconSlots = {
   render: () =>
-    html`<test-theme-switch data-strategy="attribute" data-theme="light"
+    html`<test-theme-switch data-strategy="attribute"
       ><span slot="light-icon">L</span
       ><span slot="dark-icon">D</span></test-theme-switch
     >`,
+}
+
+export const Styled = {
+  render: () =>
+    html`<test-theme-switch
+      data-strategy="attribute"
+      class="styled"></test-theme-switch>`,
 }
 
 export const CustomButtons = {
@@ -45,7 +50,7 @@ export const CustomButtons = {
 
 export const CustomControl = {
   render: () =>
-    html`<test-theme-switch class="" data-theme="system">
+    html`<test-theme-switch data-strategy="attribute" data-theme="system">
       <select name="theme">
         <option value="light">Light</option>
         <option value="system" selected>System</option>
@@ -58,6 +63,5 @@ export const SingleButton = {
   render: () =>
     html`<test-theme-switch
       data-strategy="class"
-      class="single-button"
-      data-theme="light"></test-theme-switch>`,
+      class="single-button"></test-theme-switch>`,
 }

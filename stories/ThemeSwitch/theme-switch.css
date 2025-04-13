@@ -26,21 +26,38 @@ html {
     opacity: 1;
   }
 
-  &::part(button dark) {
+  &::part(dark-button) {
     position: absolute;
     top: 0;
     left: 0;
   }
 
   &[data-theme='dark'] {
-    &::part(button dark) {
+    &::part(dark-button) {
       visibility: hidden;
     }
   }
 
   &[data-theme='light'] {
-    &::part(button light) {
+    &::part(light-button) {
       visibility: hidden;
     }
+  }
+}
+
+.styled {
+  --ts-button-bar-background: rgb(255 173 0 / 20%);
+
+  --ts-lozenge-background: rgb(255 173 0);
+  --ts-lozenge-border-radius: 0.25rem;
+  --ts-lozenge-transition-duration: 200ms;
+
+  --ts-button-background: transparent;
+  --ts-button-color: black;
+  --ts-button-icon-size: 1.5rem;
+
+  &[data-theme='dark']::part(light-button) {
+    color: rgb(255 173 0);
+    opacity: 1;
   }
 }
