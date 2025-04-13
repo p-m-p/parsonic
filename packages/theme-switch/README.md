@@ -183,10 +183,10 @@ be overridden using the `data-dark-label` and `data-light-label` attributes.
   data-light-label="Light mode"></theme-switch>
 ```
 
-The button bar can be styled using the `button-bar` css part and the buttons
-with the `button`, `light-button` and `dark-button` css parts.
+The button bar can be styled using the `button-bar` CSS part and the buttons
+with the `button`, `light-button` and `dark-button` CSS parts.
 
-```css
+```CSS
 theme-switch::part(button-bar) {
   background-color: var(--bg-primary);
 }
@@ -201,7 +201,7 @@ theme-switch[data-theme='dark']::part(dark-button) {
 ```
 
 The default icons can be replaced using the `light-icon` and `dark-icon` slots
-and styled via the `icon`, `light-icon` and `dark-icon` css parts.
+and styled via the `icon`, `light-icon` and `dark-icon` CSS parts.
 
 ```html
 <theme-switch
@@ -219,7 +219,7 @@ and styled via the `icon`, `light-icon` and `dark-icon` css parts.
 
 The switch may also be styled using the CSS custom properties listed below.
 
-```css
+```CSS
 :root {
   --ts-button-bar-background: light-dark(
     rgb(0 0 0 / 80%),
@@ -243,6 +243,61 @@ The switch may also be styled using the CSS custom properties listed below.
 }
 ```
 
+## Custom controls
+
+To use custom controls instead of the default button bar, pass your own buttons
+in the default slot. Buttons require a `value` attribute with the theme setting
+associated with that button.
+
+```html
+<theme-switch>
+  <div class="theme-buttons">
+    <button value="light">☀️</button>
+    <button value="system">🖥️</button>
+    <button value="dark">🌙</button>
+  </div>
+</theme-switch>
+```
+
+Form fields that emit a `change` event can be used to set the theme instead of
+buttons. The example below uses a radio group to set the theme.
+
+```html
+<theme-switch>
+  <fieldset>
+    <legend>Theme mode</legend>
+    <label>
+      <input type="radio" name="theme" value="light" />
+      Light
+    </label>
+    <label>
+      <input type="radio" name="theme" value="system" />
+      System
+    </label>
+    <label>
+      <input type="radio" name="theme" value="dark" />
+      Dark
+    </label>
+  </fieldset>
+</theme-switch>
+```
+
+## Custom theme values
+
+To use custom theme values instead of the default `light` and `dark` supply your
+own custom button group or form control.
+
+```html
+<theme-switch>
+  <label for="theme">Theme mode</label>
+  <select id="theme" name="theme">
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+  </select>
+</theme-switch>
+```
+
 ## `themeSwitch` event
 
 When the theme is switched a [custom event][custom-event] is dispatched. This
@@ -254,6 +309,12 @@ document.addEventListener('themeSwitch', (ev) => {
 
   metrics.track('themeSwitch', { theme })
 })
+```
+
+The default event name can be overridden using the `data-event-name` attribute.
+
+```html
+<theme-switch data-event-name="app:theme-switch"></theme-switch>
 ```
 
 [custom-event]: https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent

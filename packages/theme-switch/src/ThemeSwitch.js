@@ -7,6 +7,7 @@ import stylesheet from './style.css' with { type: 'css' }
  * @attr {string} [data-dark-label] - ARIA label for the dark theme button
  * @attr {string} [data-light-label] - ARIA label for the light theme button
  * @attr {string} [data-theme] - The currently active theme
+ * @attr {string} [data-event-name] - The name of the theme switch event
  *
  * @slot - Default slot for the theme switch control
  * @csspart button-bar - Style the button bar
@@ -145,7 +146,7 @@ export default class ThemeSwitch extends HTMLElement {
   }
 
   #handleThemeSwitch(ev) {
-    const { strategy } = this.dataset
+    const { strategy, eventName = 'themeSwitch' } = this.dataset
     const button =
       ev.target instanceof HTMLButtonElement
         ? ev.target
@@ -156,7 +157,7 @@ export default class ThemeSwitch extends HTMLElement {
       theme &&
       theme !== this.dataset.theme &&
       this.dispatchEvent(
-        new CustomEvent('themeSwitch', {
+        new CustomEvent(eventName, {
           bubbles: true,
           cancelable: true,
           detail: { theme },
