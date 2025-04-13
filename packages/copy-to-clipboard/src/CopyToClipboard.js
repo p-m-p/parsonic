@@ -19,6 +19,7 @@ import stylesheet from './style.css' with { type: 'css' }
  * @attr {string} [data-announcement] - Text to announce during a successful copy
  * @attr {string} [data-text] - Text to copy to clipboard.
  * @attr {string} [data-url] - A URL pointing to or containing the data to copy to the clipboard
+ * @attr {string} data-result-event-name - Override for the name of the result event
  *
  * @slot - Default slot for the page content that can be copied.
  *
@@ -98,6 +99,8 @@ export default class CopyToClipboard extends HTMLElement {
     })
 
     buttonSlot?.addEventListener('click', () => {
+      const { announcement = 'Copied!', resultEventName = 'copyResult' } =
+        this.dataset
       const dataTransfer = new DataTransfer()
 
       if (
@@ -111,7 +114,6 @@ export default class CopyToClipboard extends HTMLElement {
       ) {
         this.getClipboardData(dataTransfer)
           .then(async (data) => {
-            const { announcement = 'Copied!' } = this.dataset
             const notice = this.shadowRoot.getElementById('announcement')
 
             notice.textContent = announcement
@@ -119,7 +121,7 @@ export default class CopyToClipboard extends HTMLElement {
 
             await navigator.clipboard.write([data])
             this.dispatchEvent(
-              new CustomEvent('copyResult', {
+              new CustomEvent(resultEventName, {
                 bubbles: true,
                 detail: {
                   result: 'success',
@@ -130,7 +132,7 @@ export default class CopyToClipboard extends HTMLElement {
           })
           .catch((err) => {
             this.dispatchEvent(
-              new CustomEvent('copyResult', {
+              new CustomEvent(resultEventName, {
                 bubbles: true,
                 detail: {
                   result: 'error',

@@ -121,6 +121,13 @@
               },
               "description": "A URL pointing to or containing the data to copy to the clipboard",
               "name": "data-url"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Override for the name of the result event",
+              "name": "data-result-event-name"
             }
           ],
           "superclass": {
