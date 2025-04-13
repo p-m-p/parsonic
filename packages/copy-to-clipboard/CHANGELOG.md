@@ -1,5 +1,11 @@
 # @parsonic/copy-to-clipboard
 
+## 1.3.0
+
+### Minor Changes
+
+- b23338c: Allow overriding of the copy result event name
+
 ## 1.2.1
 
 ### Patch Changes
