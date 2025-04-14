@@ -1,6 +1,6 @@
 # Theme-Switch
 
-A web component for ...
+A web component for switching between light and dark mode or other themes.
 
 ## Install
 
