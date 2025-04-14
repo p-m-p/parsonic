@@ -1,4 +1,7 @@
-import type ThemeSwitch from './ThemeSwitch.js'
+import type {
+  default as ThemeSwitch,
+  ThemeSwitchDetail,
+} from './ThemeSwitch.js'
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -6,6 +9,6 @@ declare global {
   }
 
   interface GlobalEventHandlersEventMap {
-    themeSwitch: CustomEvent<{ theme: string }>
+    themeSwitch: CustomEvent<ThemeSwitchDetail>
   }
 }
