@@ -1,5 +1,11 @@
 # @parsonic/theme-switch
 
+## 1.0.0
+
+### Major Changes
+
+- 7bbed56: Release v1
+
 ## 0.3.0
 
 ### Minor Changes
