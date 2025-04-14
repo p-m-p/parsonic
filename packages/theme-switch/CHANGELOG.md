@@ -1,5 +1,11 @@
 # @parsonic/theme-switch
 
+## 1.1.0
+
+### Minor Changes
+
+- e110c80: Minify component template
+
 ## 1.0.0
 
 ### Major Changes
