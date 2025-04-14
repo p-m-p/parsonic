@@ -1,5 +1,11 @@
 # @parsonic/back-to-top
 
+## 1.3.0
+
+### Minor Changes
+
+- e110c80: Minify component template
+
 ## 1.2.1
 
 ### Patch Changes
