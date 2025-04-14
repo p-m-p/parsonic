@@ -1,5 +1,5 @@
 import { resolve } from 'node:path'
-import { cssImports } from '@parsonic/esbuild-plugin'
+import { cssImports, htmlMinify } from '@parsonic/esbuild-plugin'
 import { build } from 'esbuild'
 import { globSync } from 'glob'
 
@@ -11,7 +11,7 @@ await Promise.all([
     entryPoints: [indexPath, ...globSync('src/**/*.js')],
     format: 'esm',
     outdir: '.',
-    plugins: [cssImports()],
+    plugins: [cssImports(), htmlMinify()],
   }),
 
   build({
@@ -20,7 +20,7 @@ await Promise.all([
     format: 'iife',
     minify: true,
     outfile: './min.js',
-    plugins: [cssImports({ minify: true })],
+    plugins: [cssImports({ minify: true }), htmlMinify()],
     sourcemap: true,
   }),
 ])

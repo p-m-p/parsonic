@@ -26,6 +26,7 @@
     "@storybook/test": "^8.6.8",
     "@storybook/web-components": "^8.6.8",
     "@storybook/web-components-vite": "^8.6.8",
+    "@types/html-minifier": "^4.0.5",
     "@types/node": "22",
     "esbuild": "^0.25.0",
     "eslint": "^9.17.0",
@@ -58,6 +59,7 @@
     "build:back-to-top": {
       "command": "pnpm run --filter=@parsonic/back-to-top build",
       "files": [
+        "scripts/build.js",
         "packages/back-to-top/src/*"
       ],
       "output": [
@@ -67,6 +69,7 @@
     "build:copy-to-clipboard": {
       "command": "pnpm run --filter=@parsonic/copy-to-clipboard build",
       "files": [
+        "scripts/build.js",
         "packages/copy-to-clipboard/src/*"
       ],
       "output": [
@@ -76,6 +79,7 @@
     "build:share-button": {
       "command": "pnpm run --filter=@parsonic/share-button build",
       "files": [
+        "scripts/build.js",
         "packages/share-button/src/*"
       ],
       "output": [
@@ -85,6 +89,7 @@
     "build:theme-switch": {
       "command": "pnpm run --filter=@parsonic/theme-switch build",
       "files": [
+        "scripts/build.js",
         "packages/theme-switch/src/*"
       ],
       "output": [
@@ -136,6 +141,17 @@
         "packages/copy-to-clipboard/CopyToClipboard.d.ts.map"
       ]
     },
+    "types:esbuild-plugin": {
+      "command": "pnpm run --filter=@parsonic/esbuild-plugin types",
+      "files": [
+        "tsconfig.json",
+        "packages/esbuild-plugin/tsconfig.json",
+        "packages/esbuild-plugin/index.js"
+      ],
+      "output": [
+        "packages/esbuild-plugin/index.d.ts"
+      ]
+    },
     "types:share-button": {
       "command": "pnpm run --filter=@parsonic/share-button types",
       "files": [
@@ -164,6 +180,7 @@
       "dependencies": [
         "types:back-to-top",
         "types:copy-to-clipboard",
+        "types:esbuild-plugin",
         "types:share-button",
         "types:theme-switch"
       ]

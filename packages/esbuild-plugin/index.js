@@ -1,8 +1,14 @@
 import { readFile } from 'node:fs/promises'
 import cssnano from 'cssnano'
 import postcss from 'postcss'
+import { minify } from 'html-minifier'
 
-/** @type {import('./index.js').cssImports} */
+/**
+ * Turns native ESM CSS imports into JS CSSStyleSheet declaration imports.
+ *
+ * @param {{ minify?: boolean }} options
+ * @returns {import('esbuild').Plugin}
+ */
 export function cssImports(options) {
   return {
     name: 'css-imports',
@@ -16,7 +22,9 @@ export function cssImports(options) {
           }
 
           const styles = await readFile(args.path, 'utf8')
-          const { css } = await postcss(plugins).process(styles)
+          const { css } = await postcss(plugins).process(styles, {
+            from: args.path,
+          })
 
           return {
             contents: `const sheet = new CSSStyleSheet()
@@ -26,6 +34,40 @@ export default sheet
 `,
             watchFiles: [args.path],
           }
+        }
+      })
+    },
+  }
+}
+
+/**
+ * Minifies the HTML content of innerHTML property assignments.
+ *
+ * @returns {import('esbuild').Plugin}
+ */
+export function htmlMinify() {
+  return {
+    name: 'html-minify',
+    setup(build) {
+      build.onLoad({ filter: /.*/ }, async (args) => {
+        const fileContent = await readFile(args.path, 'utf8')
+        const contents = fileContent.replace(
+          /innerHTML\s*=\s*`([^`]+)`/,
+          (_, html) => {
+            const minifiedHtml = minify(html, {
+              collapseWhitespace: true,
+              minifyCSS: true,
+              minifyJS: true,
+              removeComments: true,
+            })
+
+            return `innerHTML=\`${minifiedHtml}\``
+          }
+        )
+
+        return {
+          contents,
+          watchFiles: [args.path],
         }
       })
     },
