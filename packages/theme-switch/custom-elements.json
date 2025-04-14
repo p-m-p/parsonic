@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/ThemeSwitch.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ThemeSwitch",
+          "cssParts": [
+            {
+              "description": "Style the button bar",
+              "name": "button-bar"
+            },
+            {
+              "description": "Style the button group buttons",
+              "name": "button"
+            },
+            {
+              "description": "Style the light theme button",
+              "name": "light-button"
+            },
+            {
+              "description": "Style the dark theme button",
+              "name": "dark-button"
+            },
+            {
+              "description": "Style the default icons",
+              "name": "icon"
+            },
+            {
+              "description": "Style the light theme icon",
+              "name": "light-icon-"
+            },
+            {
+              "description": "Style the dark theme icon",
+              "name": "dark-icon"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for the theme switch control",
+              "name": ""
+            },
+            {
+              "description": "Slot for a custom light theme icon",
+              "name": "light-icon"
+            },
+            {
+              "description": "Slot for a custom dark theme icon",
+              "name": "dark-icon"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "register",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "tagName",
+                  "default": "'theme-switch'"
+                }
+              ],
+              "description": "Defines the custom element with provided tag name"
+            }
+          ],
+          "events": [
+            {
+              "name": "themeSwitch",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when the theme is switched"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "ARIA label for the theme switcher",
+              "name": "data-label"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "ARIA label for the dark theme button",
+              "name": "data-dark-label"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "ARIA label for the light theme button",
+              "name": "data-light-label"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "The currently active theme",
+              "name": "data-theme"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "The name of the theme switch event",
+              "name": "data-event-name"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ThemeSwitch",
+            "module": "src/ThemeSwitch.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "theme-switch",
+          "declaration": {
+            "name": "ThemeSwitch",
+            "module": "src/index.js"
+          }
+        }
+      ]
+    }
+  ]
+}

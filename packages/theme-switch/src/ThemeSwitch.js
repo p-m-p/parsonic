@@ -1,6 +1,11 @@
 import stylesheet from './style.css' with { type: 'css' }
 
 /**
+ * @typedef {object} ThemeSwitchDetail
+ * @property {string} theme - The selected theme
+ */
+
+/**
  * @tagName theme-switch
  *
  * @attr {string} [data-label] - ARIA label for the theme switcher
@@ -23,6 +28,8 @@ import stylesheet from './style.css' with { type: 'css' }
  *
  * @slot dark-icon - Slot for a custom dark theme icon
  * @csspart dark-icon - Style the dark theme icon
+ *
+ * @fires {CustomEvent<ThemeSwitchDetail>} themeSwitch - Event dispatched when the theme is switched
  */
 export default class ThemeSwitch extends HTMLElement {
   /**

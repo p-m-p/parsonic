@@ -1,5 +1,3 @@
-A collection of handy little web components.
-
 ## Back to top
 
 Add a back to top button to any web page or scrollable container.
@@ -49,3 +47,17 @@ Add a share button to any web page.
 ```
 
 [View the package](./packages/share-button) details for full usage instructions.
+
+## Theme switch
+
+Add a theme switcher for dark and light mode or other website themes.
+
+```html
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/@parsonic/theme-switch/min.js"></script>
+
+<theme-switch></theme-switch>
+```
+
+[View the package](./packages/theme-switch) details for full usage instructions.
