@@ -1,5 +1,11 @@
 # @parsonic/back-to-top
 
+## 1.3.1
+
+### Patch Changes
+
+- 4ec533b: Dont't minify template string for non minfied class
+
 ## 1.3.0
 
 ### Minor Changes

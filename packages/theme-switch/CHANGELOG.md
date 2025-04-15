@@ -1,5 +1,15 @@
 # @parsonic/theme-switch
 
+## 1.2.0
+
+### Minor Changes
+
+- 3a49223: Check assigned elements and decendants for buttons in default slot
+
+### Patch Changes
+
+- 4ec533b: Dont't minify template string for non minfied class
+
 ## 1.1.0
 
 ### Minor Changes

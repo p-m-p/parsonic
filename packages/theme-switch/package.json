@@ -1,6 +1,6 @@
 {
   "name": "@parsonic/theme-switch",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A web component for switching between light, dark and other theme modes",
   "main": "index.js",
   "types": "index.d.ts",
