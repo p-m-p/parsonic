@@ -102,6 +102,14 @@
         "build:copy-to-clipboard",
         "build:share-button",
         "build:theme-switch"
+      ],
+      "command": "pnpm run --filter=@parsonic/all build",
+      "files": [
+        "scripts/build.js",
+        "packages/all/src/*"
+      ],
+      "output": [
+        "packages/all/*.{js,map}"
       ]
     },
     "release": {

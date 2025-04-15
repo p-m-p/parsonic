@@ -54,14 +54,19 @@ export function htmlMinify() {
         const contents = fileContent.replace(
           /innerHTML\s*=\s*`([^`]+)`/,
           (_, html) => {
-            const minifiedHtml = minify(html, {
-              collapseWhitespace: true,
-              minifyCSS: true,
-              minifyJS: true,
-              removeComments: true,
-            })
+            try {
+              const minifiedHtml = minify(html, {
+                collapseWhitespace: true,
+                minifyCSS: true,
+                minifyJS: true,
+                removeComments: true,
+              })
 
-            return `innerHTML=\`${minifiedHtml}\``
+              return `innerHTML = \`${minifiedHtml}\``
+            } catch (e) {
+              console.log(e)
+              return `innerHTML = \`${html}\``
+            }
           }
         )
 

@@ -1,13 +1,12 @@
 {
-  "name": "@parsonic/theme-switch",
-  "version": "1.1.0",
-  "description": "A web component for switching between light, dark and other theme modes",
+  "name": "@parsonic/all",
+  "version": "1.0.0",
+  "description": "All of the @parsonic web components in one package",
   "main": "index.js",
   "types": "index.d.ts",
   "type": "module",
   "files": [
     "CHANGELOG.md",
-    "custom-elements.json",
     "*.js",
     "*.map",
     "*.ts"
@@ -19,18 +18,20 @@
   "scripts": {
     "build": "node ../../scripts/build.js",
     "types": "tsc",
-    "generate-manifest": "cem analyze --globs 'src/ThemeSwitch.js'",
     "prepare": "cp ../../LICENSE ./"
   },
   "keywords": [
-    "color",
     "component",
-    "darkmode",
-    "scheme",
-    "theme",
+    "css",
+    "html",
     "web"
   ],
   "author": "Phil Parsons",
   "license": "MIT",
-  "customElements": "custom-elements.json"
+  "dependencies": {
+    "@parsonic/back-to-top": "workspace:*",
+    "@parsonic/copy-to-clipboard": "workspace:*",
+    "@parsonic/share-button": "workspace:*",
+    "@parsonic/theme-switch": "workspace:*"
+  }
 }

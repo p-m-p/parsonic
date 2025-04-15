@@ -87,6 +87,21 @@ importers:
         specifier: ^0.14.11
         version: 0.14.12
 
+  packages/all:
+    dependencies:
+      '@parsonic/back-to-top':
+        specifier: workspace:*
+        version: link:../back-to-top
+      '@parsonic/copy-to-clipboard':
+        specifier: workspace:*
+        version: link:../copy-to-clipboard
+      '@parsonic/share-button':
+        specifier: workspace:*
+        version: link:../share-button
+      '@parsonic/theme-switch':
+        specifier: workspace:*
+        version: link:../theme-switch
+
   packages/back-to-top: {}
 
   packages/copy-to-clipboard: {}
