@@ -185,6 +185,15 @@
       ]
     },
     "types": {
+      "command": "pnpm run --filter=@parsonic/all types",
+      "files": [
+        "tsconfig.json",
+        "packages/all/tsconfig.json",
+        "packages/all/src/*.js"
+      ],
+      "output": [
+        "packages/all/*.d.ts"
+      ],
       "dependencies": [
         "types:back-to-top",
         "types:copy-to-clipboard",

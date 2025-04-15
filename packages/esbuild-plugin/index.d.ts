@@ -9,8 +9,7 @@ export function cssImports(options: {
 }): import("esbuild").Plugin;
 /**
  * Minifies the HTML content of innerHTML property assignments.
+ *
+ * @returns {import('esbuild').Plugin}
  */
-export function htmlMinify(): {
-    name: string;
-    setup(build: any): void;
-};
+export function htmlMinify(): import("esbuild").Plugin;
