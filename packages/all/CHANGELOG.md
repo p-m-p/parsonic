@@ -1,5 +1,11 @@
 # @parsonic/all
 
+## 1.1.0
+
+### Minor Changes
+
+- 18f4113: Add register method and readme
+
 ## 1.0.1
 
 ### Patch Changes
