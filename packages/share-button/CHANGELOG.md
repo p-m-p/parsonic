@@ -1,5 +1,11 @@
 # @parsonic/share-button
 
+## 1.4.1
+
+### Patch Changes
+
+- 4ec533b: Dont't minify template string for non minfied class
+
 ## 1.4.0
 
 ### Minor Changes
