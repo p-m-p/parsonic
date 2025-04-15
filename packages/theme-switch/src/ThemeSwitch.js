@@ -51,6 +51,9 @@ export default class ThemeSwitch extends HTMLElement {
 
     this.dataset.theme = theme
 
+    const darkPressed = theme === 'dark' ? 'true' : 'false'
+    const lightPressed = theme === 'light' ? 'true' : 'false'
+
     const template = document.createElement('template')
     template.innerHTML = `<slot>
   <div id="switch" part="button-bar" role="group" aria-label="${label}">
@@ -59,7 +62,7 @@ export default class ThemeSwitch extends HTMLElement {
       part="button light-button"
       type="button"
       aria-label="${lightLabel}"
-      aria-pressed="${theme === 'light' ? 'true' : 'false'}"
+      aria-pressed="${lightPressed}"
       value="light">
       <slot name="light-icon" class="icon-slot">
         <svg
@@ -91,7 +94,7 @@ export default class ThemeSwitch extends HTMLElement {
       part="button dark-button"
       type="button"
       aria-label="${darkLabel}"
-      aria-pressed="${theme === 'dark' ? 'true' : 'false'}"
+      aria-pressed="${darkPressed}"
       value="dark">
       <slot name="dark-icon" class="icon-slot">
         <svg
@@ -121,15 +124,15 @@ export default class ThemeSwitch extends HTMLElement {
     const defaultSlot = this.shadowRoot.querySelector('slot')
     this.#buttons = Array.from(defaultSlot.querySelectorAll('button[value]'))
 
-    defaultSlot.addEventListener(
-      'slotchange',
-      (ev) =>
-        (this.#buttons = ev.target
-          .assignedElements({ flatten: true })
-          .filter(
-            (el) => el instanceof HTMLButtonElement && el.value !== undefined
-          ))
-    )
+    defaultSlot.addEventListener('slotchange', (ev) => {
+      this.#buttons = ev.target
+        .assignedElements()
+        .flatMap((el) =>
+          el instanceof HTMLButtonElement && el.value !== undefined
+            ? [el]
+            : Array.from(el.querySelectorAll('button[value]'))
+        )
+    })
     defaultSlot.addEventListener('click', (ev) => this.#handleThemeSwitch(ev))
     defaultSlot.addEventListener('change', (ev) => this.#handleThemeSwitch(ev))
   }

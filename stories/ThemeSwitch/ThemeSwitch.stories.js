@@ -42,9 +42,11 @@ export const CustomButtons = {
       class="custom-selection"
       data-theme="system"
       data-strategy="class">
-      <button value="light">Light</button>
-      <button value="system" aria-pressed="true">System</button>
-      <button value="dark">Dark</button>
+      <div>
+        <button value="light">Light</button>
+        <button value="system" aria-pressed="true">System</button>
+        <button value="dark">Dark</button>
+      </div>
     </test-theme-switch>`,
 }
 
