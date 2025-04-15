@@ -11,7 +11,7 @@ await Promise.all([
     entryPoints: [indexPath, ...globSync('src/**/*.js')],
     format: 'esm',
     outdir: '.',
-    plugins: [cssImports(), htmlMinify()],
+    plugins: [cssImports()],
   }),
 
   build({
