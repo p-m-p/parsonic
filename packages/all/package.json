@@ -1,6 +1,6 @@
 {
   "name": "@parsonic/all",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "All of the @parsonic web components in one package",
   "main": "index.js",
   "types": "index.d.ts",
