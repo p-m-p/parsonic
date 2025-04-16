@@ -12,4 +12,5 @@ packages/*/*.d.ts.map
 !packages/esbuild-plugin/*.js
 !packages/create-component/*.js
 
+packages/all/index.d.ts
 packages/esbuild-plugin/index.d.ts
