@@ -106,6 +106,7 @@
       "command": "pnpm run --filter=@parsonic/all build",
       "files": [
         "scripts/build.js",
+        "packages/all/package.json",
         "packages/all/src/*"
       ],
       "output": [
