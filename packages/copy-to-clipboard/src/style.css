@@ -2,6 +2,7 @@
   --button-background: var(--ctc-button-background, rgb(255 255 255 / 8%));
   --button-border: var(--ctc-button-border, none);
   --button-color: var(--ctc-button-color, inherit);
+  --button-icon-size: var(--ctc-button-icon-size, 1rem);
   --button-inset: var(--ctc-button-inset, 0.5rem 0.5rem auto auto);
   --button-padding: var(--ctc-button-padding, 0.5rem);
   --button-radius: var(--ctc-button-radius, 0.5rem);
@@ -14,12 +15,15 @@ slot[name='button'] button {
   background: var(--button-background);
   border: var(--button-border);
   border-radius: var(--button-radius);
-  box-sizing: border-box;
+  box-sizing: content-box;
   color: var(--button-color);
   cursor: pointer;
+  font-size: var(--button-icon-size);
+  height: var(--button-icon-size);
   line-height: 1;
   padding: var(--button-padding);
   position: relative;
+  width: var(--button-icon-size);
 }
 
 #button-wrapper {

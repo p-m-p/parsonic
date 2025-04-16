@@ -136,7 +136,7 @@ that can be set using the `data-button-label` attribute.
 ```
 
 The button can be replaced entirely using the slot named `button` or styled. via
-the `button` css part.
+the `button` CSS part.
 
 ```html
 <copy-to-clipboard>
@@ -145,7 +145,7 @@ the `button` css part.
 </copy-to-clipboard>
 ```
 
-To style the icons inside the button use the `copy-icon` and `done-icon` css
+To style the icons inside the button use the `copy-icon` and `done-icon` CSS
 parts to target the SVG elements.
 
 ```css
@@ -183,6 +183,7 @@ The button may also be styled using the CSS custom properties listed below.
   --ctc-button-background: rgb(255 255 255 / 8%);
   --ctc-button-border: none;
   --ctc-button-color: inherit;
+  --ctc-button-icon-size: 1rem;
   --ctc-button-inset: 0.5rem 0.5rem auto auto;
   --ctc-button-padding: 0.5rem;
   --ctc-button-radius: 0.5rem;
@@ -201,7 +202,7 @@ in the copy button with a message. To override the default announcement of
 ```
 
 The announcement text is visually hidden by default, to style the text use the
-`announcement` and `button-wrapper` css parts.
+`announcement` and `button-wrapper` CSS parts.
 
 ```css
 copy-to-clipboard {
