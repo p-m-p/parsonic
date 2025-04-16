@@ -1,5 +1,12 @@
 # @parsonic/all
 
+## 1.1.1
+
+### Patch Changes
+
+- Updated dependencies [d38bea8]
+  - @parsonic/copy-to-clipboard@1.5.0
+
 ## 1.1.0
 
 ### Minor Changes

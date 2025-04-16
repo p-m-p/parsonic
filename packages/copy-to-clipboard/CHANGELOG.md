@@ -1,5 +1,11 @@
 # @parsonic/copy-to-clipboard
 
+## 1.5.0
+
+### Minor Changes
+
+- d38bea8: Fix button and icon sizing
+
 ## 1.4.1
 
 ### Patch Changes
