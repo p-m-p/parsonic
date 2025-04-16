@@ -10,7 +10,7 @@ npm install --save @parsonic/copy-to-clipboard
 
 ## Usage
 
-Use copy to clipboard with your favourite bundler or directly from a CDN. A
+Use copy-to-clipboard with your favourite bundler or directly from a CDN. A
 minified build is provided as `min.js` with a source map.
 
 ### Quick start

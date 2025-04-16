@@ -10,8 +10,8 @@ npm install --save @parsonic/back-to-top
 
 ## Usage
 
-Use copy to clipboard with your favourite bundler or directly from a CDN. A
-minified build is provided as `min.js` with a source map.
+Use back-to-top with your favourite bundler or directly from a CDN. A minified
+build is provided as `min.js` with a source map.
 
 ### Quick start
 

@@ -10,7 +10,7 @@ npm install --save @parsonic/all
 
 ## Usage
 
-Use copy to clipboard with your favourite bundler or directly from a CDN. A
+Use the components with your favourite bundler or directly from a CDN. A
 minified build is provided as `min.js` with a source map.
 
 ### Quick start
@@ -26,7 +26,7 @@ Add a script tag with the minified build and use the element in your page.
 Import the module at the root of your application.
 
 ```js
-import BackToTop from '@parsonic/all'
+import '@parsonic/all'
 ```
 
 If you want to control when the components are registered use the `register`
