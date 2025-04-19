@@ -1,5 +1,11 @@
 # @parsonic/theme-switch
 
+## 1.2.1
+
+### Patch Changes
+
+- 8efd6b6: Check that class name exists before attempting to remove it
+
 ## 1.2.0
 
 ### Minor Changes
