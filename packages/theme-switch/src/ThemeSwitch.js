@@ -175,7 +175,9 @@ export default class ThemeSwitch extends HTMLElement {
       )
     ) {
       if (strategy === 'class') {
-        document.documentElement.classList.remove(this.dataset.theme)
+        if (document.documentElement.classList.contains(theme)) {
+          document.documentElement.classList.remove(this.dataset.theme)
+        }
         document.documentElement.classList.add(theme)
       } else if (strategy === 'attribute') {
         document.documentElement.dataset.theme = theme
