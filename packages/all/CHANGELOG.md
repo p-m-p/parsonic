@@ -1,5 +1,12 @@
 # @parsonic/all
 
+## 1.1.3
+
+### Patch Changes
+
+- Updated dependencies [06edadb]
+  - @parsonic/theme-switch@1.2.2
+
 ## 1.1.2
 
 ### Patch Changes

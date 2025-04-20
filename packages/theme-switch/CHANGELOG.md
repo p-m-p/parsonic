@@ -1,5 +1,11 @@
 # @parsonic/theme-switch
 
+## 1.2.2
+
+### Patch Changes
+
+- 06edadb: Check the existing theme before removing
+
 ## 1.2.1
 
 ### Patch Changes
