@@ -54,7 +54,7 @@
     "trailingComma": "es5",
     "proseWrap": "always"
   },
-  "packageManager": "pnpm@10.8.1",
+  "packageManager": "pnpm@10.9.0",
   "wireit": {
     "build:back-to-top": {
       "command": "pnpm run --filter=@parsonic/back-to-top build",
