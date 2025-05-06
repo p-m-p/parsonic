@@ -5,7 +5,7 @@
   "automergeType": "branch",
   "packageRules": [
     {
-      "matchDepTypes": ["minor", "patch"],
+      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
     }
   ]
