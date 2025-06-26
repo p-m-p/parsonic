@@ -52,7 +52,7 @@
     "trailingComma": "es5",
     "proseWrap": "always"
   },
-  "packageManager": "pnpm@10.12.3",
+  "packageManager": "pnpm@10.12.4",
   "wireit": {
     "build:back-to-top": {
       "command": "pnpm run --filter=@parsonic/back-to-top build",
