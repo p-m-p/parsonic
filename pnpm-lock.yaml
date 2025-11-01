@@ -47,6 +47,9 @@ importers:
       eslint-config-prettier:
         specifier: ^10.1.5
         version: 10.1.8(eslint@9.39.0)
+      eslint-import-resolver-exports:
+        specifier: 1.0.0-beta.5
+        version: 1.0.0-beta.5(eslint-plugin-import@2.32.0(eslint@9.39.0))(eslint@9.39.0)
       eslint-plugin-import:
         specifier: ^2.31.0
         version: 2.32.0(eslint@9.39.0)
@@ -1406,6 +1409,12 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
+  eslint-import-resolver-exports@1.0.0-beta.5:
+    resolution: {integrity: sha512-o6t0w7muUpXr7MkUVzD5igQoDfAQvTmcPp8HEAJdNF8eOuAO+yn6I/TTyMxz9ecCwzX7e02vzlkHURoScUuidg==}
+    peerDependencies:
+      eslint: '*'
+      eslint-plugin-import: '*'
+
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
 
@@ -2580,6 +2589,10 @@ packages:
   resolve-from@5.0.0:
     resolution: {integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==}
     engines: {node: '>=8'}
+
+  resolve.exports@2.0.3:
+    resolution: {integrity: sha512-OcXjMsGdhL4XnbShKpAcSqPMzQoYkYyhbEaeSko47MjRP9NfEQMhZkXL1DoFlt9LWQn4YttrdnV6X2OiyzBi+A==}
+    engines: {node: '>=10'}
 
   resolve@1.22.10:
     resolution: {integrity: sha512-NPRy+/ncIMeDlTAsuqwKIiferiawhefFJtkNSW0qZJEqMEb+qBt/77B/jGeeek+F0uOeN05CDa6HXbbIgtVX4w==}
@@ -4444,6 +4457,12 @@ snapshots:
     dependencies:
       eslint: 9.39.0
 
+  eslint-import-resolver-exports@1.0.0-beta.5(eslint-plugin-import@2.32.0(eslint@9.39.0))(eslint@9.39.0):
+    dependencies:
+      eslint: 9.39.0
+      eslint-plugin-import: 2.32.0(eslint@9.39.0)
+      resolve.exports: 2.0.3
+
   eslint-import-resolver-node@0.3.9:
     dependencies:
       debug: 3.2.7
@@ -5681,6 +5700,8 @@ snapshots:
   resolve-from@4.0.0: {}
 
   resolve-from@5.0.0: {}
+
+  resolve.exports@2.0.3: {}
 
   resolve@1.22.10:
     dependencies:

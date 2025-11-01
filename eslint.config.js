@@ -1,20 +1,13 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from 'eslint-plugin-storybook'
-
+import pluginJs from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import importPlugin from 'eslint-plugin-import'
+import { configs as storybookConfigs } from 'eslint-plugin-storybook'
 import globals from 'globals'
-import pluginJs from '@eslint/js'
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    ignores: [
-      'packages/*/*.js',
-      '!packages/create-component',
-      '!packages/esbuild-plugin',
-      '.wireit',
-    ],
+    ignores: ['.wireit'],
   },
   pluginJs.configs.recommended,
   importPlugin.flatConfigs.recommended,
@@ -40,7 +33,13 @@ export default [
       ],
       'import/named': 'off',
     },
+    settings: {
+      'import/resolver': {
+        node: true,
+        exports: true,
+      },
+    },
   },
   eslintConfigPrettier,
-  ...storybook.configs['flat/recommended'],
+  ...storybookConfigs['flat/recommended'],
 ]
