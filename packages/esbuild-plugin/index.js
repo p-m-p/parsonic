@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import cssnano from 'cssnano'
-import postcss from 'postcss'
 import { minify } from 'html-minifier'
+import postcss from 'postcss'
 
 /**
  * Turns native ESM CSS imports into JS CSSStyleSheet declaration imports.
