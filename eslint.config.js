@@ -1,7 +1,8 @@
 import pluginJs from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import importPlugin from 'eslint-plugin-import-x'
-// Temporarily disabled until eslint-plugin-storybook supports ESLint 10
+// TODO: Re-enable once eslint-plugin-storybook supports ESLint 10
+// See: https://github.com/storybookjs/eslint-plugin-storybook/issues
 // import { configs as storybookConfigs } from 'eslint-plugin-storybook'
 import globals from 'globals'
 
@@ -42,6 +43,6 @@ export default [
     },
   },
   eslintConfigPrettier,
-  // Temporarily disabled until eslint-plugin-storybook supports ESLint 10
+  // TODO: Re-enable once eslint-plugin-storybook supports ESLint 10
   // ...storybookConfigs['flat/recommended'],
 ]
