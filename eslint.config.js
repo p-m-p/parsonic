@@ -1,7 +1,8 @@
 import pluginJs from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
-import importPlugin from 'eslint-plugin-import'
-import { configs as storybookConfigs } from 'eslint-plugin-storybook'
+import importPlugin from 'eslint-plugin-import-x'
+// Temporarily disabled until eslint-plugin-storybook supports ESLint 10
+// import { configs as storybookConfigs } from 'eslint-plugin-storybook'
 import globals from 'globals'
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -22,8 +23,8 @@ export default [
       ecmaVersion: 'latest',
     },
     rules: {
-      'import/extensions': ['error', 'always'],
-      'import/order': [
+      'import-x/extensions': ['error', 'always'],
+      'import-x/order': [
         'error',
         {
           alphabetize: {
@@ -31,15 +32,16 @@ export default [
           },
         },
       ],
-      'import/named': 'off',
+      'import-x/named': 'off',
     },
     settings: {
-      'import/resolver': {
+      'import-x/resolver': {
         node: true,
         exports: true,
       },
     },
   },
   eslintConfigPrettier,
-  ...storybookConfigs['flat/recommended'],
+  // Temporarily disabled until eslint-plugin-storybook supports ESLint 10
+  // ...storybookConfigs['flat/recommended'],
 ]
