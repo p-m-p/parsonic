@@ -1,10 +1,7 @@
 import pluginJs from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import importPlugin from 'eslint-plugin-import-x'
-// TODO: Re-enable once eslint-plugin-storybook supports ESLint 10
-// Currently disabled because it depends on @typescript-eslint/utils v8,
-// which is not compatible with ESLint 10. The p-m-p/slider repo uses ESLint v9.
-// import { configs as storybookConfigs } from 'eslint-plugin-storybook'
+import storybook from 'eslint-plugin-storybook'
 import globals from 'globals'
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -44,6 +41,14 @@ export default [
     },
   },
   eslintConfigPrettier,
-  // TODO: Re-enable once eslint-plugin-storybook supports ESLint 10
-  // ...storybookConfigs['flat/recommended'],
+  // Storybook-specific configuration
+  {
+    files: ['**/*.stories.js'],
+    plugins: {
+      storybook,
+    },
+    rules: {
+      ...storybook.configs['flat/recommended'][0].rules,
+    },
+  },
 ]
