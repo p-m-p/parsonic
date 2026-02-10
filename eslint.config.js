@@ -42,13 +42,8 @@ export default [
   },
   eslintConfigPrettier,
   // Storybook-specific configuration
-  {
+  ...storybook.configs['flat/recommended'].map((config) => ({
+    ...config,
     files: ['**/*.stories.js'],
-    plugins: {
-      storybook,
-    },
-    rules: {
-      ...storybook.configs['flat/recommended'][0].rules,
-    },
-  },
+  })),
 ]
