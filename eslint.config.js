@@ -44,6 +44,6 @@ export default [
   // Storybook-specific configuration
   ...storybook.configs['flat/recommended'].map((config) => ({
     ...config,
-    files: ['**/*.stories.js'],
+    files: ['**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   })),
 ]
