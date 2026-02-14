@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.types.json",
   "compilerOptions": {
+    "composite": true,
     "declarationDir": ".",
     "declarationMap": false
   },
