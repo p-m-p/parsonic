@@ -6,6 +6,7 @@
   "private": "true",
   "type": "module",
   "scripts": {
+    "lint": "eslint .",
     "types": "tsc"
   },
   "keywords": [],

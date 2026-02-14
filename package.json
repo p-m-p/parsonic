@@ -5,7 +5,7 @@
   "scripts": {
     "build": "wireit",
     "build-storybook": "storybook build",
-    "lint": "eslint .",
+    "lint": "wireit",
     "format": "prettier --write --ignore-unknown .",
     "prepare": "husky",
     "release": "wireit",
@@ -200,6 +200,84 @@
         "types:esbuild-plugin",
         "types:share-button",
         "types:theme-switch"
+      ]
+    },
+    "lint:all": {
+      "command": "pnpm run --filter=@parsonic/all lint",
+      "files": [
+        "eslint.config.base.js",
+        "packages/all/eslint.config.js",
+        "packages/all/src/**/*.js"
+      ]
+    },
+    "lint:back-to-top": {
+      "command": "pnpm run --filter=@parsonic/back-to-top lint",
+      "files": [
+        "eslint.config.base.js",
+        "packages/back-to-top/eslint.config.js",
+        "packages/back-to-top/src/**/*.js"
+      ]
+    },
+    "lint:copy-to-clipboard": {
+      "command": "pnpm run --filter=@parsonic/copy-to-clipboard lint",
+      "files": [
+        "eslint.config.base.js",
+        "packages/copy-to-clipboard/eslint.config.js",
+        "packages/copy-to-clipboard/src/**/*.js"
+      ]
+    },
+    "lint:create-component": {
+      "command": "pnpm run --filter=@parsonic/create-component lint",
+      "files": [
+        "eslint.config.base.js",
+        "packages/create-component/eslint.config.js",
+        "packages/create-component/**/*.js"
+      ]
+    },
+    "lint:esbuild-plugin": {
+      "command": "pnpm run --filter=@parsonic/esbuild-plugin lint",
+      "files": [
+        "eslint.config.base.js",
+        "packages/esbuild-plugin/eslint.config.js",
+        "packages/esbuild-plugin/**/*.js"
+      ]
+    },
+    "lint:share-button": {
+      "command": "pnpm run --filter=@parsonic/share-button lint",
+      "files": [
+        "eslint.config.base.js",
+        "packages/share-button/eslint.config.js",
+        "packages/share-button/src/**/*.js"
+      ]
+    },
+    "lint:theme-switch": {
+      "command": "pnpm run --filter=@parsonic/theme-switch lint",
+      "files": [
+        "eslint.config.base.js",
+        "packages/theme-switch/eslint.config.js",
+        "packages/theme-switch/src/**/*.js"
+      ]
+    },
+    "lint:root": {
+      "command": "eslint . --ignore-pattern 'packages/**'",
+      "files": [
+        "eslint.config.base.js",
+        "eslint.config.js",
+        "scripts/**/*.js",
+        "stories/**/*.js",
+        ".storybook/**/*.js"
+      ]
+    },
+    "lint": {
+      "dependencies": [
+        "lint:all",
+        "lint:back-to-top",
+        "lint:copy-to-clipboard",
+        "lint:create-component",
+        "lint:esbuild-plugin",
+        "lint:share-button",
+        "lint:theme-switch",
+        "lint:root"
       ]
     }
   }

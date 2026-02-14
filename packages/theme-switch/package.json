@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "node ../../scripts/build.js",
+    "lint": "eslint .",
     "types": "tsc",
     "generate-manifest": "cem analyze --globs 'src/ThemeSwitch.js'",
     "prepare": "cp ../../LICENSE ./"
