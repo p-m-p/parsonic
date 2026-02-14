@@ -1,6 +1,6 @@
 import pluginJs from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
-import importPlugin from 'eslint-plugin-import'
+import { flatConfigs as importFlatConfigs } from 'eslint-plugin-import-x'
 import { configs as storybookConfigs } from 'eslint-plugin-storybook'
 import globals from 'globals'
 
@@ -10,7 +10,7 @@ export default [
     ignores: ['.wireit'],
   },
   pluginJs.configs.recommended,
-  importPlugin.flatConfigs.recommended,
+  importFlatConfigs.recommended,
   {
     files: ['**/*.js'],
     languageOptions: {
@@ -22,8 +22,8 @@ export default [
       ecmaVersion: 'latest',
     },
     rules: {
-      'import/extensions': ['error', 'always'],
-      'import/order': [
+      'import-x/extensions': ['error', 'always'],
+      'import-x/order': [
         'error',
         {
           alphabetize: {
@@ -31,15 +31,19 @@ export default [
           },
         },
       ],
-      'import/named': 'off',
+      'import-x/named': 'off',
     },
     settings: {
-      'import/resolver': {
+      'import-x/resolver': {
         node: true,
         exports: true,
       },
     },
   },
   eslintConfigPrettier,
-  ...storybookConfigs['flat/recommended'],
+  // Storybook-specific configuration
+  ...storybookConfigs['flat/recommended'].map((config) => ({
+    ...config,
+    files: ['**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  })),
 ]
