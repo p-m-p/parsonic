@@ -1,7 +1,7 @@
 import pluginJs from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
-import importPlugin from 'eslint-plugin-import-x'
-import storybook from 'eslint-plugin-storybook'
+import { flatConfigs as importFlatConfigs } from 'eslint-plugin-import-x'
+import { configs as storybookConfigs } from 'eslint-plugin-storybook'
 import globals from 'globals'
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -10,7 +10,7 @@ export default [
     ignores: ['.wireit'],
   },
   pluginJs.configs.recommended,
-  importPlugin.flatConfigs.recommended,
+  importFlatConfigs.recommended,
   {
     files: ['**/*.js'],
     languageOptions: {
@@ -42,7 +42,7 @@ export default [
   },
   eslintConfigPrettier,
   // Storybook-specific configuration
-  ...storybook.configs['flat/recommended'].map((config) => ({
+  ...storybookConfigs['flat/recommended'].map((config) => ({
     ...config,
     files: ['**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   })),
