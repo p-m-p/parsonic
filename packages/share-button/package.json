@@ -19,6 +19,7 @@
   "scripts": {
     "build": "node ../../scripts/build.js",
     "generate-manifest": "cem analyze --globs 'src/ShareButton.js'",
+    "lint": "eslint .",
     "prepare": "cp ../../LICENSE ./",
     "types": "tsc"
   },
