@@ -1,12 +1,13 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "esModuleInterop": false,
-    "lib": ["DOM", "ESNext"],
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "noEmit": true,
-    "target": "esnext"
-  },
-  "exclude": ["node_modules"]
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "references": [
+    { "path": "./packages/all" },
+    { "path": "./packages/back-to-top" },
+    { "path": "./packages/copy-to-clipboard" },
+    { "path": "./packages/create-component" },
+    { "path": "./packages/esbuild-plugin" },
+    { "path": "./packages/share-button" },
+    { "path": "./packages/theme-switch" }
+  ]
 }
