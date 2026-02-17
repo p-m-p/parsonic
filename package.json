@@ -9,8 +9,8 @@
     "lint:root": "eslint . --ignore-pattern 'packages/**'",
     "format": "prettier --write --ignore-unknown .",
     "prepare": "husky",
-    "release": "turbo run release && changeset publish",
-    "storybook": "turbo run storybook && storybook dev -p 6006",
+    "release": "turbo run build types && changeset publish",
+    "storybook": "turbo run build && storybook dev -p 6006",
     "types": "turbo run types"
   },
   "author": "Phil Parsons",
