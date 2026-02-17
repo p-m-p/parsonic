@@ -3,14 +3,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "wireit",
+    "build": "turbo run build",
     "build-storybook": "storybook build",
-    "lint": "wireit",
+    "lint": "turbo run lint && pnpm run lint:root",
+    "lint:root": "eslint . --ignore-pattern 'packages/**'",
     "format": "prettier --write --ignore-unknown .",
     "prepare": "husky",
-    "release": "wireit",
-    "storybook": "wireit",
-    "types": "wireit"
+    "release": "turbo run build types && changeset publish",
+    "storybook": "turbo run build && storybook dev -p 6006",
+    "types": "turbo run types"
   },
   "author": "Phil Parsons",
   "license": "MIT",
@@ -39,8 +40,8 @@
     "lit": "^3.3.0",
     "prettier": "^3.5.3",
     "storybook": "^10.0.0",
-    "typescript": "^5.8.3",
-    "wireit": "^0.14.12"
+    "turbo": "^2.8.9",
+    "typescript": "^5.8.3"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
@@ -54,232 +55,5 @@
     "trailingComma": "es5",
     "proseWrap": "always"
   },
-  "packageManager": "pnpm@10.30.3",
-  "wireit": {
-    "build:back-to-top": {
-      "command": "pnpm run --filter=@parsonic/back-to-top build",
-      "files": [
-        "scripts/build.js",
-        "packages/back-to-top/src/*"
-      ],
-      "output": [
-        "packages/back-to-top/*.{js,map}"
-      ]
-    },
-    "build:copy-to-clipboard": {
-      "command": "pnpm run --filter=@parsonic/copy-to-clipboard build",
-      "files": [
-        "scripts/build.js",
-        "packages/copy-to-clipboard/src/*"
-      ],
-      "output": [
-        "packages/copy-to-clipboard/*.{js,map}"
-      ]
-    },
-    "build:share-button": {
-      "command": "pnpm run --filter=@parsonic/share-button build",
-      "files": [
-        "scripts/build.js",
-        "packages/share-button/src/*"
-      ],
-      "output": [
-        "packages/share-button/*.{js,map}"
-      ]
-    },
-    "build:theme-switch": {
-      "command": "pnpm run --filter=@parsonic/theme-switch build",
-      "files": [
-        "scripts/build.js",
-        "packages/theme-switch/src/*"
-      ],
-      "output": [
-        "packages/theme-switch/*.{js,map}"
-      ]
-    },
-    "build": {
-      "dependencies": [
-        "build:back-to-top",
-        "build:copy-to-clipboard",
-        "build:share-button",
-        "build:theme-switch"
-      ],
-      "command": "pnpm run --filter=@parsonic/all build",
-      "files": [
-        "scripts/build.js",
-        "packages/all/package.json",
-        "packages/all/src/*"
-      ],
-      "output": [
-        "packages/all/*.{js,map}"
-      ]
-    },
-    "release": {
-      "command": "changeset publish",
-      "dependencies": [
-        "build",
-        "types"
-      ]
-    },
-    "storybook": {
-      "command": "storybook dev -p 6006",
-      "dependencies": [
-        "build"
-      ]
-    },
-    "types:back-to-top": {
-      "command": "pnpm run --filter=@parsonic/back-to-top types",
-      "files": [
-        "tsconfig.json",
-        "packages/back-to-top/tsconfig.json",
-        "packages/back-to-top/src/BackToTop.js"
-      ],
-      "output": [
-        "packages/back-to-top/BackToTop.d.ts",
-        "packages/back-to-top/BackToTop.d.ts.map"
-      ]
-    },
-    "types:copy-to-clipboard": {
-      "command": "pnpm run --filter=@parsonic/copy-to-clipboard types",
-      "files": [
-        "tsconfig.json",
-        "packages/copy-to-clipboard/tsconfig.json",
-        "packages/copy-to-clipboard/src/CopyToClipboard.js"
-      ],
-      "output": [
-        "packages/copy-to-clipboard/CopyToClipboard.d.ts",
-        "packages/copy-to-clipboard/CopyToClipboard.d.ts.map"
-      ]
-    },
-    "types:esbuild-plugin": {
-      "command": "pnpm run --filter=@parsonic/esbuild-plugin types",
-      "files": [
-        "tsconfig.json",
-        "packages/esbuild-plugin/tsconfig.json",
-        "packages/esbuild-plugin/index.js"
-      ],
-      "output": [
-        "packages/esbuild-plugin/index.d.ts"
-      ]
-    },
-    "types:share-button": {
-      "command": "pnpm run --filter=@parsonic/share-button types",
-      "files": [
-        "tsconfig.json",
-        "packages/share-button/tsconfig.json",
-        "packages/share-button/src/ShareButton.js"
-      ],
-      "output": [
-        "packages/share-button/ShareButton.d.ts",
-        "packages/share-button/ShareButtoh.d.ts.map"
-      ]
-    },
-    "types:theme-switch": {
-      "command": "pnpm run --filter=@parsonic/theme-switch types",
-      "files": [
-        "tsconfig.json",
-        "packages/theme-switch/tsconfig.json",
-        "packages/theme-switch/src/ThemeSwitch.js"
-      ],
-      "output": [
-        "packages/theme-switch/ThemeSwitch.d.ts",
-        "packages/theme-switch/ThemeSwitch.d.ts.map"
-      ]
-    },
-    "types": {
-      "command": "pnpm run --filter=@parsonic/all types",
-      "files": [
-        "tsconfig.json",
-        "packages/all/tsconfig.json",
-        "packages/all/src/*.js"
-      ],
-      "output": [
-        "packages/all/*.d.ts"
-      ],
-      "dependencies": [
-        "types:back-to-top",
-        "types:copy-to-clipboard",
-        "types:esbuild-plugin",
-        "types:share-button",
-        "types:theme-switch"
-      ]
-    },
-    "lint:all": {
-      "command": "pnpm run --filter=@parsonic/all lint",
-      "files": [
-        "eslint.config.base.js",
-        "packages/all/eslint.config.js",
-        "packages/all/src/**/*.js"
-      ]
-    },
-    "lint:back-to-top": {
-      "command": "pnpm run --filter=@parsonic/back-to-top lint",
-      "files": [
-        "eslint.config.base.js",
-        "packages/back-to-top/eslint.config.js",
-        "packages/back-to-top/src/**/*.js"
-      ]
-    },
-    "lint:copy-to-clipboard": {
-      "command": "pnpm run --filter=@parsonic/copy-to-clipboard lint",
-      "files": [
-        "eslint.config.base.js",
-        "packages/copy-to-clipboard/eslint.config.js",
-        "packages/copy-to-clipboard/src/**/*.js"
-      ]
-    },
-    "lint:create-component": {
-      "command": "pnpm run --filter=@parsonic/create-component lint",
-      "files": [
-        "eslint.config.base.js",
-        "packages/create-component/eslint.config.js",
-        "packages/create-component/**/*.js"
-      ]
-    },
-    "lint:esbuild-plugin": {
-      "command": "pnpm run --filter=@parsonic/esbuild-plugin lint",
-      "files": [
-        "eslint.config.base.js",
-        "packages/esbuild-plugin/eslint.config.js",
-        "packages/esbuild-plugin/**/*.js"
-      ]
-    },
-    "lint:share-button": {
-      "command": "pnpm run --filter=@parsonic/share-button lint",
-      "files": [
-        "eslint.config.base.js",
-        "packages/share-button/eslint.config.js",
-        "packages/share-button/src/**/*.js"
-      ]
-    },
-    "lint:theme-switch": {
-      "command": "pnpm run --filter=@parsonic/theme-switch lint",
-      "files": [
-        "eslint.config.base.js",
-        "packages/theme-switch/eslint.config.js",
-        "packages/theme-switch/src/**/*.js"
-      ]
-    },
-    "lint:root": {
-      "command": "eslint . --ignore-pattern 'packages/**'",
-      "files": [
-        "eslint.config.base.js",
-        "eslint.config.js",
-        "scripts/**/*.js",
-        "stories/**/*.js",
-        ".storybook/**/*.js"
-      ]
-    },
-    "lint": {
-      "dependencies": [
-        "lint:all",
-        "lint:back-to-top",
-        "lint:copy-to-clipboard",
-        "lint:create-component",
-        "lint:esbuild-plugin",
-        "lint:share-button",
-        "lint:theme-switch",
-        "lint:root"
-      ]
-    }
-  }
+  "packageManager": "pnpm@10.30.3"
 }
