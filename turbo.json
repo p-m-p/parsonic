@@ -12,12 +12,7 @@
       "outputs": ["*.d.ts", "*.d.ts.map", "tsconfig.tsbuildinfo"]
     },
     "lint": {
-      "inputs": [
-        "../../eslint.config.base.js",
-        "eslint.config.js",
-        "src/**/*.js",
-        "**/*.js"
-      ]
+      "inputs": ["../../eslint.config.base.js", "eslint.config.js", "**/*.js"]
     },
     "lint:root": {
       "inputs": [
