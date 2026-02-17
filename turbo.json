@@ -3,33 +3,20 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": [
-        "scripts/build.js",
-        "packages/*/src/*",
-        "packages/*/package.json"
-      ],
+      "inputs": ["../../scripts/build.js", "src/*", "package.json"],
       "outputs": ["*.js", "*.map"]
     },
     "types": {
       "dependsOn": ["^types"],
-      "inputs": [
-        "tsconfig.json",
-        "packages/*/tsconfig.json",
-        "packages/*/src/**/*.js",
-        "packages/*/*.js"
-      ],
+      "inputs": ["../../tsconfig.json", "tsconfig.json", "src/**/*.js", "*.js"],
       "outputs": ["*.d.ts", "*.d.ts.map", "tsconfig.tsbuildinfo"]
     },
     "lint": {
       "inputs": [
-        "eslint.config.base.js",
+        "../../eslint.config.base.js",
         "eslint.config.js",
-        "packages/*/eslint.config.js",
-        "packages/*/src/**/*.js",
-        "packages/**/*.js",
-        "scripts/**/*.js",
-        "stories/**/*.js",
-        ".storybook/**/*.js"
+        "src/**/*.js",
+        "**/*.js"
       ]
     },
     "lint:root": {
@@ -40,6 +27,12 @@
         "stories/**/*.js",
         ".storybook/**/*.js"
       ]
+    },
+    "release": {
+      "dependsOn": ["build", "types"]
+    },
+    "storybook": {
+      "dependsOn": ["build"]
     }
   }
 }
