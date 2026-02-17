@@ -8,7 +8,7 @@
     },
     "types": {
       "dependsOn": ["^types"],
-      "inputs": ["../../tsconfig.json", "tsconfig.json", "src/**/*.js", "*.js"],
+      "inputs": ["../../tsconfig.json", "tsconfig.json", "src/**/*.js", "index.js"],
       "outputs": ["*.d.ts", "*.d.ts.map", "tsconfig.tsbuildinfo"]
     },
     "lint": {
