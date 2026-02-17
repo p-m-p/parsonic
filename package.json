@@ -5,7 +5,7 @@
   "scripts": {
     "build": "turbo run build",
     "build-storybook": "storybook build",
-    "lint": "turbo run lint && pnpm run lint:root",
+    "lint": "turbo run lint lint:root",
     "lint:root": "eslint . --ignore-pattern 'packages/**'",
     "format": "prettier --write --ignore-unknown .",
     "prepare": "husky",
