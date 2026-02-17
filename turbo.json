@@ -3,7 +3,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["../../scripts/build.js", "src/*", "package.json"],
+      "inputs": ["../../scripts/build.js", "src/**/*", "package.json"],
       "outputs": ["*.js", "*.map"]
     },
     "types": {
