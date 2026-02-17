@@ -8,7 +8,12 @@
     },
     "types": {
       "dependsOn": ["^types"],
-      "inputs": ["../../tsconfig.json", "tsconfig.json", "src/**/*.js", "index.js"],
+      "inputs": [
+        "../../tsconfig.json",
+        "tsconfig.json",
+        "src/**/*.js",
+        "index.js"
+      ],
       "outputs": ["*.d.ts", "*.d.ts.map", "tsconfig.tsbuildinfo"]
     },
     "lint": {
@@ -22,12 +27,6 @@
         "stories/**/*.js",
         ".storybook/**/*.js"
       ]
-    },
-    "release": {
-      "dependsOn": ["build", "types"]
-    },
-    "storybook": {
-      "dependsOn": ["build"]
     }
   }
 }
