@@ -15,7 +15,7 @@
   "keywords": [],
   "author": "Phil Parsons",
   "license": "MIT",
-  "packageManager": "pnpm@10.30.1",
+  "packageManager": "pnpm@10.30.2",
   "dependencies": {
     "minimist": "^1.2.8",
     "plop": "^4.0.1"
