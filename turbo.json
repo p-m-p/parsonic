@@ -1,0 +1,32 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["../../scripts/build.js", "src/**/*", "package.json"],
+      "outputs": ["*.js", "*.map"]
+    },
+    "types": {
+      "dependsOn": ["^types"],
+      "inputs": [
+        "../../tsconfig.json",
+        "tsconfig.json",
+        "src/**/*.js",
+        "index.js"
+      ],
+      "outputs": ["*.d.ts", "*.d.ts.map", "tsconfig.tsbuildinfo"]
+    },
+    "lint": {
+      "inputs": ["../../eslint.config.base.js", "eslint.config.js", "**/*.js"]
+    },
+    "lint:root": {
+      "inputs": [
+        "eslint.config.base.js",
+        "eslint.config.js",
+        "scripts/**/*.js",
+        "stories/**/*.js",
+        ".storybook/**/*.js"
+      ]
+    }
+  }
+}
