@@ -13,7 +13,7 @@
   "author": "Phil Parsons",
   "license": "MIT",
   "dependencies": {
-    "cssnano": "^7.0.6",
+    "cssnano": "^8.0.0",
     "html-minifier": "^4.0.0",
     "postcss": "^8.5.2"
   }
