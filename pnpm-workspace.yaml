@@ -1,4 +1,8 @@
 packages:
   - packages/*
+allowBuilds:
+  esbuild: true
+  rs-module-lexer: true
+  unrs-resolver: true
 onlyBuiltDependencies:
   - esbuild
