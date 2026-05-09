@@ -123,7 +123,7 @@ importers:
     dependencies:
       cssnano:
         specifier: ^8.0.0
-        version: 8.0.0(postcss@8.5.14)
+        version: 8.0.1(postcss@8.5.14)
       html-minifier:
         specifier: ^4.0.0
         version: 4.0.0
@@ -1668,8 +1668,8 @@ packages:
   caniuse-api@3.0.0:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
 
-  caniuse-lite@1.0.30001791:
-    resolution: {integrity: sha512-yk0l/YSrOnFZk3UROpDLQD9+kC1l4meK/wed583AXrzoarMGJcbRi2Q4RaUYbKxYAsZ8sWmaSa/DsLmdBeI1vQ==}
+  caniuse-lite@1.0.30001792:
+    resolution: {integrity: sha512-hVLMUZFgR4JJ6ACt1uEESvQN1/dBVqPAKY0hgrV70eN3391K6juAfTjKZLKvOMsx8PxA7gsY1/tLMMTcfFLLpw==}
 
   chai@5.3.3:
     resolution: {integrity: sha512-4zNhdJD/iOjSH0A05ea+Ke6MU5mmpQcbQsSOkgdaUMJ9zTlDTD/GYlwohmIE2u0gaxHYiVHEn1Fw9mZ/ktJWgw==}
@@ -1789,8 +1789,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  cssnano-preset-default@8.0.0:
-    resolution: {integrity: sha512-uIJx5WOQ2vlH0HwKZz3AbhYffVvYTUcS2S76gr3oLnU2i9qn7yy3LLs0rk3YAtBB9gayYr0aTvk0pZ6MlenUlw==}
+  cssnano-preset-default@8.0.1:
+    resolution: {integrity: sha512-OTdKeYMlvQ8KBgyej5ysktnWJoeyo7rGrVnm+bdpIHGvxhbTGPsOkB+7T1EdTuX00dGlQQb2UEbSPB1OpMXULw==}
     engines: {node: ^22.11.0 || ^24.11.0 || >=26.0}
     peerDependencies:
       postcss: ^8.5.14
@@ -1801,8 +1801,8 @@ packages:
     peerDependencies:
       postcss: ^8.5.14
 
-  cssnano@8.0.0:
-    resolution: {integrity: sha512-FBjMD2UTnAshdTNoFnF6vLICR3/gCypkWdveXbxpO+cPlJZ3RYdYOv84ibCxEHzo5Wuoy7yAmBkmUGuLLzoUwA==}
+  cssnano@8.0.1:
+    resolution: {integrity: sha512-oSiOnPQNNYjusTUlYJiE6xvFQG4don3N0QavaoV1BxIsC1zjvxOwikXlR7lG1EVmZNDDaJkHbQx1VRB8kaoMHA==}
     engines: {node: ^22.11.0 || ^24.11.0 || >=26.0}
     peerDependencies:
       postcss: ^8.5.14
@@ -1925,8 +1925,8 @@ packages:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
 
-  electron-to-chromium@1.5.349:
-    resolution: {integrity: sha512-QsWVGyRuY07Aqb234QytTfwd5d9AJlfNIQ5wIOl1L+PZDzI9d9+Fn0FRale/QYlFxt/bUnB0/nLd1jFPGxGK1A==}
+  electron-to-chromium@1.5.352:
+    resolution: {integrity: sha512-9wHk8x6dyuimoe18EdiDPWKExNdxYqo4fn4FwOVVper6RxT3cmpBwBkWWfSOCYJjQdIco/nPhJhNLmn4Ufg1Yg==}
 
   emoji-regex@10.6.0:
     resolution: {integrity: sha512-toUI84YS5YmxW219erniWD0CIVOo46xGKColeNQRgOzDorgBi1v4D71/OFzgD9GO2UGKIv1C3Sp8DAn0+j5w7A==}
@@ -3018,8 +3018,8 @@ packages:
     peerDependencies:
       postcss: ^8.5.14
 
-  postcss-minify-selectors@8.0.0:
-    resolution: {integrity: sha512-pQKzVGjUfOVP8QH95lXN/cpMcwHvdsqF3tQTEWPsRPnHw2SZ7G9c69oWDfjWkpCd81APF8E34QKUEUo+qUp5qw==}
+  postcss-minify-selectors@8.0.1:
+    resolution: {integrity: sha512-c31D46811kTkQDxV1KTTow79axX6gj/01AY5G7cGZg3s31KvAwP13jEFXGAzQbJ7NvOFV1pRqEia6nrAdHU7qg==}
     engines: {node: ^22.11.0 || ^24.11.0 || >=26.0}
     peerDependencies:
       postcss: ^8.5.14
@@ -4969,8 +4969,8 @@ snapshots:
   browserslist@4.28.2:
     dependencies:
       baseline-browser-mapping: 2.10.28
-      caniuse-lite: 1.0.30001791
-      electron-to-chromium: 1.5.349
+      caniuse-lite: 1.0.30001792
+      electron-to-chromium: 1.5.352
       node-releases: 2.0.38
       update-browserslist-db: 1.2.3(browserslist@4.28.2)
 
@@ -5008,11 +5008,11 @@ snapshots:
   caniuse-api@3.0.0:
     dependencies:
       browserslist: 4.28.2
-      caniuse-lite: 1.0.30001791
+      caniuse-lite: 1.0.30001792
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
-  caniuse-lite@1.0.30001791: {}
+  caniuse-lite@1.0.30001792: {}
 
   chai@5.3.3:
     dependencies:
@@ -5123,7 +5123,7 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  cssnano-preset-default@8.0.0(postcss@8.5.14):
+  cssnano-preset-default@8.0.1(postcss@8.5.14):
     dependencies:
       browserslist: 4.28.2
       cssnano-utils: 6.0.0(postcss@8.5.14)
@@ -5140,7 +5140,7 @@ snapshots:
       postcss-minify-font-values: 8.0.0(postcss@8.5.14)
       postcss-minify-gradients: 8.0.0(postcss@8.5.14)
       postcss-minify-params: 8.0.0(postcss@8.5.14)
-      postcss-minify-selectors: 8.0.0(postcss@8.5.14)
+      postcss-minify-selectors: 8.0.1(postcss@8.5.14)
       postcss-normalize-charset: 8.0.0(postcss@8.5.14)
       postcss-normalize-display-values: 8.0.0(postcss@8.5.14)
       postcss-normalize-positions: 8.0.0(postcss@8.5.14)
@@ -5160,9 +5160,9 @@ snapshots:
     dependencies:
       postcss: 8.5.14
 
-  cssnano@8.0.0(postcss@8.5.14):
+  cssnano@8.0.1(postcss@8.5.14):
     dependencies:
-      cssnano-preset-default: 8.0.0(postcss@8.5.14)
+      cssnano-preset-default: 8.0.1(postcss@8.5.14)
       lilconfig: 3.1.3
       postcss: 8.5.14
 
@@ -5275,7 +5275,7 @@ snapshots:
       es-errors: 1.3.0
       gopd: 1.2.0
 
-  electron-to-chromium@1.5.349: {}
+  electron-to-chromium@1.5.352: {}
 
   emoji-regex@10.6.0: {}
 
@@ -6571,7 +6571,7 @@ snapshots:
       postcss: 8.5.14
       postcss-value-parser: 4.2.0
 
-  postcss-minify-selectors@8.0.0(postcss@8.5.14):
+  postcss-minify-selectors@8.0.1(postcss@8.5.14):
     dependencies:
       browserslist: 4.28.2
       caniuse-api: 3.0.0
