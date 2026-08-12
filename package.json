@@ -16,7 +16,7 @@
   "author": "Phil Parsons",
   "license": "MIT",
   "devDependencies": {
-    "@changesets/cli": "^2.29.4",
+    "@changesets/cli": "^3.0.0",
     "@chromatic-com/storybook": "^5.0.0",
     "@custom-elements-manifest/analyzer": "^0.11.0",
     "@eslint/js": "^10.0.0",
