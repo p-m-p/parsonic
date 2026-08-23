@@ -40,7 +40,7 @@ importers:
         version: 24.13.3
       baseline-browser-mapping:
         specifier: ^2.9.19
-        version: 2.11.17
+        version: 2.11.18
       esbuild:
         specifier: ^0.28.0
         version: 0.28.2
@@ -1663,6 +1663,11 @@ packages:
 
   baseline-browser-mapping@2.11.17:
     resolution: {integrity: sha512-KAUDn1OSS0fmPlGO+NOUMRcOQ/b/shUBH3OgkG73mPgdf+JD/BQ6fHboGxNOxnUmlwcq+lLq3dTkayRPuSfXwg==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
+  baseline-browser-mapping@2.11.18:
+    resolution: {integrity: sha512-1iEmLEYSiE1SeBoAfPo/Mnx3PzfzHUkDK61ASkCpuk3YXugYLH5DYK1SzqV55F8FMI6s0F+/tCP7Polz1QRjxw==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -4920,6 +4925,8 @@ snapshots:
   base64-js@1.5.1: {}
 
   baseline-browser-mapping@2.11.17: {}
+
+  baseline-browser-mapping@2.11.18: {}
 
   binary-extensions@2.3.0: {}
 
