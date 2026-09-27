@@ -31,7 +31,7 @@ importers:
         version: 10.6.0(@types/react@19.2.14)(storybook@10.6.0(@types/react@19.2.14)(prettier@3.9.9)(react@19.2.8))
       '@storybook/web-components-vite':
         specifier: ^10.0.0
-        version: 10.6.0(lit@3.3.3)(storybook@10.6.0(@types/react@19.2.14)(prettier@3.9.9)(react@19.2.8))(vite@8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.0))
+        version: 10.6.0(lit@3.3.3)(storybook@10.6.0(@types/react@19.2.14)(prettier@3.9.9)(react@19.2.8))(vite@8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.1))
       '@types/html-minifier':
         specifier: ^4.0.5
         version: 4.0.6
@@ -70,7 +70,7 @@ importers:
         version: 9.1.7
       lint-staged:
         specifier: ^17.0.0
-        version: 17.5.1
+        version: 17.6.0
       lit:
         specifier: ^3.3.0
         version: 3.3.3
@@ -2696,8 +2696,8 @@ packages:
     resolution: {integrity: sha512-/vlFKAoH5Cgt3Ie+JLhRbwOsCQePABiU3tJ1egGvyQ+33R/vcwM2Zl2QR/LzjsBeItPt3oSVXapn+m4nQDvpzw==}
     engines: {node: '>=14'}
 
-  lint-staged@17.5.1:
-    resolution: {integrity: sha512-7EDuco1xnBMeVpvAbeMq1U5KXwJGLmY8q6l+Ye78r36C4mPc+Vg1Z2SK8gHyRTyvPro90A0q5/FAZ+Au23d6QQ==}
+  lint-staged@17.6.0:
+    resolution: {integrity: sha512-nOhBfYkZEwkFtNzD5pK9s9LkcWoxJ+whLzEnhqi9nl7zTB5n7tg8+9iYgMGx2Wm3VlLu8cbNj0RACzY+nWi5iQ==}
     engines: {node: '>=22.22.1'}
     hasBin: true
 
@@ -3681,6 +3681,11 @@ packages:
     engines: {node: '>= 14.6'}
     hasBin: true
 
+  yaml@2.9.1:
+    resolution: {integrity: sha512-3NxN8+78OdzbT7C/WjGsyfPAtJaN3FNDsWxv7Y7mcDsT/oOmgW8BpyQQFFBnvZE3j9Y2Sdz1ULFLezL7Eb2yFw==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
+
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
@@ -4408,11 +4413,11 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react-dom'
 
-  '@storybook/builder-vite@10.6.0(storybook@10.6.0(@types/react@19.2.14)(prettier@3.9.9)(react@19.2.8))(vite@8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.0))':
+  '@storybook/builder-vite@10.6.0(storybook@10.6.0(@types/react@19.2.14)(prettier@3.9.9)(react@19.2.8))(vite@8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       storybook: 10.6.0(@types/react@19.2.14)(prettier@3.9.9)(react@19.2.8)
       ts-dedent: 2.3.0
-      vite: 8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.0)
+      vite: 8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.1)
 
   '@storybook/global@5.0.0': {}
 
@@ -4428,12 +4433,12 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@storybook/web-components-vite@10.6.0(lit@3.3.3)(storybook@10.6.0(@types/react@19.2.14)(prettier@3.9.9)(react@19.2.8))(vite@8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.0))':
+  '@storybook/web-components-vite@10.6.0(lit@3.3.3)(storybook@10.6.0(@types/react@19.2.14)(prettier@3.9.9)(react@19.2.8))(vite@8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
-      '@storybook/builder-vite': 10.6.0(storybook@10.6.0(@types/react@19.2.14)(prettier@3.9.9)(react@19.2.8))(vite@8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.0))
+      '@storybook/builder-vite': 10.6.0(storybook@10.6.0(@types/react@19.2.14)(prettier@3.9.9)(react@19.2.8))(vite@8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.1))
       '@storybook/web-components': 10.6.0(lit@3.3.3)(storybook@10.6.0(@types/react@19.2.14)(prettier@3.9.9)(react@19.2.8))
       storybook: 10.6.0(@types/react@19.2.14)(prettier@3.9.9)(react@19.2.8)
-      vite: 8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.0)
+      vite: 8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - lit
 
@@ -6087,13 +6092,13 @@ snapshots:
 
   lilconfig@3.1.3: {}
 
-  lint-staged@17.5.1:
+  lint-staged@17.6.0:
     dependencies:
       picomatch: 4.0.7
       string-argv: 0.3.2
       tinyexec: 1.3.1
     optionalDependencies:
-      yaml: 2.9.0
+      yaml: 2.9.1
 
   lit-element@4.2.2:
     dependencies:
@@ -7141,7 +7146,7 @@ snapshots:
 
   v8flags@4.0.1: {}
 
-  vite@8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.0):
+  vite@8.0.13(@types/node@24.19.0)(esbuild@0.28.2)(yaml@2.9.1):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.7
@@ -7152,7 +7157,7 @@ snapshots:
       '@types/node': 24.19.0
       esbuild: 0.28.2
       fsevents: 2.3.3
-      yaml: 2.9.0
+      yaml: 2.9.1
 
   wcwidth@1.0.1:
     dependencies:
@@ -7226,6 +7231,9 @@ snapshots:
       is-wsl: 3.1.1
 
   yaml@2.9.0: {}
+
+  yaml@2.9.1:
+    optional: true
 
   yocto-queue@0.1.0: {}
 
